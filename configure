@@ -1,24 +1,31 @@
 #!/bin/sh
 # This is free and unencumbered software released into the public domain.
 # For more information, please refer to <http://unlicense.org/>
-
-PACKAGE="mp"
-VERSION="3.3.19w"
-PACKAGE_URL=''
-
-PROJECT_TYPE='c' # c / c++ 
+#
 
 APP_CFLAGS='-Wall -g -O2 -DHAVE_CONFIG_H'
 APP_CXXFLAGS="${APP_CFLAGS}"
-APP_CPPFLAGS=''
+#APP_CPPFLAGS='-Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers'
 APP_LDFLAGS=''
+APP_LXXFLAGS=''
 APP_LIBS=''
-EXTRA_GCC_WARNINGS=no # yes/no
+#sysroot_plus_includes_libs=1
 
-GETTEXT_PACKAGE='minimum-profit'
-PO2C_FILE='src/mp_lang_m.c'
+if ! cd $(dirname "$0") ; then
+	exit 1
+fi
 
-cd $(dirname "$0") || exit 1
+apps_to_check=''
+extra_env_vars=''
+config_h_extra=''
+extra_configure_opts=''
+config_h_have=
+config_mk_flags=
+w_files_in=
+
+if [ -f configure.project ] ; then
+	. ./configure.project
+fi
 
 #==========================================================
 
@@ -29,131 +36,286 @@ PACKAGE_BUGREPORT="${PACKAGE_URL}"
 PACKAGE_VERSION="${VERSION}"
 
 #==========================================================
-# ./configure release
+# ./configure release [xz|gz|lz|bz2|zst]
 
 if [ "$1" = "release" ] ; then
-	git clean -dfx
+	if command -v git >/dev/null; then
+		printf "Run 'git clean -dfx'? [y/N]: "
+		read anzwer
+		case $anzwer in y|Y)
+			echo '# git clean -dfx'
+			git clean -dfx ;;
+		esac
+	fi
 	dir=${PACKAGE}-${VERSION}
 	rm -rf ../${dir}
 	mkdir -p ../${dir}
 	cp -rf $(pwd)/* ../${dir}
 	cd ..
-	if tar -vJcf ${dir}.tar.xz $dir ; then
-		echo
-		echo "*** ${dir}.tar.xz has been created"
+	echo "# tar -vcf ${dir}.tar $dir"
+	tar -vcf ${dir}.tar $dir
+	comp=$2
+	if [ -z "$comp" ] ; then
+		comp=xz
 	fi
+	case $comp in
+		gz)  cmd=gzip    ;;
+		lz)  cmd=lzip    ;;
+		bz2) cmd=bzip2   ;;
+		zst) cmd=zstd    ;;
+		*)   cmd=${comp} ;;
+	esac
+	rm -f ${dir}.tar.${comp}
+	echo "# ${cmd} ${dir}.tar"
+	if ${cmd} ${dir}.tar ; then
+		echo "*** ${dir}.tar.${comp} has been created..."
+	fi
+	rm -f ${dir}.tar
 	exit
 fi
 
-# ./configure po
-if [ "$1" =  "po" ] ; then
-	export GETTEXT_PACKAGE
-	./po/Makefile.in.gen po || exit 1
-	#sed -i '/#~ /d' po/*.po
-	exit 0
-fi
-
-# ./configure linguas
-case "$1" in linguas|pot|mo)
-	./po/Makefile.in.gen $1
-	exit $?
-	;;
-esac
-
-# ./configure po2c
-if [ "$1" =  "po2c" ] ; then
-	./po/po2c po/*.po > ${PO2C_FILE}
-	exit 0
-fi
+# w_conf/gettext: ./configure po|pot|po2c
 
 #==========================================================
 
 exit_error() {
 	test "$1" && echo "$@"
-	if [ -f Makefile ] ; then
-		rm -f Makefile config.h
-	fi
+	rm -f config.h config.mk
 	exit 1
 }
 
-set_cc()
+
+check_command() # 1:<cmd> finds $1 in $PATH
 {
-	printf "Checking for C compiler... "
-	if test -n "$CC" ; then # environment
-		if test -x $CC ; then
-			echo "$CC"
-			return
+	if [ -z "$xxpath" ] ; then
+		xxpath="$(echo "$PATH" | tr ':' ' ')"
+	fi
+	for xcmdx in $@
+	do
+		for zpathz in ${xxpath}
+		do
+			if [ -x "${zpathz}/${xcmdx}" ] ; then
+				echo ${zpathz}/${xcmdx}
+				return 0
+			fi
+		done
+	done
+	return 1
+}
+
+
+check_exec() # $1=[exec] $2=[exit-if-error (exec_must_not_be_empty)]
+{
+	if [ -n "$1" ] ; then
+		if test -x $1 || check_command $1 >/dev/null 2>&1 ; then
+			return 0
+		fi
+		if [ -n "$2" ] ; then
+			exit_error "error: can't find '$1'"
 		fi
 	fi
-	#--
-	for i in gcc clang cc
+	return 1
+}
+
+
+check_compiler() #1:default 2:LIST
+{
+	zexec="$1"
+	zlist="$2"
+	if [ -n "$zexec" ] ; then
+		zz_list="$zexec"
+	else
+		zz_list="$zlist"
+	fi
+	for compx in ${zz_list}
 	do
-		if command -v $i >/dev/null 2>&1 ; then
-			CC=${i}
-			echo "$CC"
-			return
+		if test -x $compx || check_command $compx >/dev/null; then
+			echo "$compx"
+			return 0
 		fi
 	done
-	exit_error "$CC not found"
+	return 1
 }
+
+
+set_cc()
+{
+	printf "Checking for C compiler..."
+	ZCC=$(check_compiler "$CC" "cc gcc clang")
+	if test -z "$ZCC" ; then
+		exit_error "$CC not found"
+	fi
+	CC="$ZCC"
+	echo " $CC"
+}
+
 
 set_cxx()
 {
-	if test "$PROJECT_TYPE" = "c" ; then
-		return # don't need a c++ compiler
+	printf "Checking for C++ compiler..."
+	ZXX=$(check_compiler "$CXX" "c++ g++ clang++")
+	if test -z "$ZXX" ; then
+		exit_error "$CXX not found"
 	fi
-	printf "Checking for C++ compiler... "
-	if test -n "$CXX" ; then # environment
-		if test -x $CXX ; then
-			echo "$CXX"
-			return
-		fi
-	fi
-	#--
-	for i in g++ clang++ c++
-	do
-		if command -v $i >/dev/null 2>&1 ; then
-			CXX=${i}
-			echo "$CXX"
-			return
-		fi
-	done
-	exit_error "$CXX not found"
+	CXX="$ZXX"
+	echo " $CXX"
 }
+
 
 run_pkg_config()
 {
-	pkgconfig='pkg-config'
-	if test -n "$PKG_CONFIG" ; then
-		pkgconfig="$PKG_CONFIG"
+	if [ -n "$static_link" ] ; then
+		pkgconfig_s='--static'
+	else
+		pkgconfig_s=''
 	fi
-	${pkgconfig} "$@"
+	if test -n "$PKG_CONFIG" ; then
+		${PKG_CONFIG} ${pkgconfig_s} "$@"
+	else
+		pkg-config ${pkgconfig_s} "$@"
+	fi
+}
+
+w_pkgconfig_run()
+{
+	run_pkg_config "$@"
 }
 
 
-check_pkg() # $1=<pkg> $2=[min-version]
+w_pkgconfig_check() # $1=<pkg> $2=[min-version]
 {
 	# returns 0=ok, use pkg-config
 	pc_pkg="$1"
 	pc_pkg_min_ver="$2"
 	if [ -n "$pc_pkg_min_ver" ] ; then
-		printf "Checking for %s >= %s... " "$pc_pkg" "$pc_pkg_min_ver"
+		printf "Checking for %s >= %s... " "${pc_pkg}.pc" "$pc_pkg_min_ver"
 	else
-		printf "Checking for %s... " "$pc_pkg"
+		printf "Checking for %s... " "${pc_pkg}.pc"
 	fi
 	#--
 	if [ -n "$pc_pkg_min_ver" ] ; then
-		run_pkg_config ${pc_pkg} --atleast-version=${pc_pkg_min_ver} 2>/dev/null
+		run_pkg_config ${pc_pkg} --exists --atleast-version=${pc_pkg_min_ver}
 	else
-		run_pkg_config ${pc_pkg} 2>/dev/null
+		run_pkg_config ${pc_pkg} --exists
 	fi
 	xret=$?
 	if [ $xret -eq 0 ] ; then
-		echo "yes"
+		echo "yes [$(run_pkg_config ${pc_pkg} --modversion)]"
 	else
 		echo "no"
 	fi
 	return $xret
+}
+
+
+w_check_header_and_libs() # 1:<header> 2-:[libs] is optional
+{
+	xheaderx=$1
+	shift
+	xlibsx=$@
+	xretval=1
+	printf "Checking for ${xheaderx} + ${xlibsx}... "
+	printf "#include <${xheaderx}>\nint main (int argc, char **argv) { return 0; }\n" > xwheaderwx.c
+	echo "$CC $CFLAGS xwheaderwx.c $LDFLAGS -o xwheaderwx.o $xlibsx" >>config.log
+	$CC $CFLAGS xwheaderwx.c $LDFLAGS -o xwheaderwx.o $xlibsx 2>>config.log
+	if [ $? -eq 0 ] ; then
+		w_headers="$w_headers ${xheaderx}"
+		echo "yes"
+		xretval=0
+	else
+		echo "no"
+		xretval=1
+	fi
+	rm -f xwheaderwx.c xwheaderwx.o
+	return ${xretval}
+}
+
+
+w_check_header_and_libs_required()
+{
+	zzheaderzz=$1
+	if [ -z "$2" ] ; then
+		exit_error "w_check_header_and_libs_required: 2nd paramater <libs> is required"
+	fi
+	shift
+	zzlibszz=$@
+	w_check_header_and_libs ${zzheaderzz} ${zzlibszz}
+	if [ $? -eq 0 ] ; then
+		LIBS="$LIBS ${zzlibszz}"
+	else
+		exit_error "ERROR: ${zzheaderzz} + ${zzlibszz} is required"
+	fi
+}
+
+w_check_headers()
+{
+	for zzheaderzz in $@
+	do
+		w_check_header_and_libs ${zzheaderzz}
+	done
+}
+
+w_check_headers_required()
+{
+	for zzheaderzz in $@
+	do
+		w_check_header_and_libs ${zzheaderzz}
+		if [ $? -ne 0 ] ; then
+			exit_error "ERROR: ${zzheaderzz} is required"
+		fi
+	done
+}
+
+
+w_check_commands_required()
+{
+	zzcmdzz=
+	for wcmdw in $@
+	do
+		printf "Checking for ${wcmdw}... "
+		zzcmdzz=$(check_command ${wcmdw})
+		if [ -n "$zzcmdzz" ] ; then
+			echo "$zzcmdzz"
+		else
+			echo "no"
+			exit_error "ERROR: $wcmdw is required"
+		fi
+	done
+}
+
+
+w_check_command_find_first() # sets $tmp_cmd_check
+{
+	tmp_cmd_check=''
+	for wcmdw in $@
+	do
+		printf "Checking for ${wcmdw}... "
+		tmp_cmd_check=$(check_command ${wcmdw})
+		if [ -n "$tmp_cmd_check" ] ; then
+			echo "$tmp_cmd_check"
+			return 0
+		fi
+		echo "no"
+	done
+	return 1
+}
+
+
+w_require_gnu_make()
+{
+	printf "Checking for GNU make... "
+	if [ -n "$MAKE" ] && "$MAKE" --version 1>/dev/null 2>&1 ; then
+		echo "$MAKE (environment)"
+		W_GNU_MAKE="MAKE = $MAKE"
+	elif make --version 1>/dev/null 2>&1 ; then
+		echo "make"
+	elif gmake --version 1>/dev/null 2>&1 ; then
+		echo "gmake"
+		W_GNU_MAKE='MAKE = gmake'
+	else
+		echo "no"
+		exit_error "ERROR: GNU make is required"
+	fi
 }
 
 #==========================================================
@@ -163,9 +325,11 @@ check_pkg() # $1=<pkg> $2=[min-version]
 test "$STRIP"  || STRIP='strip'
 test "$AR"     || AR='ar'
 test "$AS"     || AS='as'
+test "$NM"     || NM='nm'
 test "$RANLIB" || RANLIB='ranlib'
 test "$OBJCOPY" || OBJCOPY='objcopy'
 test "$OBJDUMP" || OBJDUMP='objdump'
+static_link=''
 
 prefix=/usr/local
 exec_prefix='${prefix}'
@@ -197,7 +361,8 @@ MKDIR_P='mkdir -p'
 
 #==========================================================
 
-help() {
+help()
+{
 	echo "
 Usage: ./configure [OPTION]... [VAR=VALUE]...
 
@@ -239,11 +404,19 @@ Fine tuning of the installation directories:
   --dvidir=DIR            dvi documentation [${dvidir}]
   --pdfdir=DIR            pdf documentation [${pdfdir}]
   --psdir=DIR             ps documentation [${psdir}]
+
 $(print_optional_features)
+
+Optional Packages:
+  --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+  --with-sysroot[=DIR]    Search for dependent libraries within DIR (or the
+                          compiler's sysroot if not specified).
 
 Some influential environment variables:
   CC          C compiler command
   CFLAGS      C compiler flags
+  CXXFLAGS    C++ compiler flags
   LDFLAGS     linker flags, e.g. -L<lib dir> if you have libraries in a
               nonstandard directory <lib dir>
   LIBS        libraries to pass to the linker, e.g. -l<library>
@@ -264,12 +437,24 @@ it to find libraries and programs with nonstandard names/locations.
 
 #==========================================================
 
-print_optional_features() {
-	printf ""
+print_optional_features()
+{
+	if [ -n "${extra_configure_opts}" ] ; then
+		echo "Optional Features:"
+	fi
+	for confx in ${extra_configure_opts}
+	do
+		opt_print_${confx}
+	done
 }
 
-print_extra_env_variables() {
-	printf ""
+print_extra_env_variables()
+{
+	for evar in ${extra_env_vars}
+	do
+		echo "  ${evar}_CFLAGS  compiler flags for ${evar}, overriding pkg-config"
+		echo "  ${evar}_LIBS    linker flags for ${evar}, overriding pkg-config"
+	done
 }
 
 #==========================================================
@@ -285,12 +470,15 @@ do
 		CFLAGS=*)   CFLAGS="$CFLAGS $(getvalue $i)"     ;;
 		CPPFLAGS=*) CPPFLAGS="$CPPFLAGS $(getvalue $i)" ;;
 		LDFLAGS=*)  LDFLAGS="$LDFLAGS $(getvalue $i)"   ;;
+		LXXFLAGS=*) LXXFLAGS="$LXXFLAGS $(getvalue $i)"   ;;
 		CXXFLAGS=*) CXXFLAGS="$CXXFLAGS $(getvalue $i)"   ;;
-		LIBS=*)  LIBS="$LDFLAGS $(getvalue $i)"   ;;
+		LIBS=*)  LIBS="$LIBS $(getvalue $i)"   ;;
 		CC=*)    CC="$(getvalue $i)"     ;;
 		CXX=*)   CXX="$(getvalue $i)"    ;;
 		STRIP=*) STRIP="$(getvalue $i)"  ;;
 		AR=*)    AR="$(getvalue $i)"     ;;
+		AS=*)    AS="$(getvalue $i)"     ;;
+		NM=*)    NM="$(getvalue $i)"     ;;
 
 		--prefix=*)     prefix="$(getvalue $i)"     ;;
 		--exec_prefix=*) exec_prefix="$(getvalue $i)"     ;;
@@ -313,29 +501,37 @@ do
 		--mandir=*)    mandir="$(getvalue $i)"   ;;
 		--localedir=*)   localedir="$(getvalue $i)"   ;;
 		--runstatedir=*) runstatedir="$(getvalue $i)" ;;
+		--with-sysroot=*) sysroot="$(getvalue $i)" ;;
+		--with-sysroot) sysroot='-print-sysroot' ;;
+		--without-sysroot) sysroot='' ;;
+		--enable-static-link)  static_link=1 ;;
+		--disable-static-link) static_link=  ;;
 
 		-h|--help) help ;;
 	esac
 done
 
+for confx in ${extra_configure_opts}
+do
+	opt_configure_${confx} "$@"
+done
+
+# ====================================================
+
+echo
 set_cc
 set_cxx
 
-if test "$EXTRA_GCC_WARNINGS" = "yes" ; then
-	case "$CC" in gcc*)
-		CPPFLAGS="$CPPFLAGS -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers" ;;
-	esac
-fi
-
 if test -n "$host" ; then
 	printf "Checking cross-compiler... "
-	if test -f ${host}-${CC} || command -v ${host}-${CC} >/dev/null 2>&1 ; then
+	if test -x ${host}-${CC} || check_command ${host}-${CC} >/dev/null; then
 		CC=${host}-${CC}
 		CXX=${host}-${CXX}
 		LD=${host}-${LD}
 		STRIP=${host}-${STRIP}
 		AR=${host}-${AR}
 		AS=${host}-${AS}
+		NM=${host}-${NM}
 		RANLIB=${host}-${RANLIB}
 		OBJCOPY=${host}-${OBJCOPY}
 		OBJDUMP=${host}-${OBJDUMP}
@@ -345,37 +541,79 @@ if test -n "$host" ; then
 	fi
 fi
 
-#==========================================================
-#    extra options
-#==========================================================
+if [ -n "$static_link" ] ; then
+	CC="$CC -static"
+	CXX="$CXX -static"
+fi
 
-print_make_extra_flags() {
-	printf ""
-}
+if [ -n "${sysroot}" ] ; then
+	if [ "${sysroot}" = "-print-sysroot" ] ; then
+		sysroot=$($CC -print-sysroot)
+		if [ -z "$sysroot" ] ; then
+			exit_error "--with-sysroot ERROR: compiler doesn't support -print-sysroot"
+		fi
+	fi
+	if ! [ -d "$sysroot" ] ; then
+		exit_error "--with-sysroot ERROR: $sysroot is not a directory"
+	fi
+	CC="$CC --sysroot=${sysroot}"
+	CXX="$CXX --sysroot=${sysroot}"
+	#--
+	if [ -n "$sysroot_plus_includes_libs" ] ; then
+		if [ -d ${sysroot}/include ] ; then
+			CFLAGS="-I${sysroot}/include $CFLAGS"
+			CXXFLAGS="-I${sysroot}/include $CXXFLAGS"
+		fi
+		if [ -d ${sysroot}/lib ] ; then
+			LDFLAGS="-L${sysroot}/lib $LDFLAGS"
+			LXXFLAGS="-L${sysroot}/lib $LXXFLAGS"
+		fi
+	fi
+fi
 
-#==========================================================
-#    create makefiles
 #==========================================================
 
 CFLAGS="$CFLAGS $APP_CFLAGS"
 CPPFLAGS="$CPPFLAGS $APP_CPPFLAGS"
 CXXFLAGS="$CXXFLAGS $APP_CXXFLAGS"
 LDFLAGS="$LDFLAGS $APP_LDFLAGS"
+LXXFLAGS="$LXXFLAGS $APP_LXXFLAGS"
 LIBS="$LIBS $APP_LIBS"
+
+#==========================================================
+
+echo > config.log
+w_headers=''
+#----------
+w_main_func # main function where the user performs all sorts of tasks
+#----------
+for xcheckx in ${w_custom_checks}
+do
+	${xcheckx}
+done
+# apps to check, see configure.project (XXX_CFLAGS, XXX_LIBS)
+for appx in ${apps_to_check}
+do
+	opt_check_${appx}
+done
+
+#==========================================================
+#             config.mk and Makefiles
+#==========================================================
 
 makefiles=$(find . -name Makefile.in | sed -e 's%.in%%')
 
-for makefile in ${makefiles}
+for makefile in config.mk ${makefiles}
 do
 	cat > ${makefile} <<EOF
-# This is free and unencumbered software released into the public domain.
-# For more information, please refer to <http://unlicense.org/>
-
+# generated by ./configure
+${W_GNU_MAKE}
 CC = ${CC}
 CXX = ${CXX}
 STRIP = ${STRIP}
 AR = ${AR}
 AS = ${AS}
+NM = ${NM}
 RANLIB = ${RANLIB}
 OBJCOPY = ${OBJCOPY}
 OBJDUMP = ${OBJDUMP}
@@ -383,9 +621,9 @@ OBJDUMP = ${OBJDUMP}
 CFLAGS = ${CFLAGS}
 CPPFLAGS = ${CPPFLAGS}
 CXXFLAGS = ${CXXFLAGS}
+LXXFLAGS = ${LXXFLAGS}
 LDFLAGS = ${LDFLAGS}
 LIBS = ${LIBS}
-$(print_make_extra_flags)
 
 #=================================================
 
@@ -417,17 +655,43 @@ srcdir = ${srcdir}
 mkdir_p = ${mkdir_p}
 MKDIR_P = ${MKDIR_P}
 
+INSTALL = install -c
+INSTALL_DATA = install -c -m 644
+
 #=================================================
+${make_extra_flags}
 
 EOF
-	cat ${makefile}.in >> ${makefile}
+	if [ -n "${config_mk_flags}" ] ; then
+		(
+			for env in ${config_mk_flags}
+			do
+				echo "${env}_CFLAGS = $(eval echo \$${env}_CFLAGS)"
+				echo "${env}_LIBS   = $(eval echo \$${env}_LIBS)"
+			done
+		) >> ${makefile}
+	fi
+
+	if [ -n "${w_config_mk_extra_lines}" ] ; then
+		echo "${w_config_mk_extra_lines}" >> ${makefile}
+	fi
+
+	if [ -f ${makefile}.in ] ; then
+		cat ${makefile}.in >> ${makefile}
+	fi
+
 done
 
-#==========#
-# config.h #
-#==========#
+
+#==========================================================
+#                       config.h
+#==========================================================
 
 cat > config.h <<EOF
+/* generated by ./configure */
+#ifndef __W_CONFIGURE_CONFIG_H__
+#define __W_CONFIGURE_CONFIG_H__
+
 #define PACKAGE "${PACKAGE}"
 #define VERSION "${VERSION}"
 #define PACKAGE_URL "${PACKAGE_URL}"
@@ -436,7 +700,52 @@ cat > config.h <<EOF
 #define PACKAGE_TARNAME "${PACKAGE_TARNAME}"
 #define PACKAGE_BUGREPORT "${PACKAGE_BUGREPORT}"
 #define PACKAGE_VERSION "${PACKAGE_VERSION}"
+
+#ifndef _DARWIN_USE_64_BIT_INODE
+# define _DARWIN_USE_64_BIT_INODE 1
+#endif
+
+${config_h_extra}
 EOF
+
+if [ -n "${w_headers}" ] ; then
+	(
+		for xheader in ${w_headers}
+		do
+			zheader=$(echo "$xheader" | tr '/' '_' | tr '.' '_' | tr '[:lower:]' '[:upper:]')
+			echo "#define HAVE_${zheader} 1"
+		done
+	) >> config.h
+fi
+
+if [ -n "${config_h_have}" ] ; then
+	(
+		for feat in ${config_h_have}
+		do
+			echo "#define HAVE_${feat} 1"
+		done
+	) >> config.h
+fi
+
+echo "#endif /* __W_CONFIGURE_CONFIG_H__ */
+${w_config_h_extra_lines}" >> config.h
+
+#============================================================
+
+for infile in ${w_infiles}
+do
+	if [ -f ${infile}.in ] ; then
+		sed -e "s%@VERSION@%${VERSION}%g" \
+			-e "s%@PACKAGE@%${PACKAGE}%g" \
+			-e "s%@PACKAGE_URL@%${PACKAGE_URL}%g" \
+			${infile}.in > ${infile}
+	else
+		echo "WARNING: ${infile}.in doesn't exist"
+		printf "" > ${infile}
+	fi
+done
+
+#============================================================
 
 echo
 echo "* Now run 'make'  (or 'make clean' first if the app is already compiled)"

@@ -1,25 +1,27 @@
 
+include ../config.mk
+
 APP  = mp
 # ls *.c | sed 's%\.c%.o%g'
 OBJS = gnu_regex.o mp_conf.o mp_core.o mp_func.o mp_iface.o mp_lang.o mp_lang_m.o mp_synhi.o mp_tags.o mpv_curses.o mp_video.o mpv_unix_common.o mp_wordp.o
 SRCS = gnu_regex.c mp_conf.c mp_core.c mp_func.c mp_iface.c mp_lang.c mp_lang_m.c mp_synhi.c mp_tags.c mpv_curses.c mp_video.c mpv_unix_common.c mp_wordp.c
 
-CFLAGS   += -lncurses
+LIBS     += $(NCURSES_LIBS)
+CFLAGS   += $(NCURSES_CFLAGS)
 CPPFLAGS += -I..
 
 all: $(APP)
 
 $(APP): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(APP) $(LIBS) $(LDFLAGS)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJS) -o $(APP) $(LDFLAGS) $(LIBS)
 
 strip: $(APP)
 	$(STRIP) $(APP)
 
-distclean: clean
-	rm -f Makefile
-
 clean:
 	rm -f *.o *~ $(APP) $(APP).exe
+
+distclean: clean
 
 install: $(APP)
 	mkdir -p $(DESTDIR)$(bindir)

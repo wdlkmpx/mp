@@ -1,6 +1,7 @@
-Makefile
 makefile.dep
 *.o
-config.h
 mp
 *.mo
+config.h
+config.log
+config.mk

@@ -1,0 +1,96 @@
+#!/bin/sh
+# http://unlicense.org/
+
+#=======================================
+apps_to_check="$apps_to_check gettext"
+extra_configure_opts="$extra_configure_opts gettext"
+#=======================================
+
+
+opt_print_gettext()
+{
+	echo '  --disable-nls           do not use Native Language Support'
+}
+
+
+opt_configure_gettext()
+{
+	USE_NLS='yes'
+	for i in $@
+	do
+		case $i in
+		--enable-nls)  USE_NLS='yes' ;;
+		--disable-nls) USE_NLS='no'  ;;
+		po|pot)  # ./configure po|pot
+			export GETTEXT_PACKAGE
+			./po/zzpo.sh $1
+			#sed -i '/#~ /d' po/*.po
+			exit 0
+			;;
+		po2c)  # ./configure po2c
+			[ -z "$PO2C_FILE" ] && PO2C_FILE="/dev/null"
+			./po/po2c po/*.po > ${PO2C_FILE}
+			exit $?
+		esac
+	done
+}
+
+
+opt_check_gettext()
+{
+	if [ "$USE_NLS" != "yes" ] ; then
+		make_extra_flags="$make_extra_flags
+USE_NLS = no
+GETTEXT_PACKAGE = $GETTEXT_PACKAGE"
+		return
+	fi
+
+	echo -n "Checking for gettext... "
+	cat > .tmp.c <<EOF
+#include <libintl.h>
+#include <locale.h>
+int main(void) {
+	setlocale(LC_ALL, "");
+	gettext("hi");
+	return 0;
+}
+EOF
+	echo "$CC ${CFLAGS} .tmp.c ${LDFLAGS} -o .tmp.o" >>config.log
+	$CC ${CFLAGS} .tmp.c ${LDFLAGS} -o .tmp.o 2>> config.log
+	if [ $? = 0 ] ; then
+		echo "yes"
+	else
+		TMP_LIBS="-lintl"
+		echo "$CC ${CFLAGS} .tmp.c ${LDFLAGS} ${TMP_LIBS} -o .tmp.o" >>config.log
+		$CC ${CFLAGS} .tmp.c ${LDFLAGS} ${TMP_LIBS} -o .tmp.o 2>> config.log
+		if [ $? = 0 ] ; then
+			echo "yes (libintl)"
+			LDFLAGS="$LDFLAGS $TMP_LIBS"
+		else
+			rm -f .tmp.*
+			echo "no"
+			exit_error "Use --disable-nls"
+		fi
+	fi
+	rm -f .tmp.*
+
+	w_check_commands_required msgfmt
+
+	LINGUASX="$(ls po/*.po | sed -e 's%\.po$%%' -e 's%po/%%')"
+
+	# config.h
+	localedir_x="$(eval echo "${localedir}")"
+	localedir_x="$(eval echo "${localedir_x}")"
+	config_h_extra="$config_h_extra
+#define ENABLE_NLS 1
+#define HAVE_GETTEXT 1
+#define GETTEXT_PACKAGE \"$GETTEXT_PACKAGE\"
+#define LOCALEDIR \"${localedir_x}\""
+
+	# config.mk
+	make_extra_flags="$make_extra_flags
+USE_NLS = ${USE_NLS}
+LINGUASX = $(echo $LINGUASX)
+GETTEXT_PACKAGE = $GETTEXT_PACKAGE"
+
+}

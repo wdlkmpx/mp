@@ -1,3 +1,4 @@
+include ../config.mk
 
 all:
 
@@ -24,4 +25,4 @@ uninstall:
 clean:
 
 distclean:
-	rm -f Makefile
+

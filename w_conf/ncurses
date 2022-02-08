@@ -1,0 +1,89 @@
+#!/bin/sh
+# http://unlicense.org/
+
+# optional variables to set before sourcing this script
+#
+# - W_NCURSES_IS_OPTIONAL=yes [show --disable-ncurses in --help msg]
+# - W_NCURSES_MIN_VERSION=xxx [minimun supported version]
+#
+
+#=======================================
+apps_to_check="$apps_to_check ncurses"
+extra_env_vars="$extra_env_vars NCURSES"
+extra_configure_opts="$extra_configure_opts ncurses"
+#=======================================
+
+ncurses_pc_pkg="ncursesw ncurses"
+
+
+opt_print_ncurses()
+{
+	if [ "$W_NCURSES_IS_OPTIONAL" = "yes" ] ; then
+		echo "  --disable-ncurses           do not build NCURSES support (autodetect)"
+	fi
+}
+
+
+opt_configure_ncurses()
+{
+	if [ "$W_NCURSES_IS_OPTIONAL" = "yes" ] ; then
+		enable_ncurses=check
+	else
+		enable_ncurses=yes
+		return
+	fi
+
+	for i in $@
+	do
+		case $i in
+		--enable-ncurses)  enable_ncurses=yes ;;
+		--disable-ncurses) enable_ncurses=no ;;
+		esac
+	done
+}
+
+
+opt_check_ncurses()
+{
+	if [ "$enable_ncurses" = "no" ] ; then
+		return
+	fi
+
+	if [ -n "$NCURSES_CFLAGS" ] || [ -n "$NCURSES_LIBS" ] ; then
+		echo "Checking for NCURSES... $NCURSES_CFLAGS/$NCURSES_LIBS"
+	else
+		pcpkg=
+		for onepkg in ${ncurses_pc_pkg}
+		do
+			if w_pkgconfig_check ${onepkg} ${W_NCURSES_MIN_VERSION} ; then
+				pcpkg=${onepkg}
+				break
+			fi
+		done
+
+		if [ -z "$pcpkg" ] ; then
+			printf "Checking for ncurses..."
+			pcpkg="$(check_command ncursesw6-config ncursesw5-config ncurses6-config ncurses6-config)"
+			if [ -n "$pcpkg" ] ; then
+				echo "yes [$pcpkg]"
+				NCURSES_CFLAGS="$(${pcpkg} --cflags 2>/dev/null)"
+				NCURSES_LIBS="$(${pcpkg} --libs 2>/dev/null)"
+			else
+				echo "no"
+			fi
+		fi
+		#--
+		if [ -z "$pcpkg" ] && [ "$enable_ncurses" = "yes" ] ; then
+			exit_error "pkg-config: ncurses was not found"
+		fi
+		if [ ! -f "$pcpkg" ] ; then
+			# $pcpkg must not be a file, otherwise it is a custom xxx-config file
+			NCURSES_CFLAGS="$(run_pkg_config ${pcpkg} --cflags 2>/dev/null)"
+			NCURSES_LIBS="$(run_pkg_config ${pcpkg} --libs 2>/dev/null)"
+		fi
+	fi
+
+	config_h_have="$config_h_have NCURSES"
+	config_mk_flags="$config_mk_flags NCURSES"
+}
+
