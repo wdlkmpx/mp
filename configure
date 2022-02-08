@@ -92,28 +92,24 @@ check_command() # 1:<cmd> finds $1 in $PATH
 	fi
 	for xcmdx in $@
 	do
+		case "${xcmdx}" in /*)
+			# a full path, check if file is executable
+			if [ -x "${xcmdx}" ] ; then
+				echo "${xcmdx}"
+				return 0
+			fi
+			continue
+			;;
+		esac
+		#--
 		for zpathz in ${xxpath}
 		do
 			if [ -x "${zpathz}/${xcmdx}" ] ; then
-				echo ${zpathz}/${xcmdx}
+				echo "${zpathz}/${xcmdx}"
 				return 0
 			fi
 		done
 	done
-	return 1
-}
-
-
-check_exec() # $1=[exec] $2=[exit-if-error (exec_must_not_be_empty)]
-{
-	if [ -n "$1" ] ; then
-		if test -x $1 || check_command $1 >/dev/null 2>&1 ; then
-			return 0
-		fi
-		if [ -n "$2" ] ; then
-			exit_error "error: can't find '$1'"
-		fi
-	fi
 	return 1
 }
 
@@ -129,7 +125,7 @@ check_compiler() #1:default 2:LIST
 	fi
 	for compx in ${zz_list}
 	do
-		if test -x $compx || check_command $compx >/dev/null; then
+		if check_command $compx >/dev/null; then
 			echo "$compx"
 			return 0
 		fi
@@ -162,6 +158,27 @@ set_cxx()
 }
 
 
+set_w_pkg_config()
+{
+	printf "Checking for pkg-config... "
+	W_PKG_CONFIG=''
+	if [ -n "${PKG_CONFIG}" ] ; then
+		W_PKG_CONFIG="$(check_command ${PKG_CONFIG})"
+		if [ -n "$W_PKG_CONFIG" ] ; then
+			echo "$W_PKG_CONFIG (environment)"
+			return 0
+		fi
+	fi
+	W_PKG_CONFIG="$(check_command pkg-config pkgconf)"
+	if [ -n "$W_PKG_CONFIG" ] ; then
+		echo "$W_PKG_CONFIG"
+	else
+		echo "no"
+		echo "WARNING: missing pkg-config: this a potentially fatal error"
+	fi
+}
+
+
 run_pkg_config()
 {
 	if [ -n "$static_link" ] ; then
@@ -169,8 +186,8 @@ run_pkg_config()
 	else
 		pkgconfig_s=''
 	fi
-	if test -n "$PKG_CONFIG" ; then
-		${PKG_CONFIG} ${pkgconfig_s} "$@"
+	if test -n "$W_PKG_CONFIG" ; then
+		${W_PKG_CONFIG} ${pkgconfig_s} "$@"
 	else
 		pkg-config ${pkgconfig_s} "$@"
 	fi
@@ -191,6 +208,10 @@ w_pkgconfig_check() # $1=<pkg> $2=[min-version]
 		printf "Checking for %s >= %s... " "${pc_pkg}.pc" "$pc_pkg_min_ver"
 	else
 		printf "Checking for %s... " "${pc_pkg}.pc"
+	fi
+	if [ -z "$W_PKG_CONFIG" ] ; then
+		echo "no (!!pkg-config is missing!!)"
+		return 1
 	fi
 	#--
 	if [ -n "$pc_pkg_min_ver" ] ; then
@@ -521,10 +542,11 @@ done
 echo
 set_cc
 set_cxx
+set_w_pkg_config
 
 if test -n "$host" ; then
 	printf "Checking cross-compiler... "
-	if test -x ${host}-${CC} || check_command ${host}-${CC} >/dev/null; then
+	if check_command ${host}-${CC} >/dev/null; then
 		CC=${host}-${CC}
 		CXX=${host}-${CXX}
 		LD=${host}-${LD}

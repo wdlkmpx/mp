@@ -62,7 +62,7 @@ opt_check_ncurses()
 		done
 
 		if [ -z "$pcpkg" ] ; then
-			printf "Checking for ncurses..."
+			printf "Checking for ncurses... "
 			pcpkg="$(check_command ncursesw6-config ncursesw5-config ncurses6-config ncurses6-config)"
 			if [ -n "$pcpkg" ] ; then
 				echo "yes [$pcpkg]"
