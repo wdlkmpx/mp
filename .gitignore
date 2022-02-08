@@ -1,0 +1,5 @@
+Makefile
+makefile.dep
+*.o
+config.h
+mp

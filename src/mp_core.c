@@ -26,7 +26,9 @@
 
 */
 
+#ifdef HAVE_CONFIG_H
 #include "config.h"
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -35,6 +37,8 @@
 #include <stdarg.h>
 
 #include "mp_core.h"
+
+#define CONFOPT_SYSTEM_REGEX 1
 
 #ifdef CONFOPT_PCRE
 #include <pcreposix.h>

@@ -1,4 +1,6 @@
+#ifdef HAVE_CONFIG_H
 #include "config.h"
+#endif
 
 char *gnu_regex_rcs = "$Id: gnu_regex.c 2999 2005-01-15 08:31:00Z angel $";
 #ifdef REGEX

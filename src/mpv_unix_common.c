@@ -26,9 +26,11 @@
 
 */
 
+#ifdef HAVE_CONFIG_H
 #include "config.h"
+#endif
 
-#if defined(CONFOPT_UNIX_LIKE)
+#if !defined(_WIN32)
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -259,4 +261,4 @@ int _unix_help(char * term, int synhi)
 	return(1);
 }
 
-#endif /* CONFOPT_UNIX_LIKE */
+#endif

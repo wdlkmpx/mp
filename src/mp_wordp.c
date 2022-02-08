@@ -26,11 +26,13 @@
 
 */
 
+#ifdef HAVE_CONFIG_H
 #include "config.h"
+#endif
 
 #include <stdio.h>
 
-#ifdef CONFOPT_UNIX_LIKE
+#ifndef _WIN32
 
 #include <string.h>
 #include <stdlib.h>
@@ -58,7 +60,7 @@ char mpw_ispell_command[128]="ispell";
 
 int mpw_spell_cache_size=4096;
 
-#ifdef CONFOPT_UNIX_LIKE
+#ifndef _WIN32
 
 /* spellchecking cache controls */
 
@@ -235,7 +237,7 @@ int mpw_spellcheck_word(char * word)
 	return(color);
 }
 
-#else /* CONFOPT_UNIX_LIKE */
+#else /* WINDOWS */
 
 int mpw_spellcheck_word(char * word)
 /* dummy version */
@@ -250,4 +252,4 @@ int mpw_spellcheck_word(char * word)
 }
 
 
-#endif /* CONFOPT_UNIX_LIKE */
+#endif
