@@ -9,13 +9,13 @@ extra_configure_opts="$extra_configure_opts gettext"
 
 opt_print_gettext()
 {
-	echo '  --disable-nls           do not use Native Language Support'
+	echo '  --disable-nls           do not use Native Language Support (autodetect)'
 }
 
 
 opt_configure_gettext()
 {
-	USE_NLS='yes'
+	USE_NLS='check'
 	for i in $@
 	do
 		case $i in
@@ -38,7 +38,7 @@ opt_configure_gettext()
 
 opt_check_gettext()
 {
-	if [ "$USE_NLS" != "yes" ] ; then
+	if [ "$USE_NLS" = "no" ] ; then
 		make_extra_flags="$make_extra_flags
 USE_NLS = no
 GETTEXT_PACKAGE = $GETTEXT_PACKAGE"
@@ -59,6 +59,7 @@ EOF
 	$CC ${CFLAGS} .tmp.c ${LDFLAGS} -o .tmp.o 2>> config.log
 	if [ $? = 0 ] ; then
 		echo "yes"
+		USE_NLS='yes'
 	else
 		TMP_LIBS="-lintl"
 		echo "$CC ${CFLAGS} .tmp.c ${LDFLAGS} ${TMP_LIBS} -o .tmp.o" >>config.log
@@ -69,10 +70,20 @@ EOF
 		else
 			rm -f .tmp.*
 			echo "no"
-			exit_error "Use --disable-nls"
+			if [ "$USE_NLS" = "yes" ] ; then
+				exit_error "Use --disable-nls"
+			fi
+			USE_NLS='no'
 		fi
 	fi
 	rm -f .tmp.*
+
+	if [ "$USE_NLS" = "no" ] ; then
+		make_extra_flags="$make_extra_flags
+USE_NLS = no
+GETTEXT_PACKAGE = $GETTEXT_PACKAGE"
+		return
+	fi
 
 	w_check_commands_required msgfmt
 
