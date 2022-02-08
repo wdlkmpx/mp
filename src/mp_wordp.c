@@ -194,7 +194,7 @@ int mpw_spellcheck_word(char * word)
 		if(read(ipipe[0], &c, 1) == 0)
 		{
 			mpw_spellcheck=0;
-			mpv_alert(L("Can't execute '%s'"), mpw_ispell_command);
+			mpv_alert(_("Can't execute '%s'"), mpw_ispell_command);
 			return(MP_COLOR_NORMAL);
 		}
 
@@ -244,7 +244,7 @@ int mpw_spellcheck_word(char * word)
 {
 	if(mpw_spellcheck)
 	{
-		mpv_alert(L("Spellchecking is only available under Unix systems."), NULL);
+		mpv_alert(_("Spellchecking is only available under Unix systems."), NULL);
 		mpw_spellcheck=0;
 	}
 

@@ -62,7 +62,7 @@ extern char * po2c_gettext(char * msgid);
  * Translate @msgid using the current language info. If no
  * translation string is found, the same @msgid is returned.
  */
-char * L(char * msgid)
+char * _(char * msgid)
 {
 #ifdef CONFOPT_GETTEXT
 	return(gettext(msgid));

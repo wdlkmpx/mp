@@ -14,6 +14,7 @@ APP_CPPFLAGS=''
 APP_LDFLAGS=''
 APP_LIBS=''
 EXTRA_GCC_WARNINGS=no # yes/no
+GETTEXT_PACKAGE='minimum-profit'
 
 cd $(dirname "$0") || exit 1
 
@@ -40,6 +41,20 @@ if [ "$1" = "release" ] ; then
 		echo "*** ${dir}.tar.xz has been created"
 	fi
 	exit
+fi
+
+# ./configure po
+if [ "$1" =  "po" ] ; then
+	export GETTEXT_PACKAGE
+	./po/Makefile.in.gen po || exit 1
+	#sed -i '/#~ /d' po/*.po
+	exit 0
+fi
+
+# ./configure linguas
+if [ "$1" =  "linguas" ] ; then
+	./po/Makefile.in.gen
+	exit $?
 fi
 
 #==========================================================

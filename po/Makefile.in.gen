@@ -1,0 +1,131 @@
+#!/bin/sh
+# https://unlicense.org
+
+cd $(dirname "$0")
+
+POFILES="$(ls *.po)"
+MOFILES="$(echo "$POFILES" | sed 's/\.po$/.mo/')"
+LINGUAS="$(echo "$POFILES" | sed 's/\.po$//')"
+filez=$(find .. -type f -name '*.h' -or -name '*.c' -or -name '*.cc' -or -name '*.cpp' -or -name '*.hh')
+POTFILES="$(grep '_(' $filez | sed -e 's%^\./%%' -e 's%:.*%%' | sort -u)"
+
+#==========================================================================
+
+MSGFMT=msgfmt
+XGETTEXT=xgettext
+MSGMERGE=msgmerge
+
+pot()
+{
+	# might want to export GETTEXT_PACKAGE
+	if [ -z "$GETTEXT_PACKAGE" ] ; then
+		GETTEXT_PACKAGE=$(ls *.pot | head -n 1 | sed 's%.pot%%')
+		if [ -z "$GETTEXT_PACKAGE" ] ; then
+			echo ".pot file is missing"
+			exit 1
+		fi
+	fi
+	echo "GETTEXT_PACKAGE: $GETTEXT_PACKAGE"
+	${XGETTEXT} --default-domain=${GETTEXT_PACKAGE} \
+		--add-comments --keyword=_ --keyword=N_ --from-code=UTF-8 \
+		-o ${GETTEXT_PACKAGE}.pot2 ${POTFILES}
+	if [ $? -eq 0 ] ; then
+		mv ${GETTEXT_PACKAGE}.pot2 ${GETTEXT_PACKAGE}.pot
+	else
+		rm -f ${GETTEXT_PACKAGE}.pot2
+	fi
+}
+
+if [ "$1" = "pot" ] ; then
+	pot
+	exit $?
+fi
+
+if [ "$1" = "po" ] ; then
+	pot
+	catalogs="${LINGUAS}";
+	for lang in ${catalogs}
+	do
+		printf " %s " "$lang";
+		if ${MSGMERGE} ${lang}.po ${GETTEXT_PACKAGE}.pot -o ${lang}.new.po; then
+			mv -f ${lang}.new.po ${lang}.po || exit 1;
+		else
+			echo "msgmerge for $lang failed!";
+			rm -f ${lang}.new.po;
+		fi;
+	done
+	exit
+fi
+
+#==========================================================================
+
+echo '
+MSGFMT = msgfmt
+XGETTEXT = xgettext
+MSGMERGE = msgmerge
+
+MOFILES = '${MOFILES}'
+LINGUAS = '${LINGUAS}'
+POTFILES = '${POTFILES}'
+
+all: all-$(USE_NLS)
+all-yes: $(MOFILES)
+all-no:
+
+$(GETTEXT_PACKAGE).pot: $(POTFILES)
+	$(XGETTEXT) --default-domain=$(GETTEXT_PACKAGE) \
+	--add-comments --keyword=_ --keyword=N_ --from-code=UTF-8 \
+	-o $(GETTEXT_PACKAGE).pot $(POTFILES)
+
+install: install-data-$(USE_NLS)
+install-data-no: all
+install-data-yes: all
+	catalogs="$(LINGUAS)"; \
+	for cat in $$catalogs; do \
+	  dir=$(DESTDIR)$(localedir)/$$cat/LC_MESSAGES; \
+	  mkdir -p $$dir; \
+	  $(INSTALL_DATA) $$cat.mo $$dir/$(GETTEXT_PACKAGE).mo; \
+	  echo "installing $$cat.mo as $$dir/$(GETTEXT_PACKAGE).mo"; \
+	done
+
+strip:
+
+install-strip: install
+
+uninstall:
+	catalogs="$(LINGUAS)"; \
+	for cat in $$catalogs; do \
+	  echo "rm -f $(DESTDIR)$(localedir)/$$cat/LC_MESSAGES/$(GETTEXT_PACKAGE).mo"; \
+	  rm -f $(DESTDIR)$(localedir)/$$cat/LC_MESSAGES/$(GETTEXT_PACKAGE).mo; \
+	done
+
+mostlyclean:
+	rm -f *.new.po *.mo *.gmo
+
+clean: mostlyclean
+
+distclean: clean
+	rm -f Makefile
+
+update-po: Makefile
+	rm -f $(GETTEXT_PACKAGE).pot
+	$(MAKE) $(GETTEXT_PACKAGE).pot
+	catalogs="$(LINGUAS)"; \
+	for lang in $$catalogs; do \
+	  printf " %s " "$$lang"; \
+	  if $(MSGMERGE) $$lang.po $(GETTEXT_PACKAGE).pot -o $$lang.new.po; then \
+	    mv -f $$lang.new.po $$lang.po || exit 1; \
+	  else \
+	    echo "msgmerge for $$lang failed!"; \
+	    rm -f $$lang.new.po; \
+	  fi; \
+	done
+' > Makefile.in
+
+(
+for i in ${LINGUAS}
+do
+	echo "${i}.mo:"
+	echo "	\$(MSGFMT) -o ${i}.mo ${i}.po"
+done
+) >> Makefile.in

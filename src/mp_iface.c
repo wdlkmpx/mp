@@ -584,7 +584,7 @@ int mpi_goto(mp_txt * txt)
 	char * ptr;
 	int n;
 
-	if((ptr=mpv_readline(MPR_GOTO,L("Line to go to: "),NULL))!=NULL)
+	if((ptr=mpv_readline(MPR_GOTO,_("Line to go to: "),NULL))!=NULL)
 	{
 		n=atoi(ptr);
 		mp_move_xy(txt,0,n-1);
@@ -604,11 +604,11 @@ int mpi_new(void)
 {
 	mp_txt * txt;
 
-	if((txt=mp_find_txt(L("<unnamed>")))!=NULL)
+	if((txt=mp_find_txt(_("<unnamed>")))!=NULL)
 		_mp_active=txt;
 	else
 	{
-		mp_create_txt(L("<unnamed>"));
+		mp_create_txt(_("<unnamed>"));
 		mps_auto_synhi(_mp_active);
 	}
 
@@ -630,7 +630,7 @@ void mpi_open(char * name, int reopen)
 
 	/* if no name, ask for it */
 	if(name == NULL &&
-		(name=mpv_readline(MPR_OPEN,L("Enter file name: "),NULL)) == NULL)
+		(name=mpv_readline(MPR_OPEN,_("Enter file name: "),NULL)) == NULL)
 		return;
 
 	/* if file is already open and don't want to reopen, just select it */
@@ -650,7 +650,7 @@ void mpi_open(char * name, int reopen)
 
 			/* ...ask for a password... */
 			if((passwd=mpv_readline(MPR_PASSWORD,
-				L("Password:"), NULL)) == NULL ||
+				_("Password:"), NULL)) == NULL ||
 				passwd[0] == '\0')
 			{
 				/* cancelled: close everything */
@@ -673,7 +673,7 @@ void mpi_open(char * name, int reopen)
 	else
 	{
 #ifdef CLASSIC_BEHAVIOUR
-		mpv_alert(L("File '%s' not found."), name);
+		mpv_alert(_("File '%s' not found."), name);
 		mp_delete_txt(_mp_active);
 #else
 		mp_log("Can't open '%s'... creating new.\n", name);
@@ -697,7 +697,7 @@ int mpi_save_as(mp_txt * txt)
 
 	if(txt->type == MP_TYPE_READ_ONLY) return(0);
 
-	if((name=mpv_readline(MPR_SAVE,L("Enter file name: "),
+	if((name=mpv_readline(MPR_SAVE,_("Enter file name: "),
 		*txt->name == '<' ? NULL : txt->name)) == NULL)
 		return(0);
 
@@ -735,8 +735,8 @@ int mpi_save(mp_txt * txt)
 	}
 	else
 	{
-		mpv_alert(L("Can't create file '%s'."), txt->name);
-		mp_name_txt(txt,L("<unnamed>"));
+		mpv_alert(_("Can't create file '%s'."), txt->name);
+		mp_name_txt(txt,_("<unnamed>"));
 	}
 
 	return(2);
@@ -774,7 +774,7 @@ int mpi_close(mp_txt * txt)
 {
 	if(txt->mod)
 	{
-		if(mpv_confirm(L("File has changed. Save changes?")))
+		if(mpv_confirm(_("File has changed. Save changes?")))
 			mpi_save(txt);
 	}
 
@@ -841,7 +841,7 @@ int mpi_exec(mp_txt * txt, char *cmd)
 
 	/* if no cmd, ask for one */
 	if (cmd == NULL)
-		cmd=mpv_readline(MPR_EXEC, L("System command: "), NULL);
+		cmd=mpv_readline(MPR_EXEC, _("System command: "), NULL);
 
 	/* cancel or empty; return now */
 	if(cmd == NULL || *cmd == '\0')
@@ -871,7 +871,7 @@ int mpi_exec(mp_txt * txt, char *cmd)
 			*p = 0;
 		}
 		else
-	  		snprintf(tmp, sizeof(tmp), L("<Output of \"%s\">"), cmd + 1);
+	  		snprintf(tmp, sizeof(tmp), _("<Output of \"%s\">"), cmd + 1);
 
 		txt = mp_find_txt(tmp);
 		if (txt) mp_delete_txt(txt);
@@ -901,7 +901,7 @@ int mpi_exec(mp_txt * txt, char *cmd)
 	}
 
 	if(res)
-		mpv_alert(L("Error executing command."), cmd);
+		mpv_alert(_("Error executing command."), cmd);
 
 	return(ret);
 }
@@ -925,7 +925,7 @@ void mpi_current_list(void)
 
 	MP_SAVE_STATE();
 
-	list=mp_create_sys_txt(L("<open files>"));
+	list=mp_create_sys_txt(_("<open files>"));
 
 	/* travels the open file list */
 	for(txt=_mp_txts,l=pos=0;txt!=NULL;txt=txt->next, l++)
@@ -945,7 +945,7 @@ void mpi_current_list(void)
 
 	MP_RESTORE_STATE();
 
-	if((l=mpv_list(L("Open documents"), list, pos))!=-1)
+	if((l=mpv_list(_("Open documents"), list, pos))!=-1)
 	{
 		char * ptr;
 
@@ -983,7 +983,7 @@ int mpi_insert_template(void)
 
 	if((f=fopen(_mpi_template_file,"r"))==NULL)
 	{
-		mpv_alert(L("Template file not found (%s)"),_mpi_template_file);
+		mpv_alert(_("Template file not found (%s)"),_mpi_template_file);
 		return(0);
 	}
 
@@ -1005,7 +1005,7 @@ int mpi_insert_template(void)
 	mp_move_left(txt);
 	mp_delete_char(txt);
 
-	if((l=mpv_list(L("Select template"), txt, 0))!=-1)
+	if((l=mpv_list(_("Select template"), txt, 0))!=-1)
 	{
 		/* template has been selected: find and insert */
 		_mp_active=t;
@@ -1101,12 +1101,12 @@ int mpi_seek(mp_txt * txt)
 {
 	char * ptr;
 
-	if((ptr=mpv_readline(MPR_SEEK,L("Text to seek: "),NULL))!=NULL)
+	if((ptr=mpv_readline(MPR_SEEK,_("Text to seek: "),NULL))!=NULL)
 	{
 		strncpy(_mpi_search_text,ptr,sizeof(_mpi_search_text));
 
 		if(!mp_seek(txt,_mpi_search_text))
-			mpv_alert(L("Text not found."),_mpi_search_text);
+			mpv_alert(_("Text not found."),_mpi_search_text);
 		else
 		if(_mpi_seek_to_line > 0)
 			if((txt->vy = txt->y - _mpi_seek_to_line) < 0)
@@ -1128,7 +1128,7 @@ int mpi_seek(mp_txt * txt)
 int mpi_seek_next(mp_txt * txt)
 {
 	if(!mp_seek(txt,_mpi_search_text))
-		mpv_alert(L("Text not found."),_mpi_search_text);
+		mpv_alert(_("Text not found."),_mpi_search_text);
 	else
 	if(_mpi_seek_to_line > 0)
 		if((txt->vy = txt->y - _mpi_seek_to_line) < 0)
@@ -1152,14 +1152,14 @@ int mpi_replace(mp_txt * txt)
 	char * ptr;
 
 	if((ptr=mpv_readline(MPR_REPLACETHIS,
-		L("Replace text: "),NULL))!=NULL)
+		_("Replace text: "),NULL))!=NULL)
 	{
 		strncpy(_mpi_search_text,ptr,sizeof(_mpi_search_text));
 
 		if((ptr=mpv_readline(MPR_REPLACEWITH,
-			L("Replace with: "),NULL))!=NULL)
+			_("Replace with: "),NULL))!=NULL)
 		{
-			if(mpv_confirm(L("To end of file?")))
+			if(mpv_confirm(_("To end of file?")))
 			{
 				int c=0;
 
@@ -1173,7 +1173,7 @@ int mpi_replace(mp_txt * txt)
 			{
 				if(!mp_replace(txt,
 					_mpi_search_text,ptr))
-					mpv_alert(L("Text not found."),
+					mpv_alert(_("Text not found."),
 					_mpi_search_text);
 			}
 		}
@@ -1196,12 +1196,12 @@ int mpi_replace_all(void)
 	char * ptr;
 
 	if((ptr=mpv_readline(MPR_REPLACETHIS,
-		L("Replace text: "),NULL))!=NULL)
+		_("Replace text: "),NULL))!=NULL)
 	{
 		strncpy(_mpi_search_text,ptr,sizeof(_mpi_search_text));
 
 		if((ptr=mpv_readline(MPR_REPLACEWITH,
-			L("Replace with: "),NULL))!=NULL)
+			_("Replace with: "),NULL))!=NULL)
 		{
 			mp_txt * t;
 
@@ -1245,19 +1245,19 @@ int mpi_grep(void)
 	mp_get_word(_mp_active,_mpi_search_text,sizeof(_mpi_search_text));
 
 	/* ask for the search string */
-	if((ptr=mpv_readline(MPR_SEEK,L("Text to seek: "),
+	if((ptr=mpv_readline(MPR_SEEK,_("Text to seek: "),
 		_mpi_search_text))==NULL || *ptr=='\0')
 		return(0);
 
 	strncpy(_mpi_search_text,ptr,sizeof(_mpi_search_text));
 
 	/* ask for the file spec */
-	if((ptr=mpv_readline(MPR_GREPFILES,L("Files to grep (empty, all): "),NULL))==NULL)
+	if((ptr=mpv_readline(MPR_GREPFILES,_("Files to grep (empty, all): "),NULL))==NULL)
 		return(0);
 
 	if((txt=mpv_glob(ptr))==NULL)
 	{
-		mpv_alert(L("File '%s' not found."), ptr);
+		mpv_alert(_("File '%s' not found."), ptr);
 		return(0);
 	}
 
@@ -1322,21 +1322,21 @@ int mpi_grep(void)
 	if(files == 0)
 	{
 		/* no matching file was found */
-		mpv_alert(L("File '%s' not found."), ptr);
+		mpv_alert(_("File '%s' not found."), ptr);
 		return(2);
 	}
 
 	if(matches == 0)
 	{
 		/* no file matched the string */
-		mpv_alert(L("Text not found."), tmp);
+		mpv_alert(_("Text not found."), tmp);
 		return(2);
 	}
 
 	mp_move_left(hits);
 	mp_delete_char(hits);
 
-	if((line=mpv_list(L("grep"), hits, 0))==-1)
+	if((line=mpv_list(_("grep"), hits, 0))==-1)
 	{
 		mp_delete_sys_txt(hits);
 		return(2);
@@ -1390,7 +1390,7 @@ int mpi_find_tag(mp_txt * txt)
 
 	mp_get_word(txt,_draw_word,sizeof(_draw_word));
 
-	if((ptr=mpv_readline(MPR_TAG,L("Tag to seek: "),_draw_word)) != NULL)
+	if((ptr=mpv_readline(MPR_TAG,_("Tag to seek: "),_draw_word)) != NULL)
 		mpt_open_tag(ptr);
 
 	return(2);
@@ -1406,7 +1406,7 @@ int mpi_set_word_wrap(void)
 {
 	char * ptr;
 
-	if((ptr=mpv_readline(MPR_WORDWRAP,L("Word wrap on column (0, no word wrap): "),NULL))!=NULL)
+	if((ptr=mpv_readline(MPR_WORDWRAP,_("Word wrap on column (0, no word wrap): "),NULL))!=NULL)
 	{
 		_mp_word_wrap=atoi(ptr);
 
@@ -1427,7 +1427,7 @@ int mpi_set_tab_size(void)
 {
 	char * ptr;
 
-	if((ptr=mpv_readline(MPR_TABSIZE,L("Tab size: "),NULL))!=NULL)
+	if((ptr=mpv_readline(MPR_TABSIZE,_("Tab size: "),NULL))!=NULL)
 	{
 		_mp_tab_size=atoi(ptr);
 
@@ -1538,7 +1538,7 @@ int mpi_exec_function(void)
 	mpf_get_funcnames(_mpi_history[MPR_EXECFUNCTION]);
 
 	if((funcname=mpv_readline(MPR_EXECFUNCTION,
-		L("Function to execute: "),NULL))!=NULL)
+		_("Function to execute: "),NULL))!=NULL)
 	{
 	  char **args = mpf_makeargs(funcname);
 		
@@ -1546,7 +1546,7 @@ int mpi_exec_function(void)
 	    ret = mpf_call_func_by_funcname(args[0], args[1] ? args+1 : NULL);
 	    if (ret == -1) {
 	      ret = 0;
-	      mpv_alert(L("Function not found (%s)"),funcname);
+	      mpv_alert(_("Function not found (%s)"),funcname);
 	    }
 	    free(args);
 	  }
@@ -1617,7 +1617,7 @@ int mpi_process(int c, char * key_name, char * func_name)
 		/* if no text exists, create a new empty one */
 		if(!_mp_active)
 		{
-			mp_create_txt(L("<unnamed>"));
+			mp_create_txt(_("<unnamed>"));
 			mps_auto_synhi(_mp_active);
 		}
 

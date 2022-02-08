@@ -404,7 +404,7 @@ int mpf_edit_templates_file() /* DESC: Edit templates file */
 		mps_auto_synhi(_mp_active);
 	}
 	else
-		mp_put_str(_mp_active,L("\
+		mp_put_str(_mp_active,_("\
 %%Empty template file\n\
 \n\
 This template file is empty. To create templates, write a name for\n\
@@ -432,7 +432,7 @@ int mpf_edit_config_file() /* DESC: Edit configuration file */
 		mps_auto_synhi(_mp_active);
 	}
 	else
-		mp_put_str(_mp_active,L("\
+		mp_put_str(_mp_active,_("\
 #\n\
 # Minimum Profit Config File\n\
 #\n\
@@ -480,14 +480,14 @@ int mpf_set_password() /* DESC: Password protect... */
 	char * pwd2;
 
 	/* ask twice for a password */
-	if((pwd1=mpv_readline(MPR_PASSWORD, L("Password:"), NULL)) != NULL &&
+	if((pwd1=mpv_readline(MPR_PASSWORD, _("Password:"), NULL)) != NULL &&
 		pwd1[0] != '\0')
 	{
 		pwd1=strdup(pwd1);
 
 		/* ask again */
 		if((pwd2=mpv_readline(MPR_PASSWORD,
-			L("Password (again):"), NULL)) != NULL)
+			_("Password (again):"), NULL)) != NULL)
 		{
 			/* compare and set if both are the same */
 			if(strcmp(pwd1, pwd2) == 0)
@@ -497,7 +497,7 @@ int mpf_set_password() /* DESC: Password protect... */
 				mp_log("Password set.\n");
 			}
 			else
-				mpv_alert(L("Error: Passwords mismatch."), NULL);
+				mpv_alert(_("Error: Passwords mismatch."), NULL);
 		}
 
 		free(pwd1);
@@ -877,7 +877,7 @@ void _mpf_add_unlinked_functions(mp_txt *txt,struct _mpf_functions *r) {
 
 	for(m=0;m < 23 - strlen(r->funcname);m++)  mp_put_char(txt,' ',1);
 
-	mp_put_str(txt,L(r->desc),1);
+	mp_put_str(txt,_(r->desc),1);
 
 	mp_put_char(txt,'\n',1);
   
@@ -900,7 +900,7 @@ int mpf_key_help() /* DESC: Help on keys */
 
 	MP_SAVE_STATE();
 
-	txt=mp_create_txt(L("<help on keys>"));
+	txt=mp_create_txt(_("<help on keys>"));
 
 	for(n=0;(ptr=mpf_keys[n].keyname)!=NULL;n++)
 	{
@@ -911,21 +911,21 @@ int mpf_key_help() /* DESC: Help on keys */
 			mp_put_char(txt,' ',1);
 
 		if((ptr=mpf_get_funcname_by_keyname(ptr))==NULL)
-			ptr=L("<none>");
+			ptr=_("<none>");
 
 		mp_put_str(txt,ptr,1);
 
 		for(m=0;m < 23 - strlen(ptr);m++)
 			mp_put_char(txt,' ',1);
 
-		ptr=L(mpf_get_desc_by_funcname(ptr));
+		ptr=_(mpf_get_desc_by_funcname(ptr));
 		mp_put_str(txt,ptr,1);
 
 		mp_put_char(txt,'\n',1);
 	}
 
 	mp_put_char(txt,'\n',1);
-	mp_put_str(txt,L("Unlinked functions"),1);
+	mp_put_str(txt,_("Unlinked functions"),1);
 	mp_put_char(txt,'\n',1);
 	mp_put_char(txt,'\n',1);
 
@@ -1192,7 +1192,7 @@ static int _mpf_call_user_fn(char **args,struct _mpf_functions *f) {
       mp_log("*    FUNCTION: %s\n",args[0]);
       nret = mpf_call_func_by_funcname(args[0],args[1] ? args+1 : NULL);
       if (nret == -1) {
-        mpv_alert(L("Error executing user defined function"),args[0]);
+        mpv_alert(_("Error executing user defined function"),args[0]);
 	break;
       }
     }

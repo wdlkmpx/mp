@@ -25,7 +25,7 @@
 */
 
 /* trap for string constants for xgettext */
-#define LL(x) x
+#define N_(x) x
 
-char * L(char * msgid);
+char * _(char * msgid);
 void mpl_set_language(char * langname);

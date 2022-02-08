@@ -557,7 +557,7 @@ int main(int argc, char * argv[])
 	/* finds a usable input / output driver */
 	if(!mpv_startup_1())
 	{
-		printf("%s\n",L("No usable video driver found."));
+		printf("%s\n",_("No usable video driver found."));
 		return(1);
 	}
 
@@ -589,7 +589,7 @@ int main(int argc, char * argv[])
 	/* create empty text if no file is open */
 	if(_mp_active==NULL)
 	{
-		mp_create_txt(L("<unnamed>"));
+		mp_create_txt(_("<unnamed>"));
 		mps_auto_synhi(_mp_active);
 	}
 
@@ -598,7 +598,7 @@ int main(int argc, char * argv[])
 	mpv_filetabs();
 
 	if(r == -2)
-		mpv_alert(L("Bad mode."),"");
+		mpv_alert(_("Bad mode."),"");
 
 	/* main loop */
 	mpv_main_loop();

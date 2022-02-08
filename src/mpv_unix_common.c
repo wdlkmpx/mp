@@ -226,7 +226,7 @@ int _unix_help(char * term, int synhi)
 	mp_txt * txt;
 	char ** ptr;
 
-	sprintf(tmp,L("<help about '%s'>"),term);
+	sprintf(tmp,_("<help about '%s'>"),term);
 
 	if(synhi==0 || (txt=mp_create_txt(tmp))==NULL)
 		return(0);
@@ -250,7 +250,7 @@ int _unix_help(char * term, int synhi)
 	if(ptr==NULL || *ptr==NULL)
 	{
 		mp_delete_txt(txt);
-		mpv_alert(L("No help for '%s'"),term);
+		mpv_alert(_("No help for '%s'"),term);
 		return(0);
 	}
 

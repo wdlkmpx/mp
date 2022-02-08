@@ -133,19 +133,19 @@ mp_txt * _menu_info=NULL;
 
 /* default menu */
 char * _default_menu=
-	"/" LL("&File") "\n"\
+	"/" N_("&File") "\n"\
 	"new\nopen\nreopen\nsave\nsave-as\nclose\n-\nset-password\n-\nsync\n-\nexit\n"\
-	"/" LL("&Edit") "\n"\
+	"/" N_("&Edit") "\n"\
 	"cut\ncopy\npaste\ndelete-line\n-\n"\
 	"mark\nunmark\n-\n"\
 	"edit-templates-file\n"\
 	"edit-config-file\n-\nexec-command\nexec-function\n"\
-	"/" LL("&Search") "\n"\
+	"/" N_("&Search") "\n"\
 	"seek\nseek-next\nreplace\nreplace-all\ntoggle-case\ntoggle-regex\n-\nfind-tag\ncompletion\n-\ngrep\n"\
-	"/" LL("&Go to") "\n"\
+	"/" N_("&Go to") "\n"\
 	"next\nmove-bof\nmove-eof\nmove-bol\nmove-eol\ngoto\n"\
 	"move-word-right\nmove-word-left\n-\ndocument-list\n"\
-	"/" LL("&Options") "\n"\
+	"/" N_("&Options") "\n"\
 	"toggle-save-tabs\ntoggle-cr-lf\ntoggle-auto-indent\n"\
 	"toggle-column-80\ntoggle-break-hardlinks\ntoggle-spellcheck\n-\n"\
 	"record-macro\nplay-macro\n-\n"\

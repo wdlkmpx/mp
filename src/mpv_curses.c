@@ -302,7 +302,7 @@ static void _mpv_title_status(int y, unsigned char * str1,
 		char * t;
 
 		k=mpf_get_keyname_by_funcname("menu");
-		t=L("menu");
+		t=_("menu");
 
 		snprintf(_default_hint,sizeof(_default_hint),
 			"%s %s",k, t);
@@ -574,7 +574,7 @@ static void _add_menu(char * label)
 	struct mpv_menu_bar * m;
 	int n;
 
-	label=L(label);
+	label=_(label);
 	m=(struct mpv_menu_bar *) malloc(sizeof(struct mpv_menu_bar));
 
 	if(m==NULL) return;
@@ -620,7 +620,7 @@ static void _add_menu_item(char * funcname)
 	if((ptr=mpf_get_desc_by_funcname(funcname)) == NULL)
 		return;
 
-	ptr=L(ptr);
+	ptr=_(ptr);
 
 	i=(struct mpv_menu_item *) malloc(sizeof(struct mpv_menu_item));
 
@@ -741,7 +741,7 @@ static int _menu(void)
 		strcat(tmp,m->label);
 	}
 
-	_mpv_hint_text=L("ESC Cancel");
+	_mpv_hint_text=_("ESC Cancel");
 	_mpv_title_status(0, (unsigned char *) tmp, NULL);
 	m=_mpv_menu;
 
@@ -893,8 +893,8 @@ static int _mpv_prompt(char * prompt, char * prompt2)
 	if(prompt2)
 		addstr(prompt2);
 
-	yes=L("Y");
-	no=L("N");
+	yes=_("Y");
+	no=_("N");
 
 	for(;;)
 	{
@@ -916,7 +916,7 @@ static int _mpv_prompt(char * prompt, char * prompt2)
 
 static int _confirm(char * prompt)
 {
-	return(_mpv_prompt(prompt,L(" [Y/N]")));
+	return(_mpv_prompt(prompt,_(" [Y/N]")));
 }
 
 
@@ -929,7 +929,7 @@ static void _alert(char * msg, char * msg2)
 	else
 		sprintf(tmp,msg,msg2);
 
-	_mpv_prompt(tmp,L(" [ENTER]"));
+	_mpv_prompt(tmp,_(" [ENTER]"));
 }
 
 
@@ -940,7 +940,7 @@ static int _list(char * title, mp_txt * txt, int pos)
 	mp_txt * tmp;
 	int ts;
 
-	_mpv_hint_text=L("ESC Cancel");
+	_mpv_hint_text=_("ESC Cancel");
 	mpv_title(title);
 
 	mp_move_bof(txt);
@@ -1270,7 +1270,7 @@ static void _about(void)
 {
 	mp_txt * txt;
 
-	txt=mp_create_txt(L("<about Minimum Profit>"));
+	txt=mp_create_txt(_("<about Minimum Profit>"));
 
 	mp_put_str(txt,MP_LICENSE,1);
 
@@ -1494,7 +1494,7 @@ static void _usage(void)
 	printf("%s\n", __DATE__ " " __TIME__);
 	printf("This software is covered by the GPL license. NO WARRANTY.\n\n");
 
-	printf("%s\n", L("\
+	printf("%s\n", _("\
 Usage: mp [options] [file [file ...]]\n\
 \n\
 Options:\n\

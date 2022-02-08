@@ -291,7 +291,7 @@ struct tag_index * mpt_select_tag(char * partial_tag)
 	/* show the list */
 	if(matches)
 	{
-		if((n=mpv_list(L("Tag list"), txt, 0)) != -1)
+		if((n=mpv_list(_("Tag list"), txt, 0)) != -1)
 		{
 			/* move to line and get tag index */
 			mp_move_xy(itxt, 0, n);
@@ -301,7 +301,7 @@ struct tag_index * mpt_select_tag(char * partial_tag)
 		}
 	}
 	else
-		mpv_alert(L("Tag(s) not found."), partial_tag);
+		mpv_alert(_("Tag(s) not found."), partial_tag);
 
 	mp_delete_sys_txt(txt);
 	mp_delete_sys_txt(itxt);
