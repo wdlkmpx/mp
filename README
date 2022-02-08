@@ -1,11 +1,11 @@
+Fork of Minimun Profit editor that only supports ncurses
+
 Minimum Profit README
 =====================
 
  Minimum Profit - Programmer Text Editor
  Copyright (C) 1991-2005 Angel Ortega <angel@triptico.com>
- Home Page: http://www.triptico.com/software/mp.html
- Mailing List: mp-subscribe@lists.triptico.com
-
+ 
 This software is GPL. NO WARRANTY. See file 'COPYING' for details.
 
 Quick feature list
@@ -57,33 +57,14 @@ Minimum Profit requires ncurses
 Compiling & Installing
 ----------------------
 
-Under Unix flavours
-~~~~~~~~~~~~~~~~~~~
-
 To compile under any Unix flavour, just run
 
 	 $ ./configure --prefix=/usr
 	 $ make
 
-The first step should automatically detect all usable interfaces and
-additional libraries and leave a Makefile behind. Previous Minimum Profit
-versions used to need GNU Make; this is no longer true. By running
-
-	 $ ./config.sh --help
-
-you can see a list of tweakable options. Also, a bunch of README.* files are
-included with Minimum Profit's standard distribution with information
-specific to many systems and cross-compilers.
-
 To install just run (as root):
 
 	 # make install
-
-and it will be instaled in /usr/local/bin. You can select an alternate
-installation directory in the configuration phase; for example, to install
-it on /usr/bin, do
-
-	$ ./config.sh --prefix=/usr/bin
 
 Tags, functions and variables in your code
 ------------------------------------------
