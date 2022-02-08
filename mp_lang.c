@@ -83,26 +83,27 @@ void mpl_set_language(char * langname)
 {
 #ifdef CONFOPT_GETTEXT
 
-	if(setlocale(LC_ALL, langname) == NULL)
+	if (setlocale(LC_ALL, langname) == NULL)
 	{
 		mp_log("Can't set locale '%s'\n", langname);
-		setlocale(LC_ALL, "C");
+		setlocale(LC_ALL, "");
 	}
 
-	bindtextdomain("minimum-profit", CONFOPT_PREFIX "/share/locale");
-	textdomain("minimum-profit");
+	textdomain ("minimum-profit");
+	bindtextdomain ("minimum-profit", CONFOPT_PREFIX "/share/locale");
+	bind_textdomain_codeset ("minimum-profit", "UTF-8");
 
 #else
 
-	if(*langname == '\0')
+	if (*langname == '\0')
 	{
 		/* if langname is "", get from the environment */
-		if((langname=getenv("LANG")) == NULL)
-		if((langname=getenv("LC_ALL")) == NULL)
-		if((langname=getenv("LC_MESSAGES")) == NULL)
+		if ((langname=getenv("LANG")) == NULL)
+		if ((langname=getenv("LC_ALL")) == NULL)
+		if ((langname=getenv("LC_MESSAGES")) == NULL)
 			langname="";
 	}
 
-	po2c_setlang(langname);
+	po2c_setlang (langname);
 #endif
 }

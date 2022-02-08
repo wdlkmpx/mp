@@ -4,7 +4,6 @@
 # Alexandr Orlov <alxorlov@pochta.ru>, 2006.
 #
 #, fuzzy
-
 msgid ""
 msgstr ""
 "Project-Id-Version: Minimum Profit\n"
@@ -14,28 +13,28 @@ msgstr ""
 "Last-Translator: Alexandr Orlov <alxorlov@pochta.ru>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=koi8-r\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: mp_conf.c:134
 msgid "&File"
-msgstr "&Файл"
+msgstr "&п╓п╟п╧п╩"
 
 #: mp_conf.c:136
 msgid "&Edit"
-msgstr "&Правка"
+msgstr "&п÷я─п╟п╡п╨п╟"
 
 #: mp_conf.c:141
 msgid "&Search"
-msgstr "&Поиск"
+msgstr "&п÷п╬п╦я│п╨"
 
 #: mp_conf.c:143
 msgid "&Go to"
-msgstr "&Переход"
+msgstr "&п÷п╣я─п╣я┘п╬п╢"
 
 #: mp_conf.c:146
 msgid "&Options"
-msgstr "&Параметры"
+msgstr "&п÷п╟я─п╟п╪п╣я┌я─я▀"
 
 #: mp_func.c:405
 #, c-format
@@ -48,13 +47,13 @@ msgid ""
 "or the end of file. By selecting a template from the list (popped up\n"
 "by Ctrl-U), it will be inserted into the current text.\n"
 msgstr ""
-"%%Пустой файл шаблонов\n"
+"%%п÷я┐я│я┌п╬п╧ я└п╟п╧п╩ я┬п╟п╠п╩п╬п╫п╬п╡\n"
 "\n"
-"Этот файл шаблонов пуст. Чтобы создать шаблон, напишите название\n"
-"для него (обозначив двумя знаками % в начале строки) и текстовое\n"
-"сообщение, ограниченное названием следующего шаблона, или концом\n"
-"файла. Выберете шаблон из списка (который появиться при\n"
-"нажатии Ctrl-U), и он будет вставлен в текущий текст.\n"
+"п╜я┌п╬я┌ я└п╟п╧п╩ я┬п╟п╠п╩п╬п╫п╬п╡ п©я┐я│я┌. п╖я┌п╬п╠я▀ я│п╬п╥п╢п╟я┌я▄ я┬п╟п╠п╩п╬п╫, п╫п╟п©п╦я┬п╦я┌п╣ п╫п╟п╥п╡п╟п╫п╦п╣\n"
+"п╢п╩я▐ п╫п╣пЁп╬ (п╬п╠п╬п╥п╫п╟я┤п╦п╡ п╢п╡я┐п╪я▐ п╥п╫п╟п╨п╟п╪п╦ % п╡ п╫п╟я┤п╟п╩п╣ я│я┌я─п╬п╨п╦) п╦ я┌п╣п╨я│я┌п╬п╡п╬п╣\n"
+"я│п╬п╬п╠я┴п╣п╫п╦п╣, п╬пЁя─п╟п╫п╦я┤п╣п╫п╫п╬п╣ п╫п╟п╥п╡п╟п╫п╦п╣п╪ я│п╩п╣п╢я┐я▌я┴п╣пЁп╬ я┬п╟п╠п╩п╬п╫п╟, п╦п╩п╦ п╨п╬п╫я├п╬п╪\n"
+"я└п╟п╧п╩п╟. п▓я▀п╠п╣я─п╣я┌п╣ я┬п╟п╠п╩п╬п╫ п╦п╥ я│п©п╦я│п╨п╟ (п╨п╬я┌п╬я─я▀п╧ п©п╬я▐п╡п╦я┌я▄я│я▐ п©я─п╦\n"
+"п╫п╟п╤п╟я┌п╦п╦ Ctrl-U), п╦ п╬п╫ п╠я┐п╢п╣я┌ п╡я│я┌п╟п╡п╩п╣п╫ п╡ я┌п╣п╨я┐я┴п╦п╧ я┌п╣п╨я│я┌.\n"
 
 #: mp_func.c:433
 msgid ""
@@ -64,154 +63,157 @@ msgid ""
 "\n"
 msgstr ""
 
-#: mp_func.c:481 mp_iface.c:649
+#: mp_func.c:481 mp_iface.c:649 mp_iface.c:651
 msgid "Password:"
-msgstr "Пароль:"
+msgstr "п÷п╟я─п╬п╩я▄:"
 
 #: mp_func.c:488
 msgid "Password (again):"
-msgstr "Пароль (еще раз):"
+msgstr "п÷п╟я─п╬п╩я▄ (п╣я┴п╣ я─п╟п╥):"
 
 #: mp_func.c:498
 msgid "Error: Passwords mismatch."
-msgstr "Ошибка: Пароли не совпадают."
+msgstr "п·я┬п╦п╠п╨п╟: п÷п╟я─п╬п╩п╦ п╫п╣ я│п╬п╡п©п╟п╢п╟я▌я┌."
 
-#: mp_func.c:883
+#: mp_func.c:883 mp_func.c:901
 msgid "<help on keys>"
-msgstr "<справка о клавишах>"
+msgstr "<я│п©я─п╟п╡п╨п╟ п╬ п╨п╩п╟п╡п╦я┬п╟я┘>"
 
-#: mp_func.c:894
+#: mp_func.c:894 mp_func.c:912
 msgid "<none>"
-msgstr "<ничего>"
+msgstr "<п╫п╦я┤п╣пЁп╬>"
 
-#: mp_func.c:908
+#: mp_func.c:908 mp_func.c:926
 msgid "Unlinked functions"
-msgstr "Несвязанные функции"
+msgstr "п²п╣я│п╡я▐п╥п╟п╫п╫я▀п╣ я└я┐п╫п╨я├п╦п╦"
 
-#: mp_func.c:1175
+#: mp_func.c:1175 mp_func.c:1193
 msgid "Error executing user defined function"
-msgstr "Ошибка при выполнении функции пользователя"
+msgstr "п·я┬п╦п╠п╨п╟ п©я─п╦ п╡я▀п©п╬п╩п╫п╣п╫п╦п╦ я└я┐п╫п╨я├п╦п╦ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐"
 
-#: mp_iface.c:583
+#: mp_iface.c:583 mp_iface.c:585
 msgid "Line to go to: "
-msgstr "Перейти на строку: "
+msgstr "п÷п╣я─п╣п╧я┌п╦ п╫п╟ я│я┌я─п╬п╨я┐: "
 
 #: mp_iface.c:603 mp_iface.c:607 mp_iface.c:735 mp_iface.c:1608 mp_video.c:614
+#: mp_iface.c:605 mp_iface.c:609 mp_iface.c:737 mp_iface.c:1618 mp_video.c:590
 msgid "<unnamed>"
-msgstr "<безымянный>"
+msgstr "<п╠п╣п╥я▀п╪я▐п╫п╫я▀п╧>"
 
-#: mp_iface.c:629 mp_iface.c:696
+#: mp_iface.c:629 mp_iface.c:696 mp_iface.c:631 mp_iface.c:698
 msgid "Enter file name: "
-msgstr "Введите имя файла: "
+msgstr "п▓п╡п╣п╢п╦я┌п╣ п╦п╪я▐ я└п╟п╧п╩п╟: "
 
-#: mp_iface.c:672 mp_iface.c:1248 mp_iface.c:1313
+#: mp_iface.c:672 mp_iface.c:1248 mp_iface.c:1313 mp_iface.c:674
+#: mp_iface.c:1258 mp_iface.c:1323
 #, c-format
 msgid "File '%s' not found."
-msgstr "Файл '%s' не найден."
+msgstr "п╓п╟п╧п╩ '%s' п╫п╣ п╫п╟п╧п╢п╣п╫."
 
-#: mp_iface.c:734
+#: mp_iface.c:734 mp_iface.c:736
 #, c-format
 msgid "Can't create file '%s'."
-msgstr "Невозможно создать файл '%s'."
+msgstr "п²п╣п╡п╬п╥п╪п╬п╤п╫п╬ я│п╬п╥п╢п╟я┌я▄ я└п╟п╧п╩ '%s'."
 
-#: mp_iface.c:773
+#: mp_iface.c:773 mp_iface.c:775
 msgid "File has changed. Save changes?"
-msgstr "Файл изменен. Сохранить?"
+msgstr "п╓п╟п╧п╩ п╦п╥п╪п╣п╫п╣п╫. п║п╬я┘я─п╟п╫п╦я┌я▄?"
 
-#: mp_iface.c:840
+#: mp_iface.c:840 mp_iface.c:842
 msgid "System command: "
-msgstr "Системная команда: "
+msgstr "п║п╦я│я┌п╣п╪п╫п╟я▐ п╨п╬п╪п╟п╫п╢п╟: "
 
-#: mp_iface.c:870
+#: mp_iface.c:870 mp_iface.c:872
 #, c-format
 msgid "<Output of \"%s\">"
-msgstr "<Вывод \"%s\">"
+msgstr "<п▓я▀п╡п╬п╢ \"%s\">"
 
-#: mp_iface.c:900
+#: mp_iface.c:900 mp_iface.c:902
 msgid "Error executing command."
-msgstr "Ошибка при выполнении команды."
+msgstr "п·я┬п╦п╠п╨п╟ п©я─п╦ п╡я▀п©п╬п╩п╫п╣п╫п╦п╦ п╨п╬п╪п╟п╫п╢я▀."
 
 #: mp_iface.c:926
 msgid "<open files>"
-msgstr "<открытые файлы>"
+msgstr "<п╬я┌п╨я─я▀я┌я▀п╣ я└п╟п╧п╩я▀>"
 
-#: mp_iface.c:944
+#: mp_iface.c:944 mp_iface.c:946
 msgid "Open documents"
-msgstr "Открытые документы"
+msgstr "п·я┌п╨я─я▀я┌я▀п╣ п╢п╬п╨я┐п╪п╣п╫я┌я▀"
 
-#: mp_iface.c:982
+#: mp_iface.c:982 mp_iface.c:984
 #, c-format
 msgid "Template file not found (%s)"
-msgstr "Файл шаблонов не найден (%s)"
+msgstr "п╓п╟п╧п╩ я┬п╟п╠п╩п╬п╫п╬п╡ п╫п╣ п╫п╟п╧п╢п╣п╫ (%s)"
 
-#: mp_iface.c:1004
+#: mp_iface.c:1004 mp_iface.c:1006
 msgid "Select template"
-msgstr "Выбор шаблона"
+msgstr "п▓я▀п╠п╬я─ я┬п╟п╠п╩п╬п╫п╟"
 
-#: mp_iface.c:1100 mp_iface.c:1236
+#: mp_iface.c:1100 mp_iface.c:1236 mp_iface.c:1102 mp_iface.c:1246
 msgid "Text to seek: "
-msgstr "Искать текст: "
+msgstr "п≤я│п╨п╟я┌я▄ я┌п╣п╨я│я┌: "
 
 #: mp_iface.c:1105 mp_iface.c:1123 mp_iface.c:1164 mp_iface.c:1320
+#: mp_iface.c:1107 mp_iface.c:1129 mp_iface.c:1174 mp_iface.c:1330
 msgid "Text not found."
-msgstr "Текст не найден."
+msgstr "п╒п╣п╨я│я┌ п╫п╣ п╫п╟п╧п╢п╣п╫."
 
-#: mp_iface.c:1143 mp_iface.c:1187
+#: mp_iface.c:1143 mp_iface.c:1187 mp_iface.c:1153 mp_iface.c:1197
 msgid "Replace text: "
-msgstr "Заменить текст: "
+msgstr "п≈п╟п╪п╣п╫п╦я┌я▄ я┌п╣п╨я│я┌: "
 
-#: mp_iface.c:1148 mp_iface.c:1192
+#: mp_iface.c:1148 mp_iface.c:1192 mp_iface.c:1158 mp_iface.c:1202
 msgid "Replace with: "
-msgstr "Заменить на: "
+msgstr "п≈п╟п╪п╣п╫п╦я┌я▄ п╫п╟: "
 
-#: mp_iface.c:1150
+#: mp_iface.c:1150 mp_iface.c:1160
 msgid "To end of file?"
-msgstr "До конца файла?"
+msgstr "п■п╬ п╨п╬п╫я├п╟ я└п╟п╧п╩п╟?"
 
-#: mp_iface.c:1243
+#: mp_iface.c:1243 mp_iface.c:1253
 msgid "Files to grep (empty, all): "
-msgstr "Файлы для поиска (пусто = все): "
+msgstr "п╓п╟п╧п╩я▀ п╢п╩я▐ п©п╬п╦я│п╨п╟ (п©я┐я│я┌п╬ = п╡я│п╣): "
 
-#: mp_iface.c:1327
+#: mp_iface.c:1327 mp_iface.c:1337
 msgid "grep"
 msgstr ""
 
-#: mp_iface.c:1381
+#: mp_iface.c:1381 mp_iface.c:1391
 msgid "Tag to seek: "
-msgstr "Искать тэг: "
+msgstr "п≤я│п╨п╟я┌я▄ я┌я█пЁ: "
 
-#: mp_iface.c:1397
+#: mp_iface.c:1397 mp_iface.c:1407
 msgid "Word wrap on column (0, no word wrap): "
-msgstr "Перенос строк на столбце (0 = нет переноса): "
+msgstr "п÷п╣я─п╣п╫п╬я│ я│я┌я─п╬п╨ п╫п╟ я│я┌п╬п╩п╠я├п╣ (0 = п╫п╣я┌ п©п╣я─п╣п╫п╬я│п╟): "
 
-#: mp_iface.c:1418
+#: mp_iface.c:1418 mp_iface.c:1428
 msgid "Tab size: "
-msgstr "Ширина табуляции: "
+msgstr "п╗п╦я─п╦п╫п╟ я┌п╟п╠я┐п╩я▐я├п╦п╦: "
 
-#: mp_iface.c:1529
+#: mp_iface.c:1529 mp_iface.c:1539
 msgid "Function to execute: "
-msgstr "Выполнить функцию: "
+msgstr "п▓я▀п©п╬п╩п╫п╦я┌я▄ я└я┐п╫п╨я├п╦я▌: "
 
-#: mp_iface.c:1537
+#: mp_iface.c:1537 mp_iface.c:1547
 #, c-format
 msgid "Function not found (%s)"
-msgstr "Функция не найдена (%s)"
+msgstr "п╓я┐п╫п╨я├п╦я▐ п╫п╣ п╫п╟п╧п╢п╣п╫п╟ (%s)"
 
 #: mp_tags.c:292
 msgid "Tag list"
-msgstr "Список тэгов"
+msgstr "п║п©п╦я│п╬п╨ я┌я█пЁп╬п╡"
 
 #: mp_tags.c:302
 msgid "Tag(s) not found."
-msgstr "Тэг(и) не наиден(ы)."
+msgstr "п╒я█пЁ(п╦) п╫п╣ п╫п╟п╦п╢п╣п╫(я▀)."
 
 #: mpv_curses.c:304
 msgid "menu"
-msgstr "меню"
+msgstr "п╪п╣п╫я▌"
 
 #: mpv_curses.c:743 mpv_curses.c:942
 msgid "ESC Cancel"
-msgstr "ESC Отмена"
+msgstr "ESC п·я┌п╪п╣п╫п╟"
 
 #: mpv_curses.c:895 mpv_gtk.c:504
 msgid "Y"
@@ -227,13 +229,13 @@ msgstr ""
 
 #: mpv_curses.c:931
 msgid " [ENTER]"
-msgstr " [ВВОД]"
+msgstr " [п▓п▓п·п■]"
 
 #: mpv_curses.c:1272 mpv_win32.c:580
 msgid "<about Minimum Profit>"
-msgstr "<о программе Minimum Profit>"
+msgstr "<п╬ п©я─п╬пЁя─п╟п╪п╪п╣ Minimum Profit>"
 
-#: mpv_curses.c:1508 mpv_gtk.c:2216
+#: mpv_curses.c:1508 mpv_gtk.c:2216 mpv_curses.c:1496
 msgid ""
 "Usage: mp [options] [file [file ...]]\n"
 "\n"
@@ -256,61 +258,62 @@ msgid ""
 " -nt|--no-transparent\tDisable transparent mode (eterm, aterm, etc.)\n"
 "\t\t\t"
 msgstr ""
-"Использование: mp [КЛЮЧИ] [ФАЙЛ [ФАЙЛ ...]]\n"
+"п≤я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣: mp [п п⌡п╝п╖п≤] [п╓п░п≥п⌡ [п╓п░п≥п⌡ ...]]\n"
 "\n"
-"Параметры:\n"
+"п÷п╟я─п╟п╪п╣я┌я─я▀:\n"
 "\n"
-"  -t,  --tag [tag]        Редактировать фаил, содержащий определение тэга [tag]\n"
-"  -w,  --word-wrap [col]  Установить перенос строк в столбце [col]\n"
-"  -ts, --tab-size [size]  Установить ширину табуляции [size]\n"
-"  -ai, --autoindent       Включить режим автоматических отступов\n"
-"  -l,  --lang [lang]      Выбрать язык [lang]\n"
-"  -m,  --mode [mode]      Режим подсветки синтаксиса [mode]\n"
-"       --col80            Обозначить столбец N80\n"
-"  -bw, --monochrome       Монохромный режим\n"
-"  -tx, --text             Использовать текстовый режим (вместо GUI)\n"
-"  -sp, --spellcheck       Включить проверку правописания\n"
-"  -h,  --help             Показать это справочное сообщение\n"
+"  -t,  --tag [tag]        п═п╣п╢п╟п╨я┌п╦я─п╬п╡п╟я┌я▄ я└п╟п╦п╩, я│п╬п╢п╣я─п╤п╟я┴п╦п╧ п╬п©я─п╣п╢п╣п╩п╣п╫п╦п╣ я┌я█пЁп╟ "
+"[tag]\n"
+"  -w,  --word-wrap [col]  пёя│я┌п╟п╫п╬п╡п╦я┌я▄ п©п╣я─п╣п╫п╬я│ я│я┌я─п╬п╨ п╡ я│я┌п╬п╩п╠я├п╣ [col]\n"
+"  -ts, --tab-size [size]  пёя│я┌п╟п╫п╬п╡п╦я┌я▄ я┬п╦я─п╦п╫я┐ я┌п╟п╠я┐п╩я▐я├п╦п╦ [size]\n"
+"  -ai, --autoindent       п▓п╨п╩я▌я┤п╦я┌я▄ я─п╣п╤п╦п╪ п╟п╡я┌п╬п╪п╟я┌п╦я┤п╣я│п╨п╦я┘ п╬я┌я│я┌я┐п©п╬п╡\n"
+"  -l,  --lang [lang]      п▓я▀п╠я─п╟я┌я▄ я▐п╥я▀п╨ [lang]\n"
+"  -m,  --mode [mode]      п═п╣п╤п╦п╪ п©п╬п╢я│п╡п╣я┌п╨п╦ я│п╦п╫я┌п╟п╨я│п╦я│п╟ [mode]\n"
+"       --col80            п·п╠п╬п╥п╫п╟я┤п╦я┌я▄ я│я┌п╬п╩п╠п╣я├ N80\n"
+"  -bw, --monochrome       п°п╬п╫п╬я┘я─п╬п╪п╫я▀п╧ я─п╣п╤п╦п╪\n"
+"  -tx, --text             п≤я│п©п╬п╩я▄п╥п╬п╡п╟я┌я▄ я┌п╣п╨я│я┌п╬п╡я▀п╧ я─п╣п╤п╦п╪ (п╡п╪п╣я│я┌п╬ GUI)\n"
+"  -sp, --spellcheck       п▓п╨п╩я▌я┤п╦я┌я▄ п©я─п╬п╡п╣я─п╨я┐ п©я─п╟п╡п╬п©п╦я│п╟п╫п╦я▐\n"
+"  -h,  --help             п÷п╬п╨п╟п╥п╟я┌я▄ я█я┌п╬ я│п©я─п╟п╡п╬я┤п╫п╬п╣ я│п╬п╬п╠я┴п╣п╫п╦п╣\n"
 "\n"
-"  -hw, --hardware-cursor  Включить использование аппаратного курсора\n"
-"       --mouse            Включить использование мыши для позиционирования\n"
-"                          курсора\n"
-"  -nt, --no-transparent   Отключить прозрачный режим (eterm, aterm, и.т.п.)\n"
+"  -hw, --hardware-cursor  п▓п╨п╩я▌я┤п╦я┌я▄ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣ п╟п©п©п╟я─п╟я┌п╫п╬пЁп╬ п╨я┐я─я│п╬я─п╟\n"
+"       --mouse            п▓п╨п╩я▌я┤п╦я┌я▄ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣ п╪я▀я┬п╦ п╢п╩я▐ п©п╬п╥п╦я├п╦п╬п╫п╦я─п╬п╡п╟п╫п╦я▐\n"
+"                          п╨я┐я─я│п╬я─п╟\n"
+"  -nt, --no-transparent   п·я┌п╨п╩я▌я┤п╦я┌я▄ п©я─п╬п╥я─п╟я┤п╫я▀п╧ я─п╣п╤п╦п╪ (eterm, aterm, п╦.я┌.п©.)\n"
 "                          "
 
 #: mpv_gtk.c:624
 msgid "Yes"
-msgstr "Да"
+msgstr "п■п╟"
 
 #: mpv_gtk.c:630
 msgid "No"
-msgstr "Нет"
+msgstr "п²п╣я┌"
 
 #: mpv_gtk.c:767 mpv_gtk.c:919
 msgid "OK"
-msgstr "ОК"
+msgstr "п·п "
 
 #: mpv_gtk.c:774 mpv_gtk.c:926
 msgid "Cancel"
-msgstr "Отмена"
+msgstr "п·я┌п╪п╣п╫п╟"
 
-#: mp_video.c:582
+#: mp_video.c:582 mp_video.c:558
 msgid "No usable video driver found."
-msgstr "Не найдено ни одного рабочего видео драйвера."
+msgstr "п²п╣ п╫п╟п╧п╢п╣п╫п╬ п╫п╦ п╬п╢п╫п╬пЁп╬ я─п╟п╠п╬я┤п╣пЁп╬ п╡п╦п╢п╣п╬ п╢я─п╟п╧п╡п╣я─п╟."
 
-#: mp_video.c:623
+#: mp_video.c:623 mp_video.c:599
 msgid "Bad mode."
-msgstr "Плохой режим."
+msgstr "п÷п╩п╬я┘п╬п╧ я─п╣п╤п╦п╪."
 
-#: mpv_unix_common.c:276
+#: mpv_unix_common.c:276 mpv_unix_common.c:227
 #, c-format
 msgid "<help about '%s'>"
-msgstr "<справка о '%s'>"
+msgstr "<я│п©я─п╟п╡п╨п╟ п╬ '%s'>"
 
-#: mpv_unix_common.c:300
+#: mpv_unix_common.c:300 mpv_unix_common.c:251
 #, c-format
 msgid "No help for '%s'"
-msgstr "Нет справки о '%s'"
+msgstr "п²п╣я┌ я│п©я─п╟п╡п╨п╦ п╬ '%s'"
 
 #: mpv_win32.c:1767
 msgid ""
@@ -334,380 +337,381 @@ msgid ""
 " -nt|--no-transparent\tDisable transparent mode (eterm, aterm, etc.)\n"
 "\t\t\t"
 msgstr ""
-"Использование: mp [КЛЮЧИ] [ФАЙЛ [ФАЙЛ ...]]\n"
+"п≤я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣: mp [п п⌡п╝п╖п≤] [п╓п░п≥п⌡ [п╓п░п≥п⌡ ...]]\n"
 "\n"
-"Параметры:\n"
+"п÷п╟я─п╟п╪п╣я┌я─я▀:\n"
 "\n"
-"  -t,  --tag [tag]        Редактировать фаил, содержащий определение тэга [tag]\n"
-"  -w,  --word-wrap [col]  Установить перенос строк в столбце [col]\n"
-"  -ts, --tab-size [size]  Установить ширину табуляции [size]\n"
-"  -ai, --autoindent       Включить режим автоматических отступов\n"
-"  -l,  --lang [lang]      Выбрать язык [lang]\n"
-"  -m,  --mode [mode]      Режим подсветки синтаксиса [mode]\n"
-"       --col80            Пометить столбец N80\n"
-"  -bw, --monochrome       Монохромный режим\n"
-"  -tx, --text             Использовать текстовый режим (вместо GUI)\n"
-"  -h,  --help             Показать это справочное сообщение\n"
+"  -t,  --tag [tag]        п═п╣п╢п╟п╨я┌п╦я─п╬п╡п╟я┌я▄ я└п╟п╦п╩, я│п╬п╢п╣я─п╤п╟я┴п╦п╧ п╬п©я─п╣п╢п╣п╩п╣п╫п╦п╣ я┌я█пЁп╟ "
+"[tag]\n"
+"  -w,  --word-wrap [col]  пёя│я┌п╟п╫п╬п╡п╦я┌я▄ п©п╣я─п╣п╫п╬я│ я│я┌я─п╬п╨ п╡ я│я┌п╬п╩п╠я├п╣ [col]\n"
+"  -ts, --tab-size [size]  пёя│я┌п╟п╫п╬п╡п╦я┌я▄ я┬п╦я─п╦п╫я┐ я┌п╟п╠я┐п╩я▐я├п╦п╦ [size]\n"
+"  -ai, --autoindent       п▓п╨п╩я▌я┤п╦я┌я▄ я─п╣п╤п╦п╪ п╟п╡я┌п╬п╪п╟я┌п╦я┤п╣я│п╨п╦я┘ п╬я┌я│я┌я┐п©п╬п╡\n"
+"  -l,  --lang [lang]      п▓я▀п╠я─п╟я┌я▄ я▐п╥я▀п╨ [lang]\n"
+"  -m,  --mode [mode]      п═п╣п╤п╦п╪ п©п╬п╢я│п╡п╣я┌п╨п╦ я│п╦п╫я┌п╟п╨я│п╦я│п╟ [mode]\n"
+"       --col80            п÷п╬п╪п╣я┌п╦я┌я▄ я│я┌п╬п╩п╠п╣я├ N80\n"
+"  -bw, --monochrome       п°п╬п╫п╬я┘я─п╬п╪п╫я▀п╧ я─п╣п╤п╦п╪\n"
+"  -tx, --text             п≤я│п©п╬п╩я▄п╥п╬п╡п╟я┌я▄ я┌п╣п╨я│я┌п╬п╡я▀п╧ я─п╣п╤п╦п╪ (п╡п╪п╣я│я┌п╬ GUI)\n"
+"  -h,  --help             п÷п╬п╨п╟п╥п╟я┌я▄ я█я┌п╬ я│п©я─п╟п╡п╬я┤п╫п╬п╣ я│п╬п╬п╠я┴п╣п╫п╦п╣\n"
 "\n"
-"  -hw, --hardware-cursor  Включить использование аппаратного курсора\n"
-"       --mouse            Включить использование мыши для позиционирования\n"
-"                          курсора\n"
-"  -nt, --no-transparent   Отключить прозрачный режим (eterm, aterm, и.т.п.)\n"
+"  -hw, --hardware-cursor  п▓п╨п╩я▌я┤п╦я┌я▄ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣ п╟п©п©п╟я─п╟я┌п╫п╬пЁп╬ п╨я┐я─я│п╬я─п╟\n"
+"       --mouse            п▓п╨п╩я▌я┤п╦я┌я▄ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣ п╪я▀я┬п╦ п╢п╩я▐ п©п╬п╥п╦я├п╦п╬п╫п╦я─п╬п╡п╟п╫п╦я▐\n"
+"                          п╨я┐я─я│п╬я─п╟\n"
+"  -nt, --no-transparent   п·я┌п╨п╩я▌я┤п╦я┌я▄ п©я─п╬п╥я─п╟я┤п╫я▀п╧ я─п╣п╤п╦п╪ (eterm, aterm, п╦.я┌.п©.)\n"
 "                          "
 
 #: mp_wordp.c:195
 #, c-format
 msgid "Can't execute '%s'"
-msgstr "Невозможно выполнить '%s'"
+msgstr "п²п╣п╡п╬п╥п╪п╬п╤п╫п╬ п╡я▀п©п╬п╩п╫п╦я┌я▄ '%s'"
 
-#: mp_wordp.c:241
+#: mp_wordp.c:241 mp_wordp.c:245
 msgid "Spellchecking is only available under Unix systems."
-msgstr "Проверка правописания доступна только для Unix систем."
+msgstr "п÷я─п╬п╡п╣я─п╨п╟ п©я─п╟п╡п╬п©п╦я│п╟п╫п╦я▐ п╢п╬я│я┌я┐п©п╫п╟ я┌п╬п╩я▄п╨п╬ п╢п╩я▐ Unix я│п╦я│я┌п╣п╪."
 
 #: mp_func_i.h:3
 msgid "Decrement font size"
-msgstr "Уменьшить размер шрифта"
+msgstr "пёп╪п╣п╫я▄я┬п╦я┌я▄ я─п╟п╥п╪п╣я─ я┬я─п╦я└я┌п╟"
 
 #: mp_func_i.h:7
 msgid "Mark spelling errors"
-msgstr "Помечать ошибки правописания"
+msgstr "п÷п╬п╪п╣я┤п╟я┌я▄ п╬я┬п╦п╠п╨п╦ п©я─п╟п╡п╬п©п╦я│п╟п╫п╦я▐"
 
 #: mp_func_i.h:11
 msgid "Unmark block"
-msgstr "Снять выделение с блока"
+msgstr "п║п╫я▐я┌я▄ п╡я▀п╢п╣п╩п╣п╫п╦п╣ я│ п╠п╩п╬п╨п╟"
 
 #: mp_func_i.h:15
 msgid "Increment font size"
-msgstr "Увеличить размер шрифта"
+msgstr "пёп╡п╣п╩п╦я┤п╦я┌я▄ я─п╟п╥п╪п╣я─ я┬я─п╦я└я┌п╟"
 
 #: mp_func_i.h:19
 msgid "Toggle insert/overwrite"
-msgstr "Переключить режим вставка/замена"
+msgstr "п÷п╣я─п╣п╨п╩я▌я┤п╦я┌я▄ я─п╣п╤п╦п╪ п╡я│я┌п╟п╡п╨п╟/п╥п╟п╪п╣п╫п╟"
 
 #: mp_func_i.h:23
 msgid "Use regular expressions"
-msgstr "Использовать регулярные выражения"
+msgstr "п≤я│п©п╬п╩я▄п╥п╬п╡п╟я┌я▄ я─п╣пЁя┐п╩я▐я─п╫я▀п╣ п╡я▀я─п╟п╤п╣п╫п╦я▐"
 
 #: mp_func_i.h:27
 msgid "Case sensitive"
-msgstr "Учитывать регистр"
+msgstr "пёя┤п╦я┌я▀п╡п╟я┌я▄ я─п╣пЁп╦я│я┌я─"
 
 #: mp_func_i.h:31
 msgid "Mark column #80"
-msgstr "Обозначить столбец N80"
+msgstr "п·п╠п╬п╥п╫п╟я┤п╦я┌я▄ я│я┌п╬п╩п╠п╣я├ N80"
 
 #: mp_func_i.h:35
 msgid "Save LF as CR/LF"
-msgstr "Сохранять LF как CR/LF"
+msgstr "п║п╬я┘я─п╟п╫я▐я┌я▄ LF п╨п╟п╨ CR/LF"
 
 #: mp_func_i.h:39
 msgid "Save tabs"
-msgstr "Сохранять табуляцию"
+msgstr "п║п╬я┘я─п╟п╫я▐я┌я▄ я┌п╟п╠я┐п╩я▐я├п╦я▌"
 
 #: mp_func_i.h:43
 msgid "Automatic indentation"
-msgstr "Автоматические отступы"
+msgstr "п░п╡я┌п╬п╪п╟я┌п╦я┤п╣я│п╨п╦п╣ п╬я┌я│я┌я┐п©я▀"
 
 #: mp_func_i.h:47
 msgid "Sort lines"
-msgstr "Сортировать строки"
+msgstr "п║п╬я─я┌п╦я─п╬п╡п╟я┌я▄ я│я┌я─п╬п╨п╦"
 
 #: mp_func_i.h:51
 msgid "Suspend application"
-msgstr "Приостановить приложение"
+msgstr "п÷я─п╦п╬я│я┌п╟п╫п╬п╡п╦я┌я▄ п©я─п╦п╩п╬п╤п╣п╫п╦п╣"
 
 #: mp_func_i.h:55
 msgid "Save modified texts"
-msgstr "Сохранить измененные тексты"
+msgstr "п║п╬я┘я─п╟п╫п╦я┌я▄ п╦п╥п╪п╣п╫п╣п╫п╫я▀п╣ я┌п╣п╨я│я┌я▀"
 
 #: mp_func_i.h:59
 msgid "Word wrap..."
-msgstr "Перенос слов..."
+msgstr "п÷п╣я─п╣п╫п╬я│ я│п╩п╬п╡..."
 
 #: mp_func_i.h:63
 msgid "Show clipboard"
-msgstr "Показать буфер обмена"
+msgstr "п÷п╬п╨п╟п╥п╟я┌я▄ п╠я┐я└п╣я─ п╬п╠п╪п╣п╫п╟"
 
 #: mp_func_i.h:67
 msgid "Search next"
-msgstr "Искать дальше"
+msgstr "п≤я│п╨п╟я┌я▄ п╢п╟п╩я▄я┬п╣"
 
 #: mp_func_i.h:71
 msgid "Password protect..."
-msgstr "Защитить паролем..."
+msgstr "п≈п╟я┴п╦я┌п╦я┌я▄ п©п╟я─п╬п╩п╣п╪..."
 
 #: mp_func_i.h:75
 msgid "Tab size..."
-msgstr "Ширина табуляции..."
+msgstr "п╗п╦я─п╦п╫п╟ я┌п╟п╠я┐п╩я▐я├п╦п╦..."
 
 #: mp_func_i.h:79
 msgid "Show log"
-msgstr "Показать лог"
+msgstr "п÷п╬п╨п╟п╥п╟я┌я▄ п╩п╬пЁ"
 
 #: mp_func_i.h:83
 msgid "Break hardlinks on write"
-msgstr "Разрушать жесткие ссылки при записи"
+msgstr "п═п╟п╥я─я┐я┬п╟я┌я▄ п╤п╣я│я┌п╨п╦п╣ я│я│я▀п╩п╨п╦ п©я─п╦ п╥п╟п©п╦я│п╦"
 
 #: mp_func_i.h:87
 msgid "Save as..."
-msgstr "Сохранить как..."
+msgstr "п║п╬я┘я─п╟п╫п╦я┌я▄ п╨п╟п╨..."
 
 #: mp_func_i.h:91
 msgid "Replace..."
-msgstr "Заменить..."
+msgstr "п≈п╟п╪п╣п╫п╦я┌я▄..."
 
 #: mp_func_i.h:95
 msgid "Replace in all..."
-msgstr "Заменить везде..."
+msgstr "п≈п╟п╪п╣п╫п╦я┌я▄ п╡п╣п╥п╢п╣..."
 
 #: mp_func_i.h:99
 msgid "Save..."
-msgstr "Сохранить..."
+msgstr "п║п╬я┘я─п╟п╫п╦я┌я▄..."
 
 #: mp_func_i.h:103
 msgid "Record macro"
-msgstr "Записать макрос"
+msgstr "п≈п╟п©п╦я│п╟я┌я▄ п╪п╟п╨я─п╬я│"
 
 #: mp_func_i.h:107
 msgid "Reformat paragraph with word wrapping"
-msgstr "Форматировать параграф с переносом строк"
+msgstr "п╓п╬я─п╪п╟я┌п╦я─п╬п╡п╟я┌я▄ п©п╟я─п╟пЁя─п╟я└ я│ п©п╣я─п╣п╫п╬я│п╬п╪ я│я┌я─п╬п╨"
 
 #: mp_func_i.h:111
 msgid "Paste block"
-msgstr "Вставить блок"
+msgstr "п▓я│я┌п╟п╡п╦я┌я▄ п╠п╩п╬п╨"
 
 #: mp_func_i.h:115
 msgid "Play macro"
-msgstr "Воспроизвести макрос"
+msgstr "п▓п╬я│п©я─п╬п╦п╥п╡п╣я│я┌п╦ п╪п╟п╨я─п╬я│"
 
 #: mp_func_i.h:119
 msgid "Previous"
-msgstr "Предыдущий"
+msgstr "п÷я─п╣п╢я▀п╢я┐я┴п╦п╧"
 
 #: mp_func_i.h:123
 msgid "Reopen..."
-msgstr "Открыть еще раз..."
+msgstr "п·я┌п╨я─я▀я┌я▄ п╣я┴п╣ я─п╟п╥..."
 
 #: mp_func_i.h:127
 msgid "Next"
-msgstr "Следующий"
+msgstr "п║п╩п╣п╢я┐я▌я┴п╦п╧"
 
 #: mp_func_i.h:131
 msgid "Open..."
-msgstr "Открыть..."
+msgstr "п·я┌п╨я─я▀я┌я▄..."
 
 #: mp_func_i.h:135
 msgid "Word left"
-msgstr "Следующее слово"
+msgstr "п║п╩п╣п╢я┐я▌я┴п╣п╣ я│п╩п╬п╡п╬"
 
 #: mp_func_i.h:139
 msgid "Word right"
-msgstr "Предыдущее слово"
+msgstr "п÷я─п╣п╢я▀п╢я┐я┴п╣п╣ я│п╩п╬п╡п╬"
 
 #: mp_func_i.h:143
 msgid "New"
-msgstr "Создать"
+msgstr "п║п╬п╥п╢п╟я┌я▄"
 
 #: mp_func_i.h:147
 msgid "Line up"
-msgstr "Предыдуюая строка"
+msgstr "п÷я─п╣п╢я▀п╢я┐я▌п╟я▐ я│я┌я─п╬п╨п╟"
 
 #: mp_func_i.h:151 mp_func_i.h:355
 msgid "Page down"
-msgstr "Следующая страница"
+msgstr "п║п╩п╣п╢я┐я▌я┴п╟я▐ я│я┌я─п╟п╫п╦я├п╟"
 
 #: mp_func_i.h:155 mp_func_i.h:167
 msgid "Page up"
-msgstr "Предыдущая страница"
+msgstr "п÷я─п╣п╢я▀п╢я┐я┴п╟я▐ я│я┌я─п╟п╫п╦я├п╟"
 
 #: mp_func_i.h:159
 msgid "Move to previous instance of current char"
-msgstr "Перейти назад к такому же символу"
+msgstr "п÷п╣я─п╣п╧я┌п╦ п╫п╟п╥п╟п╢ п╨ я┌п╟п╨п╬п╪я┐ п╤п╣ я│п╦п╪п╡п╬п╩я┐"
 
 #: mp_func_i.h:163
 msgid "Character right"
-msgstr "Следующий символ"
+msgstr "п║п╩п╣п╢я┐я▌я┴п╦п╧ я│п╦п╪п╡п╬п╩"
 
 #: mp_func_i.h:171
 msgid "Open file under cursor"
-msgstr "Открыть файл под курсором"
+msgstr "п·я┌п╨я─я▀я┌я▄ я└п╟п╧п╩ п©п╬п╢ п╨я┐я─я│п╬я─п╬п╪"
 
 #: mp_func_i.h:175
 msgid "Search text..."
-msgstr "Искать текст..."
+msgstr "п≤я│п╨п╟я┌я▄ я┌п╣п╨я│я┌..."
 
 #: mp_func_i.h:179
 msgid "Move to next instance of current char"
-msgstr "Перейти вперед к такому же символу"
+msgstr "п÷п╣я─п╣п╧я┌п╦ п╡п©п╣я─п╣п╢ п╨ я┌п╟п╨п╬п╪я┐ п╤п╣ я│п╦п╪п╡п╬п╩я┐"
 
 #: mp_func_i.h:183
 msgid "End of document"
-msgstr "Конец документа"
+msgstr "п п╬п╫п╣я├ п╢п╬п╨я┐п╪п╣п╫я┌п╟"
 
 #: mp_func_i.h:187
 msgid "End of line"
-msgstr "Конец строки"
+msgstr "п п╬п╫п╣я├ я│я┌я─п╬п╨п╦"
 
 #: mp_func_i.h:191
 msgid "Character left"
-msgstr "Предыдущий символ"
+msgstr "п÷я─п╣п╢я▀п╢я┐я┴п╦п╧ я│п╦п╪п╡п╬п╩"
 
 #: mp_func_i.h:195
 msgid "Beginning of document"
-msgstr "Начало документа"
+msgstr "п²п╟я┤п╟п╩п╬ п╢п╬п╨я┐п╪п╣п╫я┌п╟"
 
 #: mp_func_i.h:199
 msgid "Beginning of line"
-msgstr "Начало строки"
+msgstr "п²п╟я┤п╟п╩п╬ я│я┌я─п╬п╨п╦"
 
 #: mp_func_i.h:203
 msgid "Select last succesful search"
-msgstr "Показать последний успешный поиск"
+msgstr "п÷п╬п╨п╟п╥п╟я┌я▄ п©п╬я│п╩п╣п╢п╫п╦п╧ я┐я│п©п╣я┬п╫я▀п╧ п©п╬п╦я│п╨"
 
 #: mp_func_i.h:207
 msgid "Menu"
-msgstr "Меню"
+msgstr "п°п╣п╫я▌"
 
 #: mp_func_i.h:211
 msgid "Position cursor with mouse"
-msgstr "Перемещение курсора мышью"
+msgstr "п÷п╣я─п╣п╪п╣я┴п╣п╫п╦п╣ п╨я┐я─я│п╬я─п╟ п╪я▀я┬я▄я▌"
 
 #: mp_func_i.h:215
 msgid "Line down"
-msgstr "Следующая строка"
+msgstr "п║п╩п╣п╢я┐я▌я┴п╟я▐ я│я┌я─п╬п╨п╟"
 
 #: mp_func_i.h:219
 msgid "Help on keys"
-msgstr "Справка о клавишах"
+msgstr "п║п©я─п╟п╡п╨п╟ п╬ п╨п╩п╟п╡п╦я┬п╟я┘"
 
 #: mp_func_i.h:223
 msgid "Join current line to one above"
-msgstr "Объединить текущую строку с предыдущей"
+msgstr "п·п╠я┼п╣п╢п╦п╫п╦я┌я▄ я┌п╣п╨я┐я┴я┐я▌ я│я┌я─п╬п╨я┐ я│ п©я─п╣п╢я▀п╢я┐я┴п╣п╧"
 
 #: mp_func_i.h:227
 msgid "Join current line to one below"
-msgstr "Объединить текущую строку со следующей"
+msgstr "п·п╠я┼п╣п╢п╦п╫п╦я┌я▄ я┌п╣п╨я┐я┴я┐я▌ я│я┌я─п╬п╨я┐ я│п╬ я│п╩п╣п╢я┐я▌я┴п╣п╧"
 
 #: mp_func_i.h:231
 msgid "Jump to matching bracket"
-msgstr "Перейти на соответствующюю скобку"
+msgstr "п÷п╣я─п╣п╧я┌п╦ п╫п╟ я│п╬п╬я┌п╡п╣я┌я│я┌п╡я┐я▌я┴я▌я▌ я│п╨п╬п╠п╨я┐"
 
 #: mp_func_i.h:235
 msgid "Insert new line below cursor"
-msgstr "Вставить новую строку от курсора"
+msgstr "п▓я│я┌п╟п╡п╦я┌я▄ п╫п╬п╡я┐я▌ я│я┌я─п╬п╨я┐ п╬я┌ п╨я┐я─я│п╬я─п╟"
 
 #: mp_func_i.h:239
 msgid "Insert tab"
-msgstr "Вставить символ табуляции"
+msgstr "п▓я│я┌п╟п╡п╦я┌я▄ я│п╦п╪п╡п╬п╩ я┌п╟п╠я┐п╩я▐я├п╦п╦"
 
 #: mp_func_i.h:243
 msgid "Help for word under cursor"
-msgstr "Справка о слове под курсором"
+msgstr "п║п©я─п╟п╡п╨п╟ п╬ я│п╩п╬п╡п╣ п©п╬п╢ п╨я┐я─я│п╬я─п╬п╪"
 
 #: mp_func_i.h:247
 msgid "Insert line"
-msgstr "Вставить строку"
+msgstr "п▓я│я┌п╟п╡п╦я┌я▄ я│я┌я─п╬п╨я┐"
 
 #: mp_func_i.h:251
 msgid "Insert new line above cursor"
-msgstr "Вставить новую строку над курсором"
+msgstr "п▓я│я┌п╟п╡п╦я┌я▄ п╫п╬п╡я┐я▌ я│я┌я─п╬п╨я┐ п╫п╟п╢ п╨я┐я─я│п╬я─п╬п╪"
 
 #: mp_func_i.h:255
 msgid "Insert template..."
-msgstr "Вставить шаблон..."
+msgstr "п▓я│я┌п╟п╡п╦я┌я▄ я┬п╟п╠п╩п╬п╫..."
 
 #: mp_func_i.h:259
 msgid "Mark beginning/end of block"
-msgstr "Пометить начало/конец блока"
+msgstr "п÷п╬п╪п╣я┌п╦я┌я▄ п╫п╟я┤п╟п╩п╬/п╨п╬п╫п╣я├ п╠п╩п╬п╨п╟"
 
 #: mp_func_i.h:263
 msgid "Go to line..."
-msgstr "Перейти к строке..."
+msgstr "п÷п╣я─п╣п╧я┌п╦ п╨ я│я┌я─п╬п╨п╣..."
 
 #: mp_func_i.h:267
 msgid "Search tag..."
-msgstr "Искать тэг..."
+msgstr "п≤я│п╨п╟я┌я▄ я┌я█пЁ..."
 
 #: mp_func_i.h:271
 msgid "Flip letter case if A-Z or a-z"
-msgstr "Заменить начертание буквы, если A-Z или a-z"
+msgstr "п≈п╟п╪п╣п╫п╦я┌я▄ п╫п╟я┤п╣я─я┌п╟п╫п╦п╣ п╠я┐п╨п╡я▀, п╣я│п╩п╦ A-Z п╦п╩п╦ a-z"
 
 #: mp_func_i.h:275
 msgid "Flip word case"
-msgstr "Заменить начертание слова"
+msgstr "п≈п╟п╪п╣п╫п╦я┌я▄ п╫п╟я┤п╣я─я┌п╟п╫п╦п╣ я│п╩п╬п╡п╟"
 
 #: mp_func_i.h:279
 msgid "Run system command..."
-msgstr "Выполнить системную команду..."
+msgstr "п▓я▀п©п╬п╩п╫п╦я┌я▄ я│п╦я│я┌п╣п╪п╫я┐я▌ п╨п╬п╪п╟п╫п╢я┐..."
 
 #: mp_func_i.h:283
 msgid "Execute editor function..."
-msgstr "Выполнить функцию редактора..."
+msgstr "п▓я▀п©п╬п╩п╫п╦я┌я▄ я└я┐п╫п╨я├п╦я▌ я─п╣п╢п╟п╨я┌п╬я─п╟..."
 
 #: mp_func_i.h:287
 msgid "Document list"
-msgstr "Список документов"
+msgstr "п║п©п╦я│п╬п╨ п╢п╬п╨я┐п╪п╣п╫я┌п╬п╡"
 
 #: mp_func_i.h:291
 msgid "Edit configuration file"
-msgstr "Редактировать конфигурационный файл"
+msgstr "п═п╣п╢п╟п╨я┌п╦я─п╬п╡п╟я┌я▄ п╨п╬п╫я└п╦пЁя┐я─п╟я├п╦п╬п╫п╫я▀п╧ я└п╟п╧п╩"
 
 #: mp_func_i.h:295
 msgid "Edit templates file"
-msgstr "Редактировать файл шаблонов"
+msgstr "п═п╣п╢п╟п╨я┌п╦я─п╬п╡п╟я┌я▄ я└п╟п╧п╩ я┬п╟п╠п╩п╬п╫п╬п╡"
 
 #: mp_func_i.h:299
 msgid "Exit"
-msgstr "Выход"
+msgstr "п▓я▀я┘п╬п╢"
 
 #: mp_func_i.h:303
 msgid "Delete whole word"
-msgstr "Удалить слово целиком"
+msgstr "пёп╢п╟п╩п╦я┌я▄ я│п╩п╬п╡п╬ я├п╣п╩п╦п╨п╬п╪"
 
 #: mp_func_i.h:307
 msgid "Delete to the beginning of word"
-msgstr "Удалить до начала слова"
+msgstr "пёп╢п╟п╩п╦я┌я▄ п╢п╬ п╫п╟я┤п╟п╩п╟ я│п╩п╬п╡п╟"
 
 #: mp_func_i.h:311
 msgid "Delete char to the left of cursor"
-msgstr "Удалить символ слева от курсора"
+msgstr "пёп╢п╟п╩п╦я┌я▄ я│п╦п╪п╡п╬п╩ я│п╩п╣п╡п╟ п╬я┌ п╨я┐я─я│п╬я─п╟"
 
 #: mp_func_i.h:315
 msgid "Delete line"
-msgstr "Удалить строку"
+msgstr "пёп╢п╟п╩п╦я┌я▄ я│я┌я─п╬п╨я┐"
 
 #: mp_func_i.h:319
 msgid "Delete all whitespace after cursor"
-msgstr "Удалить все пробелы после курсора"
+msgstr "пёп╢п╟п╩п╦я┌я▄ п╡я│п╣ п©я─п╬п╠п╣п╩я▀ п©п╬я│п╩п╣ п╨я┐я─я│п╬я─п╟"
 
 #: mp_func_i.h:323
 msgid "Copy block"
-msgstr "Копировать блок"
+msgstr "п п╬п©п╦я─п╬п╡п╟я┌я▄ п╠п╩п╬п╨"
 
 #: mp_func_i.h:327
 msgid "Cut block"
-msgstr "Вырезать блок"
+msgstr "п▓я▀я─п╣п╥п╟я┌я▄ п╠п╩п╬п╨"
 
 #: mp_func_i.h:331
 msgid "About..."
-msgstr "О программе..."
+msgstr "п· п©я─п╬пЁя─п╟п╪п╪п╣..."
 
 #: mp_func_i.h:335
 msgid "Close"
-msgstr "Закрыть"
+msgstr "п≈п╟п╨я─я▀я┌я▄"
 
 #: mp_func_i.h:339
 msgid "Complete tag..."
-msgstr "Дополнить тэг..."
+msgstr "п■п╬п©п╬п╩п╫п╦я┌я▄ я┌я█пЁ..."
 
 #: mp_func_i.h:343
 msgid "Delete char over cursor"
-msgstr "Удалить символ под курсором"
+msgstr "пёп╢п╟п╩п╦я┌я▄ я│п╦п╪п╡п╬п╩ п©п╬п╢ п╨я┐я─я│п╬я─п╬п╪"
 
 #: mp_func_i.h:347
 msgid "Delete to the end of word"
-msgstr "Удалить до конца слова"
+msgstr "пёп╢п╟п╩п╦я┌я▄ п╢п╬ п╨п╬п╫я├п╟ я│п╩п╬п╡п╟"
 
 #: mp_func_i.h:351
 msgid "Grep (find inside) files..."
-msgstr "Поиск (grep) по файлам..."
+msgstr "п÷п╬п╦я│п╨ (grep) п©п╬ я└п╟п╧п╩п╟п╪..."

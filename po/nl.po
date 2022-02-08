@@ -57,9 +57,9 @@ msgstr "Naar regelnummer: "
 #: mp_iface.c:575 mp_iface.c:579 mp_iface.c:707 mp_iface.c:1531 mp_video.c:602
 #: mp_iface.c:571 mp_iface.c:703 mp_iface.c:1527 mp_iface.c:580 mp_iface.c:708
 #: mp_iface.c:1549 mp_video.c:613 mp_iface.c:577 mp_iface.c:581 mp_iface.c:709
-#: mp_iface.c:1550 mp_iface.c:562 mp_iface.c:566 mp_iface.c:694
-#: mp_iface.c:1567 mp_video.c:614 mp_iface.c:605 mp_iface.c:609 mp_iface.c:737
-#: mp_iface.c:1618
+#: mp_iface.c:1550 mp_iface.c:562 mp_iface.c:566 mp_iface.c:694 mp_iface.c:1567
+#: mp_video.c:614 mp_iface.c:605 mp_iface.c:609 mp_iface.c:737 mp_iface.c:1618
+#: mp_video.c:590
 msgid "<unnamed>"
 msgstr "<nieuw bestand>"
 
@@ -249,22 +249,22 @@ msgstr "OK"
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: mp_video.c:557 mp_video.c:570 mp_video.c:581 mp_video.c:582
+#: mp_video.c:557 mp_video.c:570 mp_video.c:581 mp_video.c:582 mp_video.c:558
 msgid "No usable video driver found."
 msgstr ""
 
-#: mp_video.c:598 mp_video.c:611 mp_video.c:622 mp_video.c:623
+#: mp_video.c:598 mp_video.c:611 mp_video.c:622 mp_video.c:623 mp_video.c:599
 msgid "Bad mode."
 msgstr "Verkeerde mode."
 
 #: mpv_unix_common.c:224 mpv_unix_common.c:253 mpv_unix_common.c:266
-#: mpv_unix_common.c:276
+#: mpv_unix_common.c:276 mpv_unix_common.c:227
 #, c-format
 msgid "<help about '%s'>"
 msgstr "<hulp over '%s'>"
 
 #: mpv_unix_common.c:248 mpv_unix_common.c:277 mpv_unix_common.c:290
-#: mpv_unix_common.c:300
+#: mpv_unix_common.c:300 mpv_unix_common.c:251
 #, c-format
 msgid "No help for '%s'"
 msgstr "Geen hulp mogelijk voor '%s'"
@@ -768,7 +768,7 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
-#: mpv_curses.c:1508 mpv_gtk.c:2215 mpv_gtk.c:2231
+#: mpv_curses.c:1508 mpv_gtk.c:2215 mpv_gtk.c:2231 mpv_curses.c:1496
 msgid ""
 "Usage: mp [options] [file [file ...]]\n"
 "\n"
@@ -845,4 +845,8 @@ msgid ""
 " --mouse\t\tActivate mouse usage for cursor positioning\n"
 " -nt|--no-transparent\tDisable transparent mode (eterm, aterm, etc.)\n"
 "\t\t\t"
+msgstr ""
+
+#: mp_iface.c:926
+msgid "<open files>"
 msgstr ""

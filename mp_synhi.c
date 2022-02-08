@@ -48,8 +48,6 @@
 static char * _plain_exts[] = { ".txt", NULL };
 static char * _plain_magics_1[] = { "-*- Mode: plain", NULL };
 
-#ifndef CONFOPT_WITHOUT_SYNHI
-
 /* html, xml, sgml */
 
 static char * _html_exts[] = { ".html", ".htm", ".artemus", NULL };
@@ -352,7 +350,6 @@ static char * _mpcfg_tokens[] = { "tab_size", "word_wrap",
 		"template_file", "lang", "use_regex", "monochrome", "mouse",
 		"hardware_cursor", "transparent", "poor_man_boxes",
 		"win32_font_face", "win32_font_size", "win32_help_file",
-		"gtk_font_face", "gtk_font_size", "gtk_font_weight",
 		"gtk_use_italics", "gtk_font_encoding", "use_pango",
 		"gtk_use_pango", "gtk_maximize", "gtk_use_double_buffer",
 		"gtk_width", "gtk_height", "gtk_xpos", "gtk_ypos",
@@ -408,7 +405,7 @@ static char * _diff_vars[] = { "diff", "---", "+++", NULL };
 static char * _diff_c_start[] = { "\n+", "\n-", "\n<", "\n>", NULL };
 static char * _diff_c_end[] = { "\n", "\n", "\n", "\n", NULL };
 
-#endif /* NO_SYNHI */
+
 
 
 struct mps_synhi _mps_synhi[]=
@@ -419,7 +416,6 @@ struct mps_synhi _mps_synhi[]=
 		NULL, 0, 0 },
 
 
-#ifndef CONFOPT_WITHOUT_SYNHI
 
 	/* C/C++: usual quotes */
 	{ "C/C++", "c", "\"'", "\"'", _c_c_start, _c_c_end,
@@ -520,8 +516,6 @@ struct mps_synhi _mps_synhi[]=
 		_diff_vars, NULL, NULL, 1, 1 },
 
 	/* ... yours here ... */
-
-#endif /* NO_SYNHI */
 
 	/* End of syntax hilighters */
 	{ NULL }

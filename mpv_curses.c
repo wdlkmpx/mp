@@ -32,7 +32,6 @@
 #include "mp_core.h"
 #include "mp_video.h"
 
-#ifdef CONFOPT_CURSES
 
 #include <sys/types.h>
 #include <dirent.h>
@@ -1347,11 +1346,7 @@ static void _mpv_create_colors(void)
 	int n;
 	int di,dp;
 
-#ifdef CONFOPT_TRANSPARENCY
 	use_default_colors();
-#else
-	_mpv_transp_mode=0;
-#endif
 
 	di=DEFAULT_INK_COLOR;
 	dp=DEFAULT_PAPER_COLOR;
@@ -1436,14 +1431,6 @@ static void _startup_2(void)
 
 	/* metainfo */
 
-#ifdef CONFOPT_TRANSPARENCY
-	mp_log("Transparency mode enabled\n");
-#endif
-#ifdef CONFOPT_GLOB_H
-	mp_log("Using glob.h\n");
-#else
-	mp_log("Using glob workaround (piping from ls)\n");
-#endif
 #ifdef NCURSES_VERSION
 	mp_log("Ncurses version: %s\n",NCURSES_VERSION);
 #else
@@ -1589,18 +1576,3 @@ struct _mpv_driver _mpv_driver_curses=
 	 _startup_1, _startup_2, _shutdown, _suspend, _syscmd
 };
 
-
-#else /* CONFOPT_CURSES */
-
-struct _mpv_driver _mpv_driver_curses=
-{
-	"curses", 1,
-	NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-	NULL, NULL, NULL, NULL, NULL, NULL,
-	NULL, NULL, NULL, NULL, NULL, NULL,
-	NULL, NULL, NULL, NULL, NULL, NULL,
-	NULL, NULL, NULL, NULL,
-	NULL, NULL, NULL, NULL, NULL
-};
-
-#endif /* CONFOPT_CURSES */

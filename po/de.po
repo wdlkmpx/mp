@@ -7,7 +7,7 @@ msgstr ""
 "Last-Translator: Ronny Steiner <Post@SIRSteiner.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: mp_conf.c:134
@@ -41,19 +41,19 @@ msgid ""
 "or the end of file. By selecting a template from the list (popped up\n"
 "by Ctrl-U), it will be inserted into the current text.\n"
 msgstr ""
-"Die Vorlagendatei ist noch leer. Hier können Sie Ihre Vorlagen definieren\n"
+"Die Vorlagendatei ist noch leer. Hier kÃ¶nnen Sie Ihre Vorlagen definieren\n"
 "Eine Vorlage beginnt mit '%%' gefolgt vom Name der Vorlage.\n"
 "Wollen Sie mehrere Vorlagen definieren, so schreiben Sie diese einfach\n"
 "untereinander (siehe Beispiel).\n"
-"Das Auswählen einer Vorlage erfolgt entweder durch Strg+U oder\n"
+"Das AuswÃ¤hlen einer Vorlage erfolgt entweder durch Strg+U oder\n"
 "durch die Editorfunktion 'insert-template'.\n"
 "\n"
 "Beispiel:\n"
 "\n"
 "%% Erste Vorlage\n"
-"Dies ist die erste Vorlage. Viel Spaß mit dieser Zusatzfunktion.\n"
+"Dies ist die erste Vorlage. Viel SpaÃŸ mit dieser Zusatzfunktion.\n"
 "%% Zweite Vorlage\n"
-"Dies ist die zweite Vorlage. Weiterhin viel Spaß mit dieser Zusatzfunktion.\n"
+"Dies ist die zweite Vorlage. Weiterhin viel SpaÃŸ mit dieser Zusatzfunktion.\n"
 
 #: mp_func.c:433
 msgid ""
@@ -81,7 +81,7 @@ msgstr "Fehler: Passwort falsch!"
 
 #: mp_func.c:883 mp_func.c:901
 msgid "<help on keys>"
-msgstr "<Tastenkürzel-Editorfunktionen>"
+msgstr "<TastenkÃ¼rzel-Editorfunktionen>"
 
 #: mp_func.c:894 mp_func.c:912
 msgid "<none>"
@@ -89,18 +89,18 @@ msgstr "<nichts>"
 
 #: mp_func.c:908 mp_func.c:926
 msgid "Unlinked functions"
-msgstr "Editorfunktionen ohne Tastenkürzel"
+msgstr "Editorfunktionen ohne TastenkÃ¼rzel"
 
 #: mp_func.c:1175 mp_func.c:1193
 msgid "Error executing user defined function"
-msgstr "Fehler beim Ausführen der benutzerdefinierten Funktion!"
+msgstr "Fehler beim AusfÃ¼hren der benutzerdefinierten Funktion!"
 
 #: mp_iface.c:583 mp_iface.c:585
 msgid "Line to go to: "
 msgstr "Gehe zu Zeile: "
 
 #: mp_iface.c:603 mp_iface.c:607 mp_iface.c:735 mp_iface.c:1608 mp_video.c:614
-#: mp_iface.c:605 mp_iface.c:609 mp_iface.c:737 mp_iface.c:1618
+#: mp_iface.c:605 mp_iface.c:609 mp_iface.c:737 mp_iface.c:1618 mp_video.c:590
 msgid "<unnamed>"
 msgstr "<unbenannt>"
 
@@ -121,7 +121,7 @@ msgstr "Fehler: Kann Datei '%s' nicht erstellen!"
 
 #: mp_iface.c:773 mp_iface.c:775
 msgid "File has changed. Save changes?"
-msgstr "Die Datei wurde geändert. Änderungen speichern?"
+msgstr "Die Datei wurde geÃ¤ndert. Ã„nderungen speichern?"
 
 #: mp_iface.c:840 mp_iface.c:842
 msgid "System command: "
@@ -134,11 +134,11 @@ msgstr "<Ausgabe von \"%s\">"
 
 #: mp_iface.c:900 mp_iface.c:902
 msgid "Error executing command."
-msgstr "Fehler beim Ausführen des Kommandos!"
+msgstr "Fehler beim AusfÃ¼hren des Kommandos!"
 
 #: mp_iface.c:944 mp_iface.c:946
 msgid "Open documents"
-msgstr "Dokumente öffnen"
+msgstr "Dokumente Ã¶ffnen"
 
 #: mp_iface.c:982 mp_iface.c:984
 #, c-format
@@ -147,7 +147,7 @@ msgstr "Fehler: Vorlagendatei '%s' nicht gefunden!"
 
 #: mp_iface.c:1004 mp_iface.c:1006
 msgid "Select template"
-msgstr "Wähle eine Vorlage"
+msgstr "WÃ¤hle eine Vorlage"
 
 #: mp_iface.c:1100 mp_iface.c:1236 mp_iface.c:1102 mp_iface.c:1246
 msgid "Text to seek: "
@@ -192,7 +192,7 @@ msgstr "Tabulatorbreite: "
 
 #: mp_iface.c:1529 mp_iface.c:1539
 msgid "Function to execute: "
-msgstr "Auszuführende Editor-Funktion: "
+msgstr "AuszufÃ¼hrende Editor-Funktion: "
 
 #: mp_iface.c:1537 mp_iface.c:1547
 #, c-format
@@ -209,7 +209,7 @@ msgstr "Tag(s) nicht gefunden!"
 
 #: mpv_curses.c:304
 msgid "menu"
-msgstr "Menü"
+msgstr "MenÃ¼"
 
 #: mpv_curses.c:743 mpv_curses.c:942
 msgid "ESC Cancel"
@@ -233,9 +233,9 @@ msgstr "[ENTER]"
 
 #: mpv_curses.c:1272 mpv_win32.c:580
 msgid "<about Minimum Profit>"
-msgstr "<Über Minimum Profit>"
+msgstr "<Ãœber Minimum Profit>"
 
-#: mpv_curses.c:1508 mpv_gtk.c:2216 mpv_gtk.c:2231
+#: mpv_curses.c:1508 mpv_gtk.c:2216 mpv_gtk.c:2231 mpv_curses.c:1496
 msgid ""
 "Usage: mp [options] [file [file ...]]\n"
 "\n"
@@ -265,9 +265,9 @@ msgstr ""
 " -t|--tag [TAG] \t\tBearbeite die Datei, in der TAG definiert ist\n"
 " -w|--word-wrap [SPALTE]\tSetze Zeilenumbruch auf Spalte SPALTE\n"
 " -ts|--tab-size [BREITE]\tSetze Tabulatorbreite auf BREITE\n"
-" -ai|--autoindent\t\tAutomatisches Einrücken aktivieren\n"
-" -l|--lang [SPRACHE]\t\tSprache auswählen (de, en, es, it oder nl)\n"
-" -m|--mode [mode]\t\tModus für die Syntax-Hervorhebung (s.u.)\n"
+" -ai|--autoindent\t\tAutomatisches EinrÃ¼cken aktivieren\n"
+" -l|--lang [SPRACHE]\t\tSprache auswÃ¤hlen (de, en, es, it oder nl)\n"
+" -m|--mode [mode]\t\tModus fÃ¼r die Syntax-Hervorhebung (s.u.)\n"
 " --col80\t\t\tMarkiere Spalte 80\n"
 " -bw|--monochrome\t\tMonochrom\n"
 " -tx|--text\t\t\tTextmodus aktivieren (anstatt GUI)\n"
@@ -277,7 +277,7 @@ msgstr ""
 " --mouse\t\t\tKursorpositionierung mit Maus aktivieren\n"
 " -nt|--no-transparent\t\tTransparenz deaktivieren (eterm, aterm, usw.)\n"
 "\n"
-"Modi für die Syntax-Hervorhebung:\n"
+"Modi fÃ¼r die Syntax-Hervorhebung:\n"
 "\t"
 
 #: mpv_gtk.c:624 mpv_gtk.c:631
@@ -290,26 +290,26 @@ msgstr "Nein"
 
 #: mpv_gtk.c:767 mpv_gtk.c:919 mpv_gtk.c:774 mpv_gtk.c:926
 msgid "OK"
-msgstr "Übernehmen"
+msgstr "Ãœbernehmen"
 
 #: mpv_gtk.c:774 mpv_gtk.c:926 mpv_gtk.c:781 mpv_gtk.c:933
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: mp_video.c:582
+#: mp_video.c:582 mp_video.c:558
 msgid "No usable video driver found."
 msgstr "Fehler: Kein brauchbarer Video-Treiber gefunden!"
 
-#: mp_video.c:623
+#: mp_video.c:623 mp_video.c:599
 msgid "Bad mode."
-msgstr "Fehler: Ungültiger Modus!"
+msgstr "Fehler: UngÃ¼ltiger Modus!"
 
-#: mpv_unix_common.c:276
+#: mpv_unix_common.c:276 mpv_unix_common.c:227
 #, c-format
 msgid "<help about '%s'>"
 msgstr "<Hilfe zu '%s'>"
 
-#: mpv_unix_common.c:300
+#: mpv_unix_common.c:300 mpv_unix_common.c:251
 #, c-format
 msgid "No help for '%s'"
 msgstr "Keine Hilfe zu '%s'"
@@ -344,9 +344,9 @@ msgstr ""
 " -t|--tag [TAG] \t\tBearbeite die Datei, in der TAG definiert ist\n"
 " -w|--word-wrap [SPALTE]\tSetze Zeilenumbruch auf Spalte SPALTE\n"
 " -ts|--tab-size [BREITE]\tSetze Tabulatorbreite auf BREITE\n"
-" -ai|--autoindent\t\tAutomatisches Einrücken aktivieren\n"
-" -l|--lang [SPRACHE]\t\tSprache auswählen (de, en, es, it oder nl)\n"
-" -m|--mode [mode]\t\tModus für die Syntax-Hervorhebung (s.u.)\n"
+" -ai|--autoindent\t\tAutomatisches EinrÃ¼cken aktivieren\n"
+" -l|--lang [SPRACHE]\t\tSprache auswÃ¤hlen (de, en, es, it oder nl)\n"
+" -m|--mode [mode]\t\tModus fÃ¼r die Syntax-Hervorhebung (s.u.)\n"
 " --col80\t\t\tMarkiere Spalte 80\n"
 " -bw|--monochrome\t\tMonochrom\n"
 " -tx|--text\t\t\tTextmodus aktivieren (anstatt GUI)\n"
@@ -356,17 +356,17 @@ msgstr ""
 " --mouse\t\t\tKursorpositionierung mit Maus aktivieren\n"
 " -nt|--no-transparent\t\tTransparenz deaktivieren (eterm, aterm, usw.)\n"
 "\n"
-"Modi für die Syntax-Hervorhebung:\n"
+"Modi fÃ¼r die Syntax-Hervorhebung:\n"
 "\t"
 
 #: mp_wordp.c:195
 #, c-format
 msgid "Can't execute '%s'"
-msgstr "Fehler: Ausführen von '%s' nicht möglich!"
+msgstr "Fehler: AusfÃ¼hren von '%s' nicht mÃ¶glich!"
 
 #: mp_wordp.c:241 mp_wordp.c:245
 msgid "Spellchecking is only available under Unix systems."
-msgstr "Die Rechtschreibprüfung ist nur unter Unix-Systemen verfügbar."
+msgstr "Die RechtschreibprÃ¼fung ist nur unter Unix-Systemen verfÃ¼gbar."
 
 #: mp_func_i.h:3
 msgid "Decrement font size"
@@ -382,19 +382,19 @@ msgstr "Blockmarkierung aufheben"
 
 #: mp_func_i.h:15
 msgid "Increment font size"
-msgstr "Schrift größer"
+msgstr "Schrift grÃ¶ÃŸer"
 
 #: mp_func_i.h:19
 msgid "Toggle insert/overwrite"
-msgstr "Einfügen/Überschreiben umschalten"
+msgstr "EinfÃ¼gen/Ãœberschreiben umschalten"
 
 #: mp_func_i.h:23
 msgid "Use regular expressions"
-msgstr "Reguläre Ausdrücke verwenden"
+msgstr "RegulÃ¤re AusdrÃ¼cke verwenden"
 
 #: mp_func_i.h:27
 msgid "Case sensitive"
-msgstr "Groß-/Kleinschreibung beachten"
+msgstr "GroÃŸ-/Kleinschreibung beachten"
 
 #: mp_func_i.h:31
 msgid "Mark column #80"
@@ -410,7 +410,7 @@ msgstr "Tabulatoren speichern"
 
 #: mp_func_i.h:43
 msgid "Automatic indentation"
-msgstr "Automatisches Einrücken"
+msgstr "Automatisches EinrÃ¼cken"
 
 #: mp_func_i.h:47
 msgid "Sort lines"
@@ -422,7 +422,7 @@ msgstr "Editor-Schlafmodus"
 
 #: mp_func_i.h:55
 msgid "Save modified texts"
-msgstr "Alle geänderten Dateien speichern"
+msgstr "Alle geÃ¤nderten Dateien speichern"
 
 #: mp_func_i.h:59
 msgid "Word wrap..."
@@ -478,11 +478,11 @@ msgstr "Abschnitt neu formatieren"
 
 #: mp_func_i.h:111
 msgid "Paste block"
-msgstr "Block einfügen"
+msgstr "Block einfÃ¼gen"
 
 #: mp_func_i.h:115
 msgid "Play macro"
-msgstr "Makro ausführen"
+msgstr "Makro ausfÃ¼hren"
 
 #: mp_func_i.h:119
 msgid "Previous"
@@ -490,15 +490,15 @@ msgstr "Vorheriges Dokument fokusieren"
 
 #: mp_func_i.h:123
 msgid "Reopen..."
-msgstr "Erneut öffnen..."
+msgstr "Erneut Ã¶ffnen..."
 
 #: mp_func_i.h:127
 msgid "Next"
-msgstr "Nächstes Dokument fokusieren"
+msgstr "NÃ¤chstes Dokument fokusieren"
 
 #: mp_func_i.h:131
 msgid "Open..."
-msgstr "Öffnen..."
+msgstr "Ã–ffnen..."
 
 #: mp_func_i.h:135
 msgid "Word left"
@@ -534,7 +534,7 @@ msgstr "Buchstabe nach rechts"
 
 #: mp_func_i.h:171
 msgid "Open file under cursor"
-msgstr "Datei über dem Kursor öffnen"
+msgstr "Datei Ã¼ber dem Kursor Ã¶ffnen"
 
 #: mp_func_i.h:175
 msgid "Search text..."
@@ -542,7 +542,7 @@ msgstr "Suchen..."
 
 #: mp_func_i.h:179
 msgid "Move to next instance of current char"
-msgstr "Zum nächsten Vorkommen des aktuellen Buchstabens"
+msgstr "Zum nÃ¤chsten Vorkommen des aktuellen Buchstabens"
 
 #: mp_func_i.h:183
 msgid "End of document"
@@ -570,7 +570,7 @@ msgstr "Letzte erfolgreiche Suche markieren"
 
 #: mp_func_i.h:207
 msgid "Menu"
-msgstr "Menü"
+msgstr "MenÃ¼"
 
 #: mp_func_i.h:211
 msgid "Position cursor with mouse"
@@ -582,7 +582,7 @@ msgstr "Zeile nach unten"
 
 #: mp_func_i.h:219
 msgid "Help on keys"
-msgstr "Tastenkürzel-Editorfunktionen"
+msgstr "TastenkÃ¼rzel-Editorfunktionen"
 
 #: mp_func_i.h:223
 msgid "Join current line to one above"
@@ -594,31 +594,31 @@ msgstr "Aktuelle Zeile mit der nachfolgenden verbinden"
 
 #: mp_func_i.h:231
 msgid "Jump to matching bracket"
-msgstr "Zur zugehörigen Klammer"
+msgstr "Zur zugehÃ¶rigen Klammer"
 
 #: mp_func_i.h:235
 msgid "Insert new line below cursor"
-msgstr "Zeile unter dem Kursor einfügen"
+msgstr "Zeile unter dem Kursor einfÃ¼gen"
 
 #: mp_func_i.h:239
 msgid "Insert tab"
-msgstr "Tabulator einfügen"
+msgstr "Tabulator einfÃ¼gen"
 
 #: mp_func_i.h:243
 msgid "Help for word under cursor"
-msgstr "Hilfe zum Wort über dem Kursor"
+msgstr "Hilfe zum Wort Ã¼ber dem Kursor"
 
 #: mp_func_i.h:247
 msgid "Insert line"
-msgstr "Zeile an der Kursorposition einfügen"
+msgstr "Zeile an der Kursorposition einfÃ¼gen"
 
 #: mp_func_i.h:251
 msgid "Insert new line above cursor"
-msgstr "Zeile über dem Kursor einfügen"
+msgstr "Zeile Ã¼ber dem Kursor einfÃ¼gen"
 
 #: mp_func_i.h:255
 msgid "Insert template..."
-msgstr "Vorlage einfügen..."
+msgstr "Vorlage einfÃ¼gen..."
 
 #: mp_func_i.h:259
 msgid "Mark beginning/end of block"
@@ -634,19 +634,19 @@ msgstr "Tag suchen..."
 
 #: mp_func_i.h:271
 msgid "Flip letter case if A-Z or a-z"
-msgstr "Groß- in Kleinbuchstabe und umgekehrt"
+msgstr "GroÃŸ- in Kleinbuchstabe und umgekehrt"
 
 #: mp_func_i.h:275
 msgid "Flip word case"
-msgstr "Groß- in Kleinbuchstaben und umgekehrt (Wort)"
+msgstr "GroÃŸ- in Kleinbuchstaben und umgekehrt (Wort)"
 
 #: mp_func_i.h:279
 msgid "Run system command..."
-msgstr "System-Kommando ausführen"
+msgstr "System-Kommando ausfÃ¼hren"
 
 #: mp_func_i.h:283
 msgid "Execute editor function..."
-msgstr "Editorfunktion ausführen..."
+msgstr "Editorfunktion ausfÃ¼hren..."
 
 #: mp_func_i.h:287
 msgid "Document list"
@@ -666,23 +666,23 @@ msgstr "Beenden"
 
 #: mp_func_i.h:303
 msgid "Delete whole word"
-msgstr "Wort über dem Kursor löschen"
+msgstr "Wort Ã¼ber dem Kursor lÃ¶schen"
 
 #: mp_func_i.h:307
 msgid "Delete to the beginning of word"
-msgstr "Löschen bis zum Anfang des Wortes"
+msgstr "LÃ¶schen bis zum Anfang des Wortes"
 
 #: mp_func_i.h:311
 msgid "Delete char to the left of cursor"
-msgstr "Zeichen links vom Kursor löschen"
+msgstr "Zeichen links vom Kursor lÃ¶schen"
 
 #: mp_func_i.h:315
 msgid "Delete line"
-msgstr "Zeile löschen"
+msgstr "Zeile lÃ¶schen"
 
 #: mp_func_i.h:319
 msgid "Delete all whitespace after cursor"
-msgstr "Leerzeichen bis zum nächsten Wort entfernen"
+msgstr "Leerzeichen bis zum nÃ¤chsten Wort entfernen"
 
 #: mp_func_i.h:323
 msgid "Copy block"
@@ -694,24 +694,28 @@ msgstr "Block ausschneiden+kopieren"
 
 #: mp_func_i.h:331
 msgid "About..."
-msgstr "Über..."
+msgstr "Ãœber..."
 
 #: mp_func_i.h:335
 msgid "Close"
-msgstr "Schließen"
+msgstr "SchlieÃŸen"
 
 #: mp_func_i.h:339
 msgid "Complete tag..."
-msgstr "Tag vervollständigen..."
+msgstr "Tag vervollstÃ¤ndigen..."
 
 #: mp_func_i.h:343
 msgid "Delete char over cursor"
-msgstr "Zeichen über dem Kursor löschen"
+msgstr "Zeichen Ã¼ber dem Kursor lÃ¶schen"
 
 #: mp_func_i.h:347
 msgid "Delete to the end of word"
-msgstr "Löschen bis zum Ende des Wortes"
+msgstr "LÃ¶schen bis zum Ende des Wortes"
 
 #: mp_func_i.h:351
 msgid "Grep (find inside) files..."
 msgstr "Grep-Suche in Dateien..."
+
+#: mp_iface.c:926
+msgid "<open files>"
+msgstr ""

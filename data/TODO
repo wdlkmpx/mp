@@ -1,0 +1,28 @@
+Minimum Profit TODO / Bug List
+==============================
+
+Open Bugs
+---------
+
+ * 1000: Word wrap seems to be broken in some special cases.
+ * 1002: Autoindent doesn't work when word wrap is active.
+ * 1024: When a toggle function is called, the proper menu item
+   is not refreshed.
+ * 1030: The _mp_save_tabs flag does nothing. Treatment should be
+   added to mp_write_open_file().
+ * 1031: mpi_grep() should use regular expressions instead of a
+   plain strstr().
+ 
+Pending Enhancements
+--------------------
+
+ * 1011: Take a look at the elinks source to see how wheel-mouse can be
+   used in rxvt and xterm.
+ * 1012: The tag list should be browseable, as well as the list selection
+   file in the curses version.
+ * 1013: Tags, files to be open, templates and such things should be shown
+   in something like Mozilla's sidebar or so.
+ * 1014: Add 'undo'.
+ * 1075: In the curses version, the list of open files in the
+   title line should show the active text centered.
+

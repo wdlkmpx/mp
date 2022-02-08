@@ -13,11 +13,8 @@ mp_tags.o: mp_tags.c config.h mp_core.h mp_iface.h mp_tags.h mp_lang.h \
   mp_video.h
 mpv_curses.o: mpv_curses.c config.h mp_core.h mp_video.h mp_synhi.h \
   mp_func.h mp_iface.h mp_lang.h mp_conf.h
-mpv_gtk.o: mpv_gtk.c config.h mp_core.h mp_video.h mp_func.h mp_iface.h \
-  mp_lang.h mp_synhi.h mp_conf.h mp.xpm
 mp_video.o: mp_video.c config.h mp_core.h mp_video.h mp_iface.h mp_func.h \
   mp_lang.h mp_synhi.h mp_conf.h mp_tags.h
 mpv_unix_common.o: mpv_unix_common.c config.h mp_core.h mp_video.h \
   mp_iface.h mp_lang.h mp_synhi.h mp_conf.h
-mpv_win32.o: mpv_win32.c config.h mp_core.h mp_video.h
 mp_wordp.o: mp_wordp.c config.h mp_core.h mp_conf.h mp_lang.h mp_video.h

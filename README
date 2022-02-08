@@ -26,7 +26,6 @@ Quick feature list
  - Understandable interface: drop-down menus, reasonable default key bindings.
  - Configurable keys, menus and colors.
  - Text templates can be easily defined / accessed.
- - Multiplatform: Console/curses, GTK+ (1.2 and 2.0), MS Windows.
  - Automatic indentation, word wrapping, internal _grep_, learning /
    repeating functions.
  - Search and replace using plain text or regular expressions (including
@@ -53,14 +52,7 @@ as key bindings, colors, the menu and other variables. Take a look at
 mprc.sample for details. The configuration files for Unix systems are
 /etc/mprc and $HOME/.mprc (see below to know how to set it in Win32).
 
-Minimum Profit includes several interfaces:
-
- * curses: the good old text interface. You need any Unix (Linux, Solaris,
-   IRIX, any BSD...) and the curses or ncurses library. It was also sucessfully
-   compiled under BeOS (with a locally compiled ncurses) many years ago.
- * GTK: You need any X11 system with the GTK+ libraries installed. Support
-   for GTK versions 1.2 and 2.0 is provided.
- * Win32: You need Microsoft Windows 95 or later and the lccwin32 compiler.
+Minimum Profit requires ncurses
 
 Compiling & Installing
 ----------------------
@@ -70,7 +62,7 @@ Under Unix flavours
 
 To compile under any Unix flavour, just run
 
-	 $ ./config.sh
+	 $ ./configure --prefix=/usr
 	 $ make
 
 The first step should automatically detect all usable interfaces and
@@ -81,9 +73,7 @@ versions used to need GNU Make; this is no longer true. By running
 
 you can see a list of tweakable options. Also, a bunch of README.* files are
 included with Minimum Profit's standard distribution with information
-specific to many systems and cross-compilers. Notoriously, if you have
-the mingw32 cross-compiler suite in your Unix system, you can build an
-MS Windows binary pretty easily (README.mingw32).
+specific to many systems and cross-compilers.
 
 To install just run (as root):
 
@@ -94,12 +84,6 @@ installation directory in the configuration phase; for example, to install
 it on /usr/bin, do
 
 	$ ./config.sh --prefix=/usr/bin
-
-Under MS Windows
-~~~~~~~~~~~~~~~~
-
-You'll need the lccwin32 compiler. To compile, just run the buildlcc.bat
-batch file script.
 
 Tags, functions and variables in your code
 ------------------------------------------
@@ -156,9 +140,7 @@ type of the file you're editing, it tries to get help from the underlying
 system. This is usually done by calling 'man', but also special cases are
 tried as running 'perldoc' for Perl sources or 'ri' for Ruby ones.
 If found, a new help page is opened in a new (read-only) window. You can
-close it as a normal text or swap back to the original source. On Win32,
-it's used differently: it spawns Winhelp.exe with the word as a parameter
-to the .hlp file defined in the configuration variable win32_help_file.
+close it as a normal text or swap back to the original source.
 
 Macro
 -----
@@ -236,19 +218,6 @@ Ctrl-U, all template names you defined are showed on screen in a list for
 you to just move over and push ENTER and by magical arts be inserted into
 current opened file's cursor position. And for the sake of sloth, you can
 edit the template file directly from the Edit menu.
-
-Win32 version configuration
----------------------------
-
-Several parameters could be set in the Win32 registry in previous versions
-of Minimum Profit; now, there is only one value to register, as the other
-ones can be defined in the configuration file: the HOME directory.
-So, the only key is "HKEY_CURRENT_USER\Software\Minimum Profit\Home", and
-is supposed to hold the drive:\path where the .mprc configuration file
-can be found (so it can be shared between machines or even platforms).
-All other run-time values can be configured there. The mp.reg file,
-included in the source code or binary distribution package, can be used to
-set this value.
 
 Keys, functions and menus
 -------------------------

@@ -52,13 +52,9 @@ int _mpv_y_size;
 int _mpv_argc;
 char ** _mpv_argv;
 
-extern struct _mpv_driver _mpv_driver_gtk;
-extern struct _mpv_driver _mpv_driver_win32;
 extern struct _mpv_driver _mpv_driver_curses;
 
 struct _mpv_driver * _mpv_drivers[] = {
-	&_mpv_driver_gtk,
-	&_mpv_driver_win32,
 	&_mpv_driver_curses,
 	NULL
 };
@@ -543,32 +539,12 @@ int mpv_syscmd(mp_txt *txt,char *cmd,char *mode) {
 
 /******* MAIN *******/
 
-#ifdef __WIN32__
-
-#include <windows.h>
-
-/* from mpv_win32.c */
-extern HINSTANCE hinst;
-extern void cmd_2_argv(char * cmd);
-
-int STDCALL WinMain(HINSTANCE hi, HINSTANCE hpi, LPSTR cmd, int cm)
-{
-	int r;
-
-	hinst=hi;
-
-	cmd_2_argv(cmd);
-
-#else /* __WIN32__ */
-
 int main(int argc, char * argv[])
 {
 	int r;
 
 	_mpv_argc=argc;
 	_mpv_argv=argv;
-
-#endif /* __WIN32__ */
 
 	/* text engine startup */
 	mp_startup();

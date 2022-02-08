@@ -43,10 +43,7 @@
 #include "mp_lang.h"
 #include "mp_synhi.h"
 #include "mp_conf.h"
-
-#if defined(CONFOPT_GLOB_H)
 #include <glob.h>
-#endif
 
 /*******************
 	Data
@@ -141,7 +138,6 @@ mp_txt * _unix_glob(char * spec)
 	mp_txt * txt=NULL;
 	struct stat s;
 
-#if defined(CONFOPT_GLOB_H)
 	int n;
 	glob_t globbuf;
 	char * ptr;
@@ -174,51 +170,6 @@ mp_txt * _unix_glob(char * spec)
 	mp_move_bof(txt);
 
 	MP_RESTORE_STATE();
-
-#else /* CONFOPT_GLOB_H */
-
-	/* no glob: simulate it piping from ls */
-
-	FILE * f;
-	char tmp[1024];
-
-	if(*spec=='\0' || strcmp(spec,"*")==0)
-		strcpy(tmp,"ls");
-	else
-		snprintf(tmp,sizeof(tmp),"ls %s",spec);
-
-	if((f=popen(tmp,"r"))==NULL)
-		return(NULL);
-
-	txt=mp_create_sys_txt("<glob>");
-
-	MP_SAVE_STATE();
-
-	while(fgets(tmp,sizeof(tmp),f)!=NULL)
-	{
-		tmp[strlen(tmp)-1]='\0';
-
-		if(tmp[0]=='\0') continue;
-		if(stat(tmp,&s)==-1) continue;
-		if(s.st_mode & S_IFDIR) continue;
-
-		mp_put_str(txt,tmp,1);
-		mp_put_char(txt,'\n',1);
-	}
-
-	if(pclose(f)==-1)
-	{
-		mp_delete_sys_txt(txt);
-		txt=NULL;
-	}
-
-	mp_move_left(txt);
-	mp_delete_char(txt);
-	mp_move_bof(txt);
-
-	MP_RESTORE_STATE();
-
-#endif /* CONFOPT_GLOB_H */
 
 	return(txt);
 }

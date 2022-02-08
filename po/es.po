@@ -10,7 +10,7 @@ msgstr ""
 "Last-Translator: Angel Ortega <angel@triptico.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: mp_func.c:244 mp_iface.c:619 mp_func.c:251 mp_func.c:255 mp_func.c:259
@@ -51,15 +51,15 @@ msgstr "Funciones sin enlazar"
 #: mp_iface.c:552 mp_iface.c:555 mp_iface.c:551 mp_iface.c:556 mp_iface.c:557
 #: mp_iface.c:542 mp_iface.c:585
 msgid "Line to go to: "
-msgstr "Número de línea: "
+msgstr "NÃºmero de lÃ­nea: "
 
 #: mp_iface.c:572 mp_iface.c:576 mp_iface.c:704 mp_iface.c:1528 mp_video.c:589
 #: mp_iface.c:575 mp_iface.c:579 mp_iface.c:707 mp_iface.c:1531 mp_video.c:602
 #: mp_iface.c:571 mp_iface.c:703 mp_iface.c:1527 mp_iface.c:580 mp_iface.c:708
 #: mp_iface.c:1549 mp_video.c:613 mp_iface.c:577 mp_iface.c:581 mp_iface.c:709
-#: mp_iface.c:1550 mp_iface.c:562 mp_iface.c:566 mp_iface.c:694
-#: mp_iface.c:1567 mp_video.c:614 mp_iface.c:605 mp_iface.c:609 mp_iface.c:737
-#: mp_iface.c:1618
+#: mp_iface.c:1550 mp_iface.c:562 mp_iface.c:566 mp_iface.c:694 mp_iface.c:1567
+#: mp_video.c:614 mp_iface.c:605 mp_iface.c:609 mp_iface.c:737 mp_iface.c:1618
+#: mp_video.c:590
 msgid "<unnamed>"
 msgstr "<sin nombre>"
 
@@ -88,7 +88,7 @@ msgstr "Imposible crear fichero '%s'."
 #: mp_iface.c:742 mp_iface.c:745 mp_iface.c:741 mp_iface.c:746 mp_iface.c:747
 #: mp_iface.c:732 mp_iface.c:775
 msgid "File has changed. Save changes?"
-msgstr "El fichero ha cambiado. ¿Salvar cambios?"
+msgstr "El fichero ha cambiado. Â¿Salvar cambios?"
 
 #: mp_iface.c:800 mp_iface.c:803 mp_iface.c:799 mp_iface.c:810 mp_iface.c:811
 #: mp_iface.c:842
@@ -151,12 +151,12 @@ msgstr "Reemplazar con: "
 #: mp_iface.c:1073 mp_iface.c:1076 mp_iface.c:1072 mp_iface.c:1091
 #: mp_iface.c:1092 mp_iface.c:1109 mp_iface.c:1160
 msgid "To end of file?"
-msgstr "¿Hasta el final del fichero?"
+msgstr "Â¿Hasta el final del fichero?"
 
 #: mp_iface.c:1166 mp_iface.c:1169 mp_iface.c:1165 mp_iface.c:1184
 #: mp_iface.c:1185 mp_iface.c:1202 mp_iface.c:1253
 msgid "Files to grep (empty, all): "
-msgstr "Ficheros en los que buscar (vacío, todos): "
+msgstr "Ficheros en los que buscar (vacÃ­o, todos): "
 
 #: mp_iface.c:1304 mp_iface.c:1307 mp_iface.c:1303 mp_iface.c:1322
 #: mp_iface.c:1323 mp_iface.c:1340 mp_iface.c:1391
@@ -171,18 +171,18 @@ msgstr "Word wrap en columna (0, ninguno): "
 #: mp_iface.c:1341 mp_iface.c:1344 mp_iface.c:1340 mp_iface.c:1359
 #: mp_iface.c:1360 mp_iface.c:1377 mp_iface.c:1428
 msgid "Tab size: "
-msgstr "Tamaño del tabulador: "
+msgstr "TamaÃ±o del tabulador: "
 
 #: mp_iface.c:1453 mp_iface.c:1456 mp_iface.c:1452 mp_iface.c:1470
 #: mp_iface.c:1471 mp_iface.c:1488 mp_iface.c:1539
 msgid "Function to execute: "
-msgstr "Función a ejecutar: "
+msgstr "FunciÃ³n a ejecutar: "
 
 #: mp_iface.c:1458 mp_iface.c:1461 mp_iface.c:1457 mp_iface.c:1478
 #: mp_iface.c:1479 mp_iface.c:1496 mp_iface.c:1547
 #, c-format
 msgid "Function not found (%s)"
-msgstr "Función no encontrada (%s)"
+msgstr "FunciÃ³n no encontrada (%s)"
 
 #: mp_tags.c:288 mp_tags.c:292
 msgid "Tag list"
@@ -230,7 +230,7 @@ msgstr "<Acerca de Minimum Profit>"
 #: mpv_gtk.c:582 mpv_gtk.c:599 mpv_gtk.c:602 mpv_gtk.c:605 mpv_gtk.c:624
 #: mpv_gtk.c:631
 msgid "Yes"
-msgstr "Sí"
+msgstr "SÃ­"
 
 #: mpv_gtk.c:588 mpv_gtk.c:605 mpv_gtk.c:608 mpv_gtk.c:611 mpv_gtk.c:630
 #: mpv_gtk.c:637
@@ -249,22 +249,22 @@ msgstr "OK"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: mp_video.c:557 mp_video.c:570 mp_video.c:581 mp_video.c:582
+#: mp_video.c:557 mp_video.c:570 mp_video.c:581 mp_video.c:582 mp_video.c:558
 msgid "No usable video driver found."
-msgstr "No se ha encontrado ningún driver de vídeo utilizable."
+msgstr "No se ha encontrado ningÃºn driver de vÃ­deo utilizable."
 
-#: mp_video.c:598 mp_video.c:611 mp_video.c:622 mp_video.c:623
+#: mp_video.c:598 mp_video.c:611 mp_video.c:622 mp_video.c:623 mp_video.c:599
 msgid "Bad mode."
 msgstr "Modo incorrecto."
 
 #: mpv_unix_common.c:224 mpv_unix_common.c:253 mpv_unix_common.c:266
-#: mpv_unix_common.c:276
+#: mpv_unix_common.c:276 mpv_unix_common.c:227
 #, c-format
 msgid "<help about '%s'>"
 msgstr "<ayuda sobre '%s'>"
 
 #: mpv_unix_common.c:248 mpv_unix_common.c:277 mpv_unix_common.c:290
-#: mpv_unix_common.c:300
+#: mpv_unix_common.c:300 mpv_unix_common.c:251
 #, c-format
 msgid "No help for '%s'"
 msgstr "No hay ayuda sobre '%s'"
@@ -281,13 +281,13 @@ msgid ""
 "or the end of file. By selecting a template from the list (popped up\n"
 "by Ctrl-U), it will be inserted into the current text.\n"
 msgstr ""
-"%%Fichero de moldes vacío\n"
+"%%Fichero de moldes vacÃ­o\n"
 "\n"
-"Este fichero de moldes está vacío. Para crear moldes, sólo hay que\n"
+"Este fichero de moldes estÃ¡ vacÃ­o. Para crear moldes, sÃ³lo hay que\n"
 "escribir un nombre (marcado mediante dos caracteres % seguidos al\n"
-"principio de la línea) y un bloque de texto, delimitado por el\n"
+"principio de la lÃ­nea) y un bloque de texto, delimitado por el\n"
 "siguiente molde o el final del fichero. Al seleccionar uno de los\n"
-"moldes desde la lista (abierta mediante Ctrl-U), éste se insertará\n"
+"moldes desde la lista (abierta mediante Ctrl-U), Ã©ste se insertarÃ¡\n"
 "en el texto activo.\n"
 
 #: mp_func.c:217 mp_func.c:221 mp_func.c:374 mp_func.c:428 mp_func.c:426
@@ -332,22 +332,22 @@ msgstr ""
 #: mp_func.c:292 mp_func.c:301 mp_func.c:308 mp_func.c:461 mp_func_i.h:155
 #: mp_func_i.h:159 mp_func_i.h:143 mp_func_i.h:147
 msgid "Line up"
-msgstr "Línea arriba"
+msgstr "LÃ­nea arriba"
 
 #: mp_func.c:293 mp_func.c:302 mp_func.c:309 mp_func.c:462 mp_func_i.h:175
 #: mp_func_i.h:179 mp_func_i.h:215
 msgid "Line down"
-msgstr "Línea abajo"
+msgstr "LÃ­nea abajo"
 
 #: mp_func.c:294 mp_func.c:303 mp_func.c:310 mp_func.c:463 mp_func_i.h:335
 #: mp_func_i.h:339 mp_func_i.h:171 mp_func_i.h:175 mp_func_i.h:191
 msgid "Character left"
-msgstr "Carácter a la izquierda"
+msgstr "CarÃ¡cter a la izquierda"
 
 #: mp_func.c:295 mp_func.c:304 mp_func.c:311 mp_func.c:464 mp_func_i.h:139
 #: mp_func_i.h:143 mp_func_i.h:163
 msgid "Character right"
-msgstr "Carácter a la derecha"
+msgstr "CarÃ¡cter a la derecha"
 
 #: mp_func.c:296 mp_func.c:305 mp_func.c:312 mp_func.c:465 mp_func_i.h:123
 #: mp_func_i.h:127 mp_func_i.h:159 mp_func_i.h:163 mp_func_i.h:135
@@ -362,12 +362,12 @@ msgstr "Palabra a la derecha"
 #: mp_func.c:298 mp_func.c:307 mp_func.c:314 mp_func.c:467 mp_func_i.h:167
 #: mp_func_i.h:171 mp_func_i.h:183 mp_func_i.h:187
 msgid "End of line"
-msgstr "Fin de la línea"
+msgstr "Fin de la lÃ­nea"
 
 #: mp_func.c:299 mp_func.c:308 mp_func.c:315 mp_func.c:468 mp_func_i.h:171
 #: mp_func_i.h:175 mp_func_i.h:207 mp_func_i.h:211 mp_func_i.h:199
 msgid "Beginning of line"
-msgstr "Principio de la línea"
+msgstr "Principio de la lÃ­nea"
 
 #: mp_func.c:300 mp_func.c:309 mp_func.c:316 mp_func.c:469 mp_func_i.h:179
 #: mp_func_i.h:183
@@ -382,22 +382,22 @@ msgstr "Principio del documento"
 #: mp_func.c:302 mp_func.c:311 mp_func.c:318 mp_func.c:471 mp_func_i.h:151
 #: mp_func_i.h:155 mp_func_i.h:167
 msgid "Page up"
-msgstr "Página arriba"
+msgstr "PÃ¡gina arriba"
 
 #: mp_func.c:303 mp_func.c:312 mp_func.c:319 mp_func.c:472 mp_func_i.h:147
 #: mp_func_i.h:151 mp_func_i.h:355
 msgid "Page down"
-msgstr "Página abajo"
+msgstr "PÃ¡gina abajo"
 
 #: mp_func.c:304 mp_func.c:313 mp_func.c:320 mp_func.c:473 mp_func_i.h:331
 #: mp_func_i.h:335 mp_func_i.h:339 mp_func_i.h:343 mp_func_i.h:263
 msgid "Go to line..."
-msgstr "Ir a la línea..."
+msgstr "Ir a la lÃ­nea..."
 
 #: mp_func.c:305 mp_func.c:314 mp_func.c:321 mp_func.c:474 mp_func_i.h:235
 #: mp_func_i.h:239 mp_func_i.h:243 mp_func_i.h:247
 msgid "Insert line"
-msgstr "Insertar línea"
+msgstr "Insertar lÃ­nea"
 
 #: mp_func.c:306 mp_func.c:315 mp_func.c:322 mp_func.c:481 mp_func_i.h:239
 #: mp_func_i.h:243 mp_func_i.h:247 mp_func_i.h:251
@@ -407,17 +407,17 @@ msgstr "Insertar tabulador"
 #: mp_func.c:307 mp_func.c:316 mp_func.c:323 mp_func.c:482 mp_func_i.h:323
 #: mp_func_i.h:327 mp_func_i.h:331 mp_func_i.h:335 mp_func_i.h:343
 msgid "Delete char over cursor"
-msgstr "Borrar carácter sobre el cursor"
+msgstr "Borrar carÃ¡cter sobre el cursor"
 
 #: mp_func.c:308 mp_func.c:317 mp_func.c:324 mp_func.c:483 mp_func_i.h:291
 #: mp_func_i.h:295 mp_func_i.h:299 mp_func_i.h:303 mp_func_i.h:311
 msgid "Delete char to the left of cursor"
-msgstr "Borrar carácter a la izquierda del cursor"
+msgstr "Borrar carÃ¡cter a la izquierda del cursor"
 
 #: mp_func.c:309 mp_func.c:318 mp_func.c:325 mp_func.c:485 mp_func_i.h:295
 #: mp_func_i.h:299 mp_func_i.h:303 mp_func_i.h:307 mp_func_i.h:315
 msgid "Delete line"
-msgstr "Borrar línea"
+msgstr "Borrar lÃ­nea"
 
 #: mp_func.c:310 mp_func.c:319 mp_func.c:326 mp_func.c:489 mp_func_i.h:187
 #: mp_func_i.h:191 mp_func_i.h:195 mp_func_i.h:199 mp_func_i.h:259
@@ -491,7 +491,7 @@ msgstr "Guardar..."
 #: mp_func.c:324 mp_func.c:333 mp_func.c:340 mp_func.c:503 mp_func_i.h:163
 #: mp_func_i.h:83 mp_func_i.h:87
 msgid "Save as..."
-msgstr "Guardar cómo..."
+msgstr "Guardar cÃ³mo..."
 
 #: mp_func.c:325 mp_func.c:334 mp_func.c:341 mp_func.c:504 mp_func_i.h:315
 #: mp_func_i.h:319 mp_func_i.h:323 mp_func_i.h:327 mp_func_i.h:335
@@ -505,11 +505,11 @@ msgstr "Abrir fichero bajo el cursor"
 
 #: mp_func.c:327 mp_func.c:336 mp_func.c:343 mp_func.c:506 mp_func_i.h:15
 msgid "Increment font size"
-msgstr "Aumentar tamaño del font"
+msgstr "Aumentar tamaÃ±o del font"
 
 #: mp_func.c:328 mp_func.c:337 mp_func.c:344 mp_func.c:507 mp_func_i.h:3
 msgid "Decrement font size"
-msgstr "Disminuir tamaño del font"
+msgstr "Disminuir tamaÃ±o del font"
 
 #: mp_func.c:329 mp_func.c:338 mp_func.c:345 mp_func.c:508
 msgid "Insert/Overwrite"
@@ -518,7 +518,7 @@ msgstr "Insertar/Sobreescribir"
 #: mp_func.c:330 mp_func.c:339 mp_func.c:346 mp_func.c:509 mp_func_i.h:27
 #: mp_func_i.h:23
 msgid "Case sensitive"
-msgstr "Distinguir mayúsculas"
+msgstr "Distinguir mayÃºsculas"
 
 #: mp_func.c:331 mp_func.c:340 mp_func.c:347 mp_func.c:510 mp_func_i.h:7
 #: mp_func_i.h:39
@@ -533,7 +533,7 @@ msgstr "Guardar LF como CR/LF"
 #: mp_func.c:333 mp_func.c:342 mp_func.c:349 mp_func.c:512 mp_func_i.h:79
 #: mp_func_i.h:39 mp_func_i.h:43
 msgid "Automatic indentation"
-msgstr "Indentación automática"
+msgstr "IndentaciÃ³n automÃ¡tica"
 
 #: mp_func.c:335 mp_func.c:344 mp_func.c:351 mp_func.c:514 mp_func_i.h:35
 #: mp_func_i.h:23
@@ -578,7 +578,7 @@ msgstr "Editar fichero de moldes"
 #: mp_func.c:343 mp_func.c:352 mp_func.c:359 mp_func.c:522 mp_func_i.h:279
 #: mp_func_i.h:283 mp_func_i.h:287 mp_func_i.h:291
 msgid "Edit configuration file"
-msgstr "Editar fichero de configuración"
+msgstr "Editar fichero de configuraciÃ³n"
 
 #: mp_func.c:344 mp_func.c:353 mp_func.c:360 mp_func.c:523 mp_func_i.h:59
 #: mp_func_i.h:55
@@ -588,12 +588,12 @@ msgstr "Word wrap..."
 #: mp_func.c:345 mp_func.c:354 mp_func.c:361 mp_func.c:524 mp_func_i.h:55
 #: mp_func_i.h:71 mp_func_i.h:75
 msgid "Tab size..."
-msgstr "Tamaño del tabulador..."
+msgstr "TamaÃ±o del tabulador..."
 
 #: mp_func.c:346 mp_func.c:355 mp_func.c:362 mp_func.c:525 mp_func_i.h:195
 #: mp_func_i.h:199 mp_func_i.h:203 mp_func_i.h:207
 msgid "Menu"
-msgstr "Menú"
+msgstr "MenÃº"
 
 #: mp_func.c:347 mp_func.c:356 mp_func.c:363 mp_func.c:526 mp_func_i.h:311
 #: mp_func_i.h:315 mp_func_i.h:319 mp_func_i.h:323 mp_func_i.h:331
@@ -623,12 +623,12 @@ msgstr "Ayuda sobre teclas"
 #: mp_func.c:352 mp_func.c:361 mp_func.c:368 mp_func.c:531 mp_func_i.h:183
 #: mp_func_i.h:187 mp_func_i.h:191 mp_func_i.h:211
 msgid "Position cursor with mouse"
-msgstr "Posicionar el cursor con el ratón"
+msgstr "Posicionar el cursor con el ratÃ³n"
 
 #: mp_func.c:353 mp_func.c:362 mp_func.c:369 mp_func.c:532 mp_func_i.h:283
 #: mp_func_i.h:287 mp_func_i.h:291 mp_func_i.h:295
 msgid "Execute editor function..."
-msgstr "Ejecutar función del editor..."
+msgstr "Ejecutar funciÃ³n del editor..."
 
 #: mp_func.c:354 mp_func.c:363 mp_func.c:370 mp_func.c:533 mp_func_i.h:39
 #: mp_func_i.h:51 mp_func_i.h:55
@@ -642,7 +642,7 @@ msgstr "Buscar en ficheros (grep)..."
 
 #: mp_func.c:356 mp_func.c:365 mp_func.c:372 mp_func.c:535
 msgid "Select last successful search"
-msgstr "Seleccionar la última búsqueda con éxito"
+msgstr "Seleccionar la Ãºltima bÃºsqueda con Ã©xito"
 
 #: mp_func.c:357 mp_func.c:366 mp_func.c:373 mp_func.c:536 mp_func_i.h:75
 #: mp_func_i.h:59 mp_func_i.h:63
@@ -666,40 +666,40 @@ msgstr "Proteger con palabra clave..."
 
 #: mp_func.c:370 mp_func.c:377 mp_func.c:540 mp_func_i.h:51 mp_func_i.h:47
 msgid "Suspend application"
-msgstr "Dejar en suspensión"
+msgstr "Dejar en suspensiÃ³n"
 
 #: mp_func.c:378 mp_func.c:541
 msgid "Reformat paragraph using word-wrapping"
-msgstr "Reformatear párrafo usando word-wrapping"
+msgstr "Reformatear pÃ¡rrafo usando word-wrapping"
 
 #: mp_func.c:475 mp_func_i.h:219 mp_func_i.h:223 mp_func_i.h:227
 #: mp_func_i.h:231 mp_func_i.h:251
 msgid "Insert new line above cursor"
-msgstr "Insertar nueva línea encima del cursor"
+msgstr "Insertar nueva lÃ­nea encima del cursor"
 
 #: mp_func.c:476 mp_func_i.h:223 mp_func_i.h:227 mp_func_i.h:231
 #: mp_func_i.h:235
 msgid "Insert new line below cursor"
-msgstr "Insertar nueva línea debajo del cursor"
+msgstr "Insertar nueva lÃ­nea debajo del cursor"
 
 #: mp_func.c:477 mp_func_i.h:211 mp_func_i.h:215 mp_func_i.h:219
 #: mp_func_i.h:223
 msgid "Join current line to one above"
-msgstr "Unir la línea actual con la superior"
+msgstr "Unir la lÃ­nea actual con la superior"
 
 #: mp_func.c:478 mp_func_i.h:227
 msgid "Join current line to one below"
-msgstr "Unir la línea actual con la inferior"
+msgstr "Unir la lÃ­nea actual con la inferior"
 
 #: mp_func.c:479 mp_func_i.h:259 mp_func_i.h:263 mp_func_i.h:267
 #: mp_func_i.h:271
 msgid "Flip letter case if A-Z or a-z"
-msgstr "Convertir carácter de mayúsculas a minúsculas o viceversa"
+msgstr "Convertir carÃ¡cter de mayÃºsculas a minÃºsculas o viceversa"
 
 #: mp_func.c:480 mp_func_i.h:247 mp_func_i.h:251 mp_func_i.h:255
 #: mp_func_i.h:259 mp_func_i.h:275
 msgid "Flip word case"
-msgstr "Convertir palabra de mayúsculas a minúsculas o viceversa"
+msgstr "Convertir palabra de mayÃºsculas a minÃºsculas o viceversa"
 
 #: mp_func.c:484 mp_func_i.h:299 mp_func_i.h:303 mp_func_i.h:307
 #: mp_func_i.h:311 mp_func_i.h:319
@@ -723,11 +723,11 @@ msgstr "Borrar la palabra completa"
 
 #: mp_func.c:542 mp_func_i.h:47 mp_func_i.h:43
 msgid "Sort lines"
-msgstr "Ordenar líneas"
+msgstr "Ordenar lÃ­neas"
 
 #: mp_func.c:1162 mp_func.c:1168 mp_func.c:1166 mp_func.c:1171 mp_func.c:1193
 msgid "Error executing user defined function"
-msgstr "Error ejecutando función definida por el usuario"
+msgstr "Error ejecutando funciÃ³n definida por el usuario"
 
 #: mp_iface.c:831 mp_iface.c:832 mp_iface.c:829 mp_iface.c:872
 #, c-format
@@ -740,35 +740,35 @@ msgstr "Conmutar insertar/sobreescribir"
 
 #: mp_func_i.h:115 mp_func_i.h:103 mp_func_i.h:107
 msgid "Reformat paragraph with word wrapping"
-msgstr "Reformatear párrafo con word wrapping"
+msgstr "Reformatear pÃ¡rrafo con word wrapping"
 
 #: mp_func_i.h:135 mp_func_i.h:139 mp_func_i.h:155 mp_func_i.h:159
 msgid "Move to previous instance of current char"
-msgstr "Mover a la anterior ocurrencia del carácter actual"
+msgstr "Mover a la anterior ocurrencia del carÃ¡cter actual"
 
 #: mp_func_i.h:143 mp_func_i.h:147 mp_func_i.h:343 mp_func_i.h:347
 #: mp_func_i.h:179
 msgid "Move to next instance of current char"
-msgstr "Mover a la siguiente ocurrencia del carácter actual"
+msgstr "Mover a la siguiente ocurrencia del carÃ¡cter actual"
 
 #: mp_func_i.h:191 mp_func_i.h:195 mp_func_i.h:199 mp_func_i.h:203
 msgid "Select last succesful search"
-msgstr "Seleccionar la última búsqueda con éxito"
+msgstr "Seleccionar la Ãºltima bÃºsqueda con Ã©xito"
 
 #: mp_func_i.h:203 mp_func_i.h:207 mp_func_i.h:211 mp_func_i.h:215
 #: mp_func_i.h:231
 msgid "Jump to matching bracket"
-msgstr "Saltar al paréntesis, llave ó corchete que coincida"
+msgstr "Saltar al parÃ©ntesis, llave Ã³ corchete que coincida"
 
 #: mp_func_i.h:27 mp_func_i.h:31
 msgid "Mark column #80"
-msgstr "Marcar columna nº 80"
+msgstr "Marcar columna nÂº 80"
 
 #: mp_func_i.h:115 mp_func_i.h:119
 msgid "Previous"
 msgstr "Anterior"
 
-#: mpv_curses.c:1508 mpv_gtk.c:2215 mpv_gtk.c:2231
+#: mpv_curses.c:1508 mpv_gtk.c:2215 mpv_gtk.c:2231 mpv_curses.c:1496
 msgid ""
 "Usage: mp [options] [file [file ...]]\n"
 "\n"
@@ -795,20 +795,20 @@ msgstr ""
 "\n"
 "Opciones:\n"
 "\n"
-" -t|--tag [tag] \tEdita el fichero donde está definido tag\n"
+" -t|--tag [tag] \tEdita el fichero donde estÃ¡ definido tag\n"
 " -w|--word-wrap [col]\tActiva el wordwrapping en la columna col\n"
-" -ts|--tab-size [size]\tDefine el tamaño del tabulador a size\n"
-" -ai|--autoindent\tActiva el modo de indentación automática\n"
-" -l|--lang [lang]\tSelección de idioma\n"
+" -ts|--tab-size [size]\tDefine el tamaÃ±o del tabulador a size\n"
+" -ai|--autoindent\tActiva el modo de indentaciÃ³n automÃ¡tica\n"
+" -l|--lang [lang]\tSelecciÃ³n de idioma\n"
 " -m|--mode [modo]\tModo de syntax-hilight\n"
 " --col80\t\tMarca la columna 80\n"
 " -bw|--monochrome\tMonocromo\n"
 " -tx|--text\t\tUsar modo texto (en lugar de GUI)\n"
-" -sp|--spellcheck\tActivar comprobración ortográfica\n"
+" -sp|--spellcheck\tActivar comprobraciÃ³n ortogrÃ¡fica\n"
 " -h|--help\t\tEsta pantalla de ayuda\n"
 "\n"
 " -hw|--hardware-cursor\tActiva el uso del cursor hardware\n"
-" --mouse\t\tActiva el uso del ratón para posicionamiento\n"
+" --mouse\t\tActiva el uso del ratÃ³n para posicionamiento\n"
 " -nt|--no-transparent\tDesactiva el modo transparente (eterm, aterm, etc.)\n"
 "\t\t\t"
 
@@ -819,11 +819,11 @@ msgstr "Imposible ejecutar '%s'"
 
 #: mp_wordp.c:241 mp_wordp.c:245
 msgid "Spellchecking is only available under Unix systems."
-msgstr "La corrección ortográfica sólo está disponible en sistemas Unix."
+msgstr "La correcciÃ³n ortogrÃ¡fica sÃ³lo estÃ¡ disponible en sistemas Unix."
 
 #: mp_func_i.h:7
 msgid "Mark spelling errors"
-msgstr "Marcar errores ortográficos"
+msgstr "Marcar errores ortogrÃ¡ficos"
 
 #: mpv_win32.c:1767
 msgid ""
@@ -846,4 +846,8 @@ msgid ""
 " --mouse\t\tActivate mouse usage for cursor positioning\n"
 " -nt|--no-transparent\tDisable transparent mode (eterm, aterm, etc.)\n"
 "\t\t\t"
+msgstr ""
+
+#: mp_iface.c:926
+msgid "<open files>"
 msgstr ""

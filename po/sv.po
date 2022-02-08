@@ -13,7 +13,7 @@ msgstr ""
 "Last-Translator: Jonas Gulle <jonas.gulle@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10.2\n"
 
@@ -27,11 +27,11 @@ msgstr "&Redigera"
 
 #: mp_conf.c:141
 msgid "&Search"
-msgstr "&Sök"
+msgstr "&SÃ¶k"
 
 #: mp_conf.c:143
 msgid "&Go to"
-msgstr "&Gå till"
+msgstr "&GÃ¥ till"
 
 #: mp_conf.c:146
 msgid "&Options"
@@ -70,19 +70,19 @@ msgstr ""
 
 #: mp_func.c:481 mp_iface.c:649 mp_iface.c:651
 msgid "Password:"
-msgstr "Lösenord:"
+msgstr "LÃ¶senord:"
 
 #: mp_func.c:488
 msgid "Password (again):"
-msgstr "Lösenord (igen):"
+msgstr "LÃ¶senord (igen):"
 
 #: mp_func.c:498
 msgid "Error: Passwords mismatch."
-msgstr "Fel: Lösenorden matchar inte"
+msgstr "Fel: LÃ¶senorden matchar inte"
 
 #: mp_func.c:883 mp_func.c:901
 msgid "<help on keys>"
-msgstr "<hjälp om tangenter>"
+msgstr "<hjÃ¤lp om tangenter>"
 
 #: mp_func.c:894 mp_func.c:912
 msgid "<none>"
@@ -90,7 +90,7 @@ msgstr "<ingen>"
 
 #: mp_func.c:908 mp_func.c:926
 msgid "Unlinked functions"
-msgstr "Olänkade funktioner"
+msgstr "OlÃ¤nkade funktioner"
 
 #: mp_func.c:1175 mp_func.c:1193
 msgid "Error executing user defined function"
@@ -98,10 +98,10 @@ msgstr "Fel vid exekvering av definerad funktion"
 
 #: mp_iface.c:583 mp_iface.c:585
 msgid "Line to go to: "
-msgstr "Rad att gå till:"
+msgstr "Rad att gÃ¥ till:"
 
 #: mp_iface.c:603 mp_iface.c:607 mp_iface.c:735 mp_iface.c:1608 mp_video.c:614
-#: mp_iface.c:605 mp_iface.c:609 mp_iface.c:737 mp_iface.c:1618
+#: mp_iface.c:605 mp_iface.c:609 mp_iface.c:737 mp_iface.c:1618 mp_video.c:590
 msgid "<unnamed>"
 msgstr "<icke namngiven>"
 
@@ -122,7 +122,7 @@ msgstr "Kan inte skapa filen '%s'."
 
 #: mp_iface.c:773 mp_iface.c:775
 msgid "File has changed. Save changes?"
-msgstr "Filen har ändrats. Spara ändringar?"
+msgstr "Filen har Ã¤ndrats. Spara Ã¤ndringar?"
 
 #: mp_iface.c:840 mp_iface.c:842
 msgid "System command: "
@@ -139,7 +139,7 @@ msgstr "Fel vid exekvering av kommando."
 
 #: mp_iface.c:944 mp_iface.c:946
 msgid "Open documents"
-msgstr "Öppna dokument"
+msgstr "Ã–ppna dokument"
 
 #: mp_iface.c:982 mp_iface.c:984
 #, c-format
@@ -148,11 +148,11 @@ msgstr "Mallfilen hittades inte (%s)"
 
 #: mp_iface.c:1004 mp_iface.c:1006
 msgid "Select template"
-msgstr "Välj mall"
+msgstr "VÃ¤lj mall"
 
 #: mp_iface.c:1100 mp_iface.c:1236 mp_iface.c:1102 mp_iface.c:1246
 msgid "Text to seek: "
-msgstr "Söktext: "
+msgstr "SÃ¶ktext: "
 
 #: mp_iface.c:1105 mp_iface.c:1123 mp_iface.c:1164 mp_iface.c:1320
 #: mp_iface.c:1107 mp_iface.c:1129 mp_iface.c:1174 mp_iface.c:1330
@@ -161,11 +161,11 @@ msgstr "Texten hittades inte."
 
 #: mp_iface.c:1143 mp_iface.c:1187 mp_iface.c:1153 mp_iface.c:1197
 msgid "Replace text: "
-msgstr "Ersätt text: "
+msgstr "ErsÃ¤tt text: "
 
 #: mp_iface.c:1148 mp_iface.c:1192 mp_iface.c:1158 mp_iface.c:1202
 msgid "Replace with: "
-msgstr "Ersätt med:"
+msgstr "ErsÃ¤tt med:"
 
 #: mp_iface.c:1150 mp_iface.c:1160
 msgid "To end of file?"
@@ -181,7 +181,7 @@ msgstr "grep"
 
 #: mp_iface.c:1381 mp_iface.c:1391
 msgid "Tag to seek: "
-msgstr "Tagg-namn att söka: "
+msgstr "Tagg-namn att sÃ¶ka: "
 
 #: mp_iface.c:1397 mp_iface.c:1407
 msgid "Word wrap on column (0, no word wrap): "
@@ -236,7 +236,7 @@ msgstr "[RETUR]"
 msgid "<about Minimum Profit>"
 msgstr "<om Minimum Profit>"
 
-#: mpv_curses.c:1508 mpv_gtk.c:2216 mpv_gtk.c:2231
+#: mpv_curses.c:1508 mpv_gtk.c:2216 mpv_gtk.c:2231 mpv_curses.c:1496
 msgid ""
 "Usage: mp [options] [file [file ...]]\n"
 "\n"
@@ -259,25 +259,25 @@ msgid ""
 " -nt|--no-transparent\tDisable transparent mode (eterm, aterm, etc.)\n"
 "\t\t\t"
 msgstr ""
-"Användning: mp [alternativ] [fil [fil ...]]\n"
+"AnvÃ¤ndning: mp [alternativ] [fil [fil ...]]\n"
 "\n"
 "Alternativ:\n"
 "\n"
-" -t|--tag [tagg] \tRedigerar filen där taggen är definerad\n"
+" -t|--tag [tagg] \tRedigerar filen dÃ¤r taggen Ã¤r definerad\n"
 " -w|--word-wrap [kolumn]\tRadbryt vid kolumn\n"
 " -ts|--tab-size [storlek]\tAnger tabbstorlek\n"
-" -ai|--autoindent\tAnvänd automatisk indentering\n"
-" -l|--lang [språk]\tVälj språk\n"
-" -m|--mode [läge]\tSyntax-highlight läge\n"
+" -ai|--autoindent\tAnvÃ¤nd automatisk indentering\n"
+" -l|--lang [sprÃ¥k]\tVÃ¤lj sprÃ¥k\n"
+" -m|--mode [lÃ¤ge]\tSyntax-highlight lÃ¤ge\n"
 " --col80\t\tMarkera kolumn # 80\n"
 " -bw|--monochrome\tMonokrom\n"
-" -tx|--text\t\tAnvänd textläge (istället för grafiskt användargränssnitt)\n"
-" -sp|--spellcheck\tAktivera rättstavning\n"
-" -h|--help\t\tDenna hjälpskärm\n"
+" -tx|--text\t\tAnvÃ¤nd textlÃ¤ge (istÃ¤llet fÃ¶r grafiskt anvÃ¤ndargrÃ¤nssnitt)\n"
+" -sp|--spellcheck\tAktivera rÃ¤ttstavning\n"
+" -h|--help\t\tDenna hjÃ¤lpskÃ¤rm\n"
 "\n"
-" -hw|--hardware-cursor\tAnvänd hårdvarumarkör\n"
-" --mouse\t\tAnvänd musen för markörförflyttning\n"
-" -nt|--no-transparent\tAvaktivera transparent läge (eterm, aterm, etc.)\n"
+" -hw|--hardware-cursor\tAnvÃ¤nd hÃ¥rdvarumarkÃ¶r\n"
+" --mouse\t\tAnvÃ¤nd musen fÃ¶r markÃ¶rfÃ¶rflyttning\n"
+" -nt|--no-transparent\tAvaktivera transparent lÃ¤ge (eterm, aterm, etc.)\n"
 "\t\t\t"
 
 #: mpv_gtk.c:624 mpv_gtk.c:631
@@ -296,23 +296,23 @@ msgstr "OK"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: mp_video.c:582
+#: mp_video.c:582 mp_video.c:558
 msgid "No usable video driver found."
-msgstr "Ingen användbar videodrivrutin hittades."
+msgstr "Ingen anvÃ¤ndbar videodrivrutin hittades."
 
-#: mp_video.c:623
+#: mp_video.c:623 mp_video.c:599
 msgid "Bad mode."
-msgstr "Felaktigt läge."
+msgstr "Felaktigt lÃ¤ge."
 
-#: mpv_unix_common.c:276
+#: mpv_unix_common.c:276 mpv_unix_common.c:227
 #, c-format
 msgid "<help about '%s'>"
-msgstr "<hjälp om '%s'>"
+msgstr "<hjÃ¤lp om '%s'>"
 
-#: mpv_unix_common.c:300
+#: mpv_unix_common.c:300 mpv_unix_common.c:251
 #, c-format
 msgid "No help for '%s'"
-msgstr "Ingen hjälp för '%s'"
+msgstr "Ingen hjÃ¤lp fÃ¶r '%s'"
 
 #: mpv_win32.c:1767
 msgid ""
@@ -336,25 +336,25 @@ msgid ""
 " -nt|--no-transparent\tDisable transparent mode (eterm, aterm, etc.)\n"
 "\t\t\t"
 msgstr ""
-"Användning: mp [alternativ] [fil [fil ...]]\n"
+"AnvÃ¤ndning: mp [alternativ] [fil [fil ...]]\n"
 "\n"
 "Alternativ:\n"
 "\n"
-" -t|--tag [tagg] \tRedigerar filen där taggen är definerad\n"
+" -t|--tag [tagg] \tRedigerar filen dÃ¤r taggen Ã¤r definerad\n"
 " -w|--word-wrap [kolumn]\tRadbryt vid kolumn\n"
 " -ts|--tab-size [storlek]\tAnger tabbstorlek\n"
-" -ai|--autoindent\tAnvänd automatisk indentering\n"
-" -l|--lang [lang]\tVälj språk\n"
-" -m|--mode [läge]\tSyntax-highlight läge\n"
+" -ai|--autoindent\tAnvÃ¤nd automatisk indentering\n"
+" -l|--lang [lang]\tVÃ¤lj sprÃ¥k\n"
+" -m|--mode [lÃ¤ge]\tSyntax-highlight lÃ¤ge\n"
 " --col80\t\tMarkera kolumn # 80\n"
 " -bw|--monochrome\tMonokrom\n"
-" -tx|--text\t\tAnvänd textläge (istället för grafiskt användargränssnitt)\n"
-" -sp|--spellcheck\tAktivera rättstavning\n"
-" -h|--help\t\tDenna hjälpskärm\n"
+" -tx|--text\t\tAnvÃ¤nd textlÃ¤ge (istÃ¤llet fÃ¶r grafiskt anvÃ¤ndargrÃ¤nssnitt)\n"
+" -sp|--spellcheck\tAktivera rÃ¤ttstavning\n"
+" -h|--help\t\tDenna hjÃ¤lpskÃ¤rm\n"
 "\n"
-" -hw|--hardware-cursor\tAnvänd hårdvarumarkör\n"
-" --mouse\t\tAnvänd musen för markörförflyttning\n"
-" -nt|--no-transparent\tAvaktivera transparent läge (eterm, aterm, etc.)\n"
+" -hw|--hardware-cursor\tAnvÃ¤nd hÃ¥rdvarumarkÃ¶r\n"
+" --mouse\t\tAnvÃ¤nd musen fÃ¶r markÃ¶rfÃ¶rflyttning\n"
+" -nt|--no-transparent\tAvaktivera transparent lÃ¤ge (eterm, aterm, etc.)\n"
 "\t\t\t"
 
 #: mp_wordp.c:195
@@ -364,7 +364,7 @@ msgstr "Kan inte exekvera '%s'"
 
 #: mp_wordp.c:241 mp_wordp.c:245
 msgid "Spellchecking is only available under Unix systems."
-msgstr "Rättstavning är bara tillgängligt under Unixsystem."
+msgstr "RÃ¤ttstavning Ã¤r bara tillgÃ¤ngligt under Unixsystem."
 
 #: mp_func_i.h:3
 msgid "Decrement font size"
@@ -380,19 +380,19 @@ msgstr "Avmarkera block"
 
 #: mp_func_i.h:15
 msgid "Increment font size"
-msgstr "Öka teckenstorlek"
+msgstr "Ã–ka teckenstorlek"
 
 #: mp_func_i.h:19
 msgid "Toggle insert/overwrite"
-msgstr "Växla infoga/skriv över"
+msgstr "VÃ¤xla infoga/skriv Ã¶ver"
 
 #: mp_func_i.h:23
 msgid "Use regular expressions"
-msgstr "Använd reguljära uttryck"
+msgstr "AnvÃ¤nd reguljÃ¤ra uttryck"
 
 #: mp_func_i.h:27
 msgid "Case sensitive"
-msgstr "Skiftlägeskänslig"
+msgstr "SkiftlÃ¤geskÃ¤nslig"
 
 #: mp_func_i.h:31
 msgid "Mark column #80"
@@ -432,11 +432,11 @@ msgstr "Visa klippbord"
 
 #: mp_func_i.h:67
 msgid "Search next"
-msgstr "Sök nästa"
+msgstr "SÃ¶k nÃ¤sta"
 
 #: mp_func_i.h:71
 msgid "Password protect..."
-msgstr "Lösenordsskydda..."
+msgstr "LÃ¶senordsskydda..."
 
 #: mp_func_i.h:75
 msgid "Tab size..."
@@ -448,7 +448,7 @@ msgstr "Visa logg"
 
 #: mp_func_i.h:83
 msgid "Break hardlinks on write"
-msgstr "Bryt hårda länkar vid skrivning"
+msgstr "Bryt hÃ¥rda lÃ¤nkar vid skrivning"
 
 #: mp_func_i.h:87
 msgid "Save as..."
@@ -456,11 +456,11 @@ msgstr "Spara som..."
 
 #: mp_func_i.h:91
 msgid "Replace..."
-msgstr "Ersätt..."
+msgstr "ErsÃ¤tt..."
 
 #: mp_func_i.h:95
 msgid "Replace in all..."
-msgstr "Ersätt i alla..."
+msgstr "ErsÃ¤tt i alla..."
 
 #: mp_func_i.h:99
 msgid "Save..."
@@ -484,27 +484,27 @@ msgstr "Spela makro"
 
 #: mp_func_i.h:119
 msgid "Previous"
-msgstr "Föregående"
+msgstr "FÃ¶regÃ¥ende"
 
 #: mp_func_i.h:123
 msgid "Reopen..."
-msgstr "Öppna om..."
+msgstr "Ã–ppna om..."
 
 #: mp_func_i.h:127
 msgid "Next"
-msgstr "Nästa"
+msgstr "NÃ¤sta"
 
 #: mp_func_i.h:131
 msgid "Open..."
-msgstr "Öppna..."
+msgstr "Ã–ppna..."
 
 #: mp_func_i.h:135
 msgid "Word left"
-msgstr "Ord vänster"
+msgstr "Ord vÃ¤nster"
 
 #: mp_func_i.h:139
 msgid "Word right"
-msgstr "Ord höger"
+msgstr "Ord hÃ¶ger"
 
 #: mp_func_i.h:143
 msgid "New"
@@ -524,23 +524,23 @@ msgstr "Sida upp"
 
 #: mp_func_i.h:159
 msgid "Move to previous instance of current char"
-msgstr "Flytta till föregående förekomst av aktuellt tecken"
+msgstr "Flytta till fÃ¶regÃ¥ende fÃ¶rekomst av aktuellt tecken"
 
 #: mp_func_i.h:163
 msgid "Character right"
-msgstr "Tecken höger"
+msgstr "Tecken hÃ¶ger"
 
 #: mp_func_i.h:171
 msgid "Open file under cursor"
-msgstr "Öppna fil vid markör"
+msgstr "Ã–ppna fil vid markÃ¶r"
 
 #: mp_func_i.h:175
 msgid "Search text..."
-msgstr "Sök text..."
+msgstr "SÃ¶k text..."
 
 #: mp_func_i.h:179
 msgid "Move to next instance of current char"
-msgstr "Flytta till nästa förekomst av aktuellt tecken"
+msgstr "Flytta till nÃ¤sta fÃ¶rekomst av aktuellt tecken"
 
 #: mp_func_i.h:183
 msgid "End of document"
@@ -552,19 +552,19 @@ msgstr "Radslut"
 
 #: mp_func_i.h:191
 msgid "Character left"
-msgstr "Tecken vänster"
+msgstr "Tecken vÃ¤nster"
 
 #: mp_func_i.h:195
 msgid "Beginning of document"
-msgstr "Början på dokument"
+msgstr "BÃ¶rjan pÃ¥ dokument"
 
 #: mp_func_i.h:199
 msgid "Beginning of line"
-msgstr "Början av rad"
+msgstr "BÃ¶rjan av rad"
 
 #: mp_func_i.h:203
 msgid "Select last succesful search"
-msgstr "Välj sista lyckade sökning"
+msgstr "VÃ¤lj sista lyckade sÃ¶kning"
 
 #: mp_func_i.h:207
 msgid "Menu"
@@ -572,7 +572,7 @@ msgstr "Meny"
 
 #: mp_func_i.h:211
 msgid "Position cursor with mouse"
-msgstr "Positionera markör med musen"
+msgstr "Positionera markÃ¶r med musen"
 
 #: mp_func_i.h:215
 msgid "Line down"
@@ -580,15 +580,15 @@ msgstr "Rad ner"
 
 #: mp_func_i.h:219
 msgid "Help on keys"
-msgstr "Hjälp om tangenter"
+msgstr "HjÃ¤lp om tangenter"
 
 #: mp_func_i.h:223
 msgid "Join current line to one above"
-msgstr "Sammanfoga aktuell rad med raden ovanför"
+msgstr "Sammanfoga aktuell rad med raden ovanfÃ¶r"
 
 #: mp_func_i.h:227
 msgid "Join current line to one below"
-msgstr "Sammanfoga aktuell rad med raden nedanför"
+msgstr "Sammanfoga aktuell rad med raden nedanfÃ¶r"
 
 #: mp_func_i.h:231
 msgid "Jump to matching bracket"
@@ -596,7 +596,7 @@ msgstr "Hoppa till matchande parentes"
 
 #: mp_func_i.h:235
 msgid "Insert new line below cursor"
-msgstr "Infoga ny rad under nedanför markören"
+msgstr "Infoga ny rad under nedanfÃ¶r markÃ¶ren"
 
 #: mp_func_i.h:239
 msgid "Insert tab"
@@ -604,7 +604,7 @@ msgstr "Infoga tabbtecken"
 
 #: mp_func_i.h:243
 msgid "Help for word under cursor"
-msgstr "Hjälp om ord vid markören"
+msgstr "HjÃ¤lp om ord vid markÃ¶ren"
 
 #: mp_func_i.h:247
 msgid "Insert line"
@@ -612,7 +612,7 @@ msgstr "Infoga rad"
 
 #: mp_func_i.h:251
 msgid "Insert new line above cursor"
-msgstr "Infoga ny rad ovanför markören"
+msgstr "Infoga ny rad ovanfÃ¶r markÃ¶ren"
 
 #: mp_func_i.h:255
 msgid "Insert template..."
@@ -620,27 +620,27 @@ msgstr "Infoga mall..."
 
 #: mp_func_i.h:259
 msgid "Mark beginning/end of block"
-msgstr "Markera början/slutet av blocket"
+msgstr "Markera bÃ¶rjan/slutet av blocket"
 
 #: mp_func_i.h:263
 msgid "Go to line..."
-msgstr "Gå till rad..."
+msgstr "GÃ¥ till rad..."
 
 #: mp_func_i.h:267
 msgid "Search tag..."
-msgstr "Sök tagg..."
+msgstr "SÃ¶k tagg..."
 
 #: mp_func_i.h:271
 msgid "Flip letter case if A-Z or a-z"
-msgstr "Växla gemener/versaler om A-Ö eller a-ö"
+msgstr "VÃ¤xla gemener/versaler om A-Ã– eller a-Ã¶"
 
 #: mp_func_i.h:275
 msgid "Flip word case"
-msgstr "Växla skiftläge"
+msgstr "VÃ¤xla skiftlÃ¤ge"
 
 #: mp_func_i.h:279
 msgid "Run system command..."
-msgstr "Kör systemkommando..."
+msgstr "KÃ¶r systemkommando..."
 
 #: mp_func_i.h:283
 msgid "Execute editor function..."
@@ -668,11 +668,11 @@ msgstr "Radera hela ordet"
 
 #: mp_func_i.h:307
 msgid "Delete to the beginning of word"
-msgstr "Radera till början av ordet"
+msgstr "Radera till bÃ¶rjan av ordet"
 
 #: mp_func_i.h:311
 msgid "Delete char to the left of cursor"
-msgstr "Radera tecken till vänster om markören"
+msgstr "Radera tecken till vÃ¤nster om markÃ¶ren"
 
 #: mp_func_i.h:315
 msgid "Delete line"
@@ -680,7 +680,7 @@ msgstr "Radera rad"
 
 #: mp_func_i.h:319
 msgid "Delete all whitespace after cursor"
-msgstr "Radera alla blanktecken efter markören"
+msgstr "Radera alla blanktecken efter markÃ¶ren"
 
 #: mp_func_i.h:323
 msgid "Copy block"
@@ -696,7 +696,7 @@ msgstr "Om..."
 
 #: mp_func_i.h:335
 msgid "Close"
-msgstr "Stäng"
+msgstr "StÃ¤ng"
 
 #: mp_func_i.h:339
 msgid "Complete tag..."
@@ -704,7 +704,7 @@ msgstr "Komplettera tagg..."
 
 #: mp_func_i.h:343
 msgid "Delete char over cursor"
-msgstr "Radera tecken ovanför markören"
+msgstr "Radera tecken ovanfÃ¶r markÃ¶ren"
 
 #: mp_func_i.h:347
 msgid "Delete to the end of word"
@@ -713,3 +713,7 @@ msgstr "Radera till ordets slut"
 #: mp_func_i.h:351
 msgid "Grep (find inside) files..."
 msgstr "Grep (leta i) filer..."
+
+#: mp_iface.c:926
+msgid "<open files>"
+msgstr ""

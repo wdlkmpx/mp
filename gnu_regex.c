@@ -44,42 +44,20 @@ char *gnu_regex_rcs = "$Id: gnu_regex.c 2999 2005-01-15 08:31:00Z angel $";
 #include "config.h"
 #endif
 
-/* The `emacs' switch turns on certain matching commands
-   that make sense only in Emacs. */
-#ifdef emacs
-
-#include "lisp.h"
-#include "buffer.h"
-#include "syntax.h"
-
-/* Emacs uses `NULL' as a predicate.  */
-#undef NULL
-
-#else  /* not emacs */
-
 /* We used to test for `BSTRING' here, but only GCC and Emacs define
    `BSTRING', as far as I know, and neither of them use this code.  */
-#if HAVE_STRING_H || STDC_HEADERS
-#include <string.h>
-#ifndef bcmp
-#define bcmp(s1, s2, n)	memcmp ((s1), (s2), (n))
-#endif
-#ifndef bcopy
-#define bcopy(s, d, n)	memcpy ((d), (s), (n))
-#endif
-#ifndef bzero
-#define bzero(s, n)	memset ((s), 0, (n))
-#endif
-#else
-#include <strings.h>
-#endif
+# include <string.h>
+# ifndef bcmp
+#  define bcmp(s1, s2, n)	memcmp ((s1), (s2), (n))
+# endif
+# ifndef bcopy
+#  define bcopy(s, d, n)	memcpy ((d), (s), (n))
+# endif
+# ifndef bzero
+#  define bzero(s, n)	memset ((s), 0, (n))
+# endif
 
-#ifdef STDC_HEADERS
 #include <stdlib.h>
-#else
-char *malloc ();
-char *realloc ();
-#endif
 
 
 /* Define the syntax stuff for \<, \>, etc.  */
@@ -130,8 +108,6 @@ init_syntax_once ()
 
 #define SYNTAX(c) re_syntax_table[c]
 
-#endif /* not emacs */
-
 /* Get the interface, including the syntax bits.  */
 #include "gnu_regex.h"
 

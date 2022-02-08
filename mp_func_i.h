@@ -1,3 +1,8 @@
+// this was created with fngen.pl using mp_func.c as the input file
+// unfortunately fngen.pl was deleted
+//
+// so further changes have to be done manually ...
+
 struct _mpf_functions _node_mpf_zoom_out [] = { {
   NULL,NULL,
   "zoom-out",mpf_zoom_out,LL("Decrement font size"),1

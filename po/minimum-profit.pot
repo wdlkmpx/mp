@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-07 11:50+0200\n"
+"POT-Creation-Date: 2021-12-23 18:02-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -88,7 +89,7 @@ msgstr ""
 msgid "Line to go to: "
 msgstr ""
 
-#: mp_iface.c:605 mp_iface.c:609 mp_iface.c:737 mp_iface.c:1618 mp_video.c:614
+#: mp_iface.c:605 mp_iface.c:609 mp_iface.c:737 mp_iface.c:1618 mp_video.c:590
 msgid "<unnamed>"
 msgstr ""
 
@@ -205,11 +206,11 @@ msgstr ""
 msgid "ESC Cancel"
 msgstr ""
 
-#: mpv_curses.c:895 mpv_gtk.c:511
+#: mpv_curses.c:895
 msgid "Y"
 msgstr ""
 
-#: mpv_curses.c:896 mpv_gtk.c:512
+#: mpv_curses.c:896
 msgid "N"
 msgstr ""
 
@@ -221,11 +222,11 @@ msgstr ""
 msgid " [ENTER]"
 msgstr ""
 
-#: mpv_curses.c:1272 mpv_win32.c:580
+#: mpv_curses.c:1272
 msgid "<about Minimum Profit>"
 msgstr ""
 
-#: mpv_curses.c:1508 mpv_gtk.c:2231
+#: mpv_curses.c:1496
 msgid ""
 "Usage: mp [options] [file [file ...]]\n"
 "\n"
@@ -249,61 +250,22 @@ msgid ""
 "\t\t\t"
 msgstr ""
 
-#: mpv_gtk.c:631
-msgid "Yes"
-msgstr ""
-
-#: mpv_gtk.c:637
-msgid "No"
-msgstr ""
-
-#: mpv_gtk.c:774 mpv_gtk.c:926
-msgid "OK"
-msgstr ""
-
-#: mpv_gtk.c:781 mpv_gtk.c:933
-msgid "Cancel"
-msgstr ""
-
-#: mp_video.c:582
+#: mp_video.c:558
 msgid "No usable video driver found."
 msgstr ""
 
-#: mp_video.c:623
+#: mp_video.c:599
 msgid "Bad mode."
 msgstr ""
 
-#: mpv_unix_common.c:276
+#: mpv_unix_common.c:227
 #, c-format
 msgid "<help about '%s'>"
 msgstr ""
 
-#: mpv_unix_common.c:300
+#: mpv_unix_common.c:251
 #, c-format
 msgid "No help for '%s'"
-msgstr ""
-
-#: mpv_win32.c:1767
-msgid ""
-"Usage: mp [options] [file [file ...]]\n"
-"\n"
-"Options:\n"
-"\n"
-" -t|--tag [tag] \tEdits the file where tag is defined\n"
-" -w|--word-wrap [col]\tSets wordwrapping in column col\n"
-" -ts|--tab-size [size]\tSets tab size\n"
-" -ai|--autoindent\tSets automatic indentation mode\n"
-" -l|--lang [lang]\tLanguage selection\n"
-" -m|--mode [mode]\tSyntax-hilight mode\n"
-" --col80\t\tMarks column # 80\n"
-" -bw|--monochrome\tMonochrome\n"
-" -tx|--text\t\tUse text mode (instead of GUI)\n"
-" -h|--help\t\tThis help screen\n"
-"\n"
-" -hw|--hardware-cursor\tActivates the use of hardware cursor\n"
-" --mouse\t\tActivate mouse usage for cursor positioning\n"
-" -nt|--no-transparent\tDisable transparent mode (eterm, aterm, etc.)\n"
-"\t\t\t"
 msgstr ""
 
 #: mp_wordp.c:195
