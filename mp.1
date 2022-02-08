@@ -1,0 +1,179 @@
+.TH "Minimum Profit" "1" "Sat Oct  7 12:14:46 2006"
+.SH "NAME"
+.PP
+.nf
+ Minimum Profit - Programmer text editor
+.fi
+.PP
+.SH "SYNOPSIS"
+.PP
+.nf
+ mp [options] [file [file...]]
+.fi
+.PP
+.SH "DESCRIPTION"
+.PP
+Minimum Profit (mp) is a text editor for programmers. Among its features
+are the following:
+.PP
+.RS 4
+.TP 4
+\(bu
+Multiple files can be edited at the same time and blocks copied and pasted among them.
+.TP 4
+\(bu
+Syntax highlighting for many popular languages / file formats: C, C++, Perl, Shell Scripts, Ruby, Php, SQL, Python, HTML...
+.TP 4
+\(bu
+Creative use of tags: tags created by the external utility \fIctags\fP are used to move instantaneously to functions or variables inside your current source tree. Tags are visually highlighted (underlined), and symbol completion can be triggered to avoid typing your own function names over and over.
+.TP 4
+\(bu
+Intelligent help system: pressing F1 over any word of a text being edited triggers the underlying system help (calling \fIman\fP when editing C or Shell files, \fIperldoc\fP with Perl, \fIri\fP on Ruby, \fIwinhelp\fP on MS Windows...).
+.TP 4
+\(bu
+Understandable interface: drop-down menus, reasonable default key bindings.
+.TP 4
+\(bu
+Configurable keys, menus and colors.
+.TP 4
+\(bu
+Text templates can be easily defined / accessed.
+.TP 4
+\(bu
+Multiplatform: Console/curses, GTK+ (1.2 and 2.0), MS Windows.
+.TP 4
+\(bu
+Automatic indentation, word wrapping, internal \fIgrep\fP, learning / repeating functions.
+.TP 4
+\(bu
+Search and replace using plain text or regular expressions (including a special function to replace text on all open files).
+.TP 4
+\(bu
+Small memory footprint.
+.TP 4
+\(bu
+Spellchecking support (via the ispell package).
+.TP 4
+\(bu
+Multilingual.
+.TP 4
+\(bu
+It helps you abandon vi, emacs and other six-legged freaks definitely.
+.TP 4
+\(bu
+Awesome easter egg.
+.RE
+
+.PP
+.SH "OPTIONS"
+.PP
+The following options are avaiable:
+.PP
+.TP
+.B "-t tag"
+Edits the file where tag is defined (see ctags(1)).
+.TP
+.B "-w column"
+Sets word wrapping to column. By default, no word wrapping is done.
+.TP
+.B "-ts number"
+Sets visual tab size. By default is 8.
+.TP
+.B "-ai"
+Activates automatic indentation. Disabled by default.
+.TP
+.B "-l lang"
+Selects text messages and menus to \fIlang\fP language. Run mp --help to see a list of available languages. By default, the LANG language variable is tested and used if the language is available, falling back to english otherwise.
+.TP
+.B "-m mode"
+Forces a syntax highlight mode. Run mp --help to see a list of available syntax highlight modes. By default, mode is autodetected for each open file.
+.TP
+.B "--col80"
+Marks column # 80 in a different color.
+.TP
+.B "-bw"
+Starts in black and white (monochrome) mode.
+.TP
+.B "-tx"
+Start in text mode (instead of GUI). By default, GUI modes (if support for any of them is compiled in) are tested first and used if the environment is suitable (by connecting to an Xserver, for example). This option forces the usage of text modes only.
+.TP
+.B "-sp"
+Enable spellchecking. The ispell package should be installed and correctly configured.
+.TP
+.B "-h"
+Shows a brief help screen.
+.PP
+The following options are available for the curses interface:
+.PP
+.TP
+.B "-hw"
+Activates 'hardware cursor'. By default, current cursor position is only marked with color. Setting this function the 'blinking' hardware cursor will be used. Probably useful only on real text console (not in graphical terminal emulators).
+.TP
+.B "--mouse"
+Activates mouse usage for cursor positioning. Mouse support is only available if compiled with the ncurses library. Enabling this option will allow cursor positioning with the left mouse button and beginning / end of block marking with the right one.
+.TP
+.B "-nt"
+Disable transparent mode. Only for terminal emulators.
+.PP
+The following options are available for the GTK interface:
+.PP
+.TP
+.B "--geometry geospec"
+Sets the window geometry as an X11 geometry spec, in the format WxH[+X+Y].
+.PP
+.SH "AUTHOR"
+.PP
+\fBMinimum Profit\fP has been written by Angel Ortega <angel@triptico.com> with
+the help of others (see the AUTHORS file for a complete list).
+.PP
+.SH "FILES"
+.PP
+.TP 4
+\(bu
+/etc/mprc (system-wide configuration file).
+.TP 4
+\(bu
+~/.mprc (user configuration file).
+.TP 4
+\(bu
+~/.mp_templates (user text templates).
+.RE
+
+.PP
+.SH "ENVIRONMENT VARIABLES"
+.PP
+.TP 4
+\(bu
+HOME (user home directory).
+.TP 4
+\(bu
+LANG, LC_ALL (language settings).
+.RE
+
+.PP
+.SH "SEE ALSO"
+.PP
+ctags(1).
+.PP
+mprc.sample and mprc-win32.sample for configuration file examples
+in /usr/share/doc/mped.
+.PP
+AUTHORS, README, README.IRIX, README.mingw32, README.solaris and
+README.zaurus.
+.PP
+Home page: http://www.triptico.com/software/mp.html
+.PP
+Mailing list: mp-subscribe@lists.triptico.com
+.PP
+.SH "LICENSE"
+.PP
+This  program  is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software  Foundation; either version 2
+of the License, or (at your option) any later version.
+.PP
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+.PP
+See the GNU General Public License for more details.

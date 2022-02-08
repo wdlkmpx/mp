@@ -1,0 +1,664 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-10-07 11:50+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mp_conf.c:134
+msgid "&File"
+msgstr ""
+
+#: mp_conf.c:136
+msgid "&Edit"
+msgstr ""
+
+#: mp_conf.c:141
+msgid "&Search"
+msgstr ""
+
+#: mp_conf.c:143
+msgid "&Go to"
+msgstr ""
+
+#: mp_conf.c:146
+msgid "&Options"
+msgstr ""
+
+#: mp_func.c:405
+#, c-format
+msgid ""
+"%%Empty template file\n"
+"\n"
+"This template file is empty. To create templates, write a name for\n"
+"each one (marked by two % characteres together in the beginning of\n"
+"the line) and a text body, delimited by the next template name\n"
+"or the end of file. By selecting a template from the list (popped up\n"
+"by Ctrl-U), it will be inserted into the current text.\n"
+msgstr ""
+
+#: mp_func.c:433
+msgid ""
+"#\n"
+"# Minimum Profit Config File\n"
+"#\n"
+"\n"
+msgstr ""
+
+#: mp_func.c:481 mp_iface.c:651
+msgid "Password:"
+msgstr ""
+
+#: mp_func.c:488
+msgid "Password (again):"
+msgstr ""
+
+#: mp_func.c:498
+msgid "Error: Passwords mismatch."
+msgstr ""
+
+#: mp_func.c:901
+msgid "<help on keys>"
+msgstr ""
+
+#: mp_func.c:912
+msgid "<none>"
+msgstr ""
+
+#: mp_func.c:926
+msgid "Unlinked functions"
+msgstr ""
+
+#: mp_func.c:1193
+msgid "Error executing user defined function"
+msgstr ""
+
+#: mp_iface.c:585
+msgid "Line to go to: "
+msgstr ""
+
+#: mp_iface.c:605 mp_iface.c:609 mp_iface.c:737 mp_iface.c:1618 mp_video.c:614
+msgid "<unnamed>"
+msgstr ""
+
+#: mp_iface.c:631 mp_iface.c:698
+msgid "Enter file name: "
+msgstr ""
+
+#: mp_iface.c:674 mp_iface.c:1258 mp_iface.c:1323
+#, c-format
+msgid "File '%s' not found."
+msgstr ""
+
+#: mp_iface.c:736
+#, c-format
+msgid "Can't create file '%s'."
+msgstr ""
+
+#: mp_iface.c:775
+msgid "File has changed. Save changes?"
+msgstr ""
+
+#: mp_iface.c:842
+msgid "System command: "
+msgstr ""
+
+#: mp_iface.c:872
+#, c-format
+msgid "<Output of \"%s\">"
+msgstr ""
+
+#: mp_iface.c:902
+msgid "Error executing command."
+msgstr ""
+
+#: mp_iface.c:926
+msgid "<open files>"
+msgstr ""
+
+#: mp_iface.c:946
+msgid "Open documents"
+msgstr ""
+
+#: mp_iface.c:984
+#, c-format
+msgid "Template file not found (%s)"
+msgstr ""
+
+#: mp_iface.c:1006
+msgid "Select template"
+msgstr ""
+
+#: mp_iface.c:1102 mp_iface.c:1246
+msgid "Text to seek: "
+msgstr ""
+
+#: mp_iface.c:1107 mp_iface.c:1129 mp_iface.c:1174 mp_iface.c:1330
+msgid "Text not found."
+msgstr ""
+
+#: mp_iface.c:1153 mp_iface.c:1197
+msgid "Replace text: "
+msgstr ""
+
+#: mp_iface.c:1158 mp_iface.c:1202
+msgid "Replace with: "
+msgstr ""
+
+#: mp_iface.c:1160
+msgid "To end of file?"
+msgstr ""
+
+#: mp_iface.c:1253
+msgid "Files to grep (empty, all): "
+msgstr ""
+
+#: mp_iface.c:1337
+msgid "grep"
+msgstr ""
+
+#: mp_iface.c:1391
+msgid "Tag to seek: "
+msgstr ""
+
+#: mp_iface.c:1407
+msgid "Word wrap on column (0, no word wrap): "
+msgstr ""
+
+#: mp_iface.c:1428
+msgid "Tab size: "
+msgstr ""
+
+#: mp_iface.c:1539
+msgid "Function to execute: "
+msgstr ""
+
+#: mp_iface.c:1547
+#, c-format
+msgid "Function not found (%s)"
+msgstr ""
+
+#: mp_tags.c:292
+msgid "Tag list"
+msgstr ""
+
+#: mp_tags.c:302
+msgid "Tag(s) not found."
+msgstr ""
+
+#: mpv_curses.c:304
+msgid "menu"
+msgstr ""
+
+#: mpv_curses.c:743 mpv_curses.c:942
+msgid "ESC Cancel"
+msgstr ""
+
+#: mpv_curses.c:895 mpv_gtk.c:511
+msgid "Y"
+msgstr ""
+
+#: mpv_curses.c:896 mpv_gtk.c:512
+msgid "N"
+msgstr ""
+
+#: mpv_curses.c:918
+msgid " [Y/N]"
+msgstr ""
+
+#: mpv_curses.c:931
+msgid " [ENTER]"
+msgstr ""
+
+#: mpv_curses.c:1272 mpv_win32.c:580
+msgid "<about Minimum Profit>"
+msgstr ""
+
+#: mpv_curses.c:1508 mpv_gtk.c:2231
+msgid ""
+"Usage: mp [options] [file [file ...]]\n"
+"\n"
+"Options:\n"
+"\n"
+" -t|--tag [tag] \tEdits the file where tag is defined\n"
+" -w|--word-wrap [col]\tSets wordwrapping in column col\n"
+" -ts|--tab-size [size]\tSets tab size\n"
+" -ai|--autoindent\tSets automatic indentation mode\n"
+" -l|--lang [lang]\tLanguage selection\n"
+" -m|--mode [mode]\tSyntax-hilight mode\n"
+" --col80\t\tMarks column # 80\n"
+" -bw|--monochrome\tMonochrome\n"
+" -tx|--text\t\tUse text mode (instead of GUI)\n"
+" -sp|--spellcheck\tActive spellchecking\n"
+" -h|--help\t\tThis help screen\n"
+"\n"
+" -hw|--hardware-cursor\tActivates the use of hardware cursor\n"
+" --mouse\t\tActivate mouse usage for cursor positioning\n"
+" -nt|--no-transparent\tDisable transparent mode (eterm, aterm, etc.)\n"
+"\t\t\t"
+msgstr ""
+
+#: mpv_gtk.c:631
+msgid "Yes"
+msgstr ""
+
+#: mpv_gtk.c:637
+msgid "No"
+msgstr ""
+
+#: mpv_gtk.c:774 mpv_gtk.c:926
+msgid "OK"
+msgstr ""
+
+#: mpv_gtk.c:781 mpv_gtk.c:933
+msgid "Cancel"
+msgstr ""
+
+#: mp_video.c:582
+msgid "No usable video driver found."
+msgstr ""
+
+#: mp_video.c:623
+msgid "Bad mode."
+msgstr ""
+
+#: mpv_unix_common.c:276
+#, c-format
+msgid "<help about '%s'>"
+msgstr ""
+
+#: mpv_unix_common.c:300
+#, c-format
+msgid "No help for '%s'"
+msgstr ""
+
+#: mpv_win32.c:1767
+msgid ""
+"Usage: mp [options] [file [file ...]]\n"
+"\n"
+"Options:\n"
+"\n"
+" -t|--tag [tag] \tEdits the file where tag is defined\n"
+" -w|--word-wrap [col]\tSets wordwrapping in column col\n"
+" -ts|--tab-size [size]\tSets tab size\n"
+" -ai|--autoindent\tSets automatic indentation mode\n"
+" -l|--lang [lang]\tLanguage selection\n"
+" -m|--mode [mode]\tSyntax-hilight mode\n"
+" --col80\t\tMarks column # 80\n"
+" -bw|--monochrome\tMonochrome\n"
+" -tx|--text\t\tUse text mode (instead of GUI)\n"
+" -h|--help\t\tThis help screen\n"
+"\n"
+" -hw|--hardware-cursor\tActivates the use of hardware cursor\n"
+" --mouse\t\tActivate mouse usage for cursor positioning\n"
+" -nt|--no-transparent\tDisable transparent mode (eterm, aterm, etc.)\n"
+"\t\t\t"
+msgstr ""
+
+#: mp_wordp.c:195
+#, c-format
+msgid "Can't execute '%s'"
+msgstr ""
+
+#: mp_wordp.c:245
+msgid "Spellchecking is only available under Unix systems."
+msgstr ""
+
+#: mp_func_i.h:3
+msgid "Decrement font size"
+msgstr ""
+
+#: mp_func_i.h:7
+msgid "Mark spelling errors"
+msgstr ""
+
+#: mp_func_i.h:11
+msgid "Unmark block"
+msgstr ""
+
+#: mp_func_i.h:15
+msgid "Increment font size"
+msgstr ""
+
+#: mp_func_i.h:19
+msgid "Toggle insert/overwrite"
+msgstr ""
+
+#: mp_func_i.h:23
+msgid "Use regular expressions"
+msgstr ""
+
+#: mp_func_i.h:27
+msgid "Case sensitive"
+msgstr ""
+
+#: mp_func_i.h:31
+msgid "Mark column #80"
+msgstr ""
+
+#: mp_func_i.h:35
+msgid "Save LF as CR/LF"
+msgstr ""
+
+#: mp_func_i.h:39
+msgid "Save tabs"
+msgstr ""
+
+#: mp_func_i.h:43
+msgid "Automatic indentation"
+msgstr ""
+
+#: mp_func_i.h:47
+msgid "Sort lines"
+msgstr ""
+
+#: mp_func_i.h:51
+msgid "Suspend application"
+msgstr ""
+
+#: mp_func_i.h:55
+msgid "Save modified texts"
+msgstr ""
+
+#: mp_func_i.h:59
+msgid "Word wrap..."
+msgstr ""
+
+#: mp_func_i.h:63
+msgid "Show clipboard"
+msgstr ""
+
+#: mp_func_i.h:67
+msgid "Search next"
+msgstr ""
+
+#: mp_func_i.h:71
+msgid "Password protect..."
+msgstr ""
+
+#: mp_func_i.h:75
+msgid "Tab size..."
+msgstr ""
+
+#: mp_func_i.h:79
+msgid "Show log"
+msgstr ""
+
+#: mp_func_i.h:83
+msgid "Break hardlinks on write"
+msgstr ""
+
+#: mp_func_i.h:87
+msgid "Save as..."
+msgstr ""
+
+#: mp_func_i.h:91
+msgid "Replace..."
+msgstr ""
+
+#: mp_func_i.h:95
+msgid "Replace in all..."
+msgstr ""
+
+#: mp_func_i.h:99
+msgid "Save..."
+msgstr ""
+
+#: mp_func_i.h:103
+msgid "Record macro"
+msgstr ""
+
+#: mp_func_i.h:107
+msgid "Reformat paragraph with word wrapping"
+msgstr ""
+
+#: mp_func_i.h:111
+msgid "Paste block"
+msgstr ""
+
+#: mp_func_i.h:115
+msgid "Play macro"
+msgstr ""
+
+#: mp_func_i.h:119
+msgid "Previous"
+msgstr ""
+
+#: mp_func_i.h:123
+msgid "Reopen..."
+msgstr ""
+
+#: mp_func_i.h:127
+msgid "Next"
+msgstr ""
+
+#: mp_func_i.h:131
+msgid "Open..."
+msgstr ""
+
+#: mp_func_i.h:135
+msgid "Word left"
+msgstr ""
+
+#: mp_func_i.h:139
+msgid "Word right"
+msgstr ""
+
+#: mp_func_i.h:143
+msgid "New"
+msgstr ""
+
+#: mp_func_i.h:147
+msgid "Line up"
+msgstr ""
+
+#: mp_func_i.h:151 mp_func_i.h:355
+msgid "Page down"
+msgstr ""
+
+#: mp_func_i.h:155 mp_func_i.h:167
+msgid "Page up"
+msgstr ""
+
+#: mp_func_i.h:159
+msgid "Move to previous instance of current char"
+msgstr ""
+
+#: mp_func_i.h:163
+msgid "Character right"
+msgstr ""
+
+#: mp_func_i.h:171
+msgid "Open file under cursor"
+msgstr ""
+
+#: mp_func_i.h:175
+msgid "Search text..."
+msgstr ""
+
+#: mp_func_i.h:179
+msgid "Move to next instance of current char"
+msgstr ""
+
+#: mp_func_i.h:183
+msgid "End of document"
+msgstr ""
+
+#: mp_func_i.h:187
+msgid "End of line"
+msgstr ""
+
+#: mp_func_i.h:191
+msgid "Character left"
+msgstr ""
+
+#: mp_func_i.h:195
+msgid "Beginning of document"
+msgstr ""
+
+#: mp_func_i.h:199
+msgid "Beginning of line"
+msgstr ""
+
+#: mp_func_i.h:203
+msgid "Select last succesful search"
+msgstr ""
+
+#: mp_func_i.h:207
+msgid "Menu"
+msgstr ""
+
+#: mp_func_i.h:211
+msgid "Position cursor with mouse"
+msgstr ""
+
+#: mp_func_i.h:215
+msgid "Line down"
+msgstr ""
+
+#: mp_func_i.h:219
+msgid "Help on keys"
+msgstr ""
+
+#: mp_func_i.h:223
+msgid "Join current line to one above"
+msgstr ""
+
+#: mp_func_i.h:227
+msgid "Join current line to one below"
+msgstr ""
+
+#: mp_func_i.h:231
+msgid "Jump to matching bracket"
+msgstr ""
+
+#: mp_func_i.h:235
+msgid "Insert new line below cursor"
+msgstr ""
+
+#: mp_func_i.h:239
+msgid "Insert tab"
+msgstr ""
+
+#: mp_func_i.h:243
+msgid "Help for word under cursor"
+msgstr ""
+
+#: mp_func_i.h:247
+msgid "Insert line"
+msgstr ""
+
+#: mp_func_i.h:251
+msgid "Insert new line above cursor"
+msgstr ""
+
+#: mp_func_i.h:255
+msgid "Insert template..."
+msgstr ""
+
+#: mp_func_i.h:259
+msgid "Mark beginning/end of block"
+msgstr ""
+
+#: mp_func_i.h:263
+msgid "Go to line..."
+msgstr ""
+
+#: mp_func_i.h:267
+msgid "Search tag..."
+msgstr ""
+
+#: mp_func_i.h:271
+msgid "Flip letter case if A-Z or a-z"
+msgstr ""
+
+#: mp_func_i.h:275
+msgid "Flip word case"
+msgstr ""
+
+#: mp_func_i.h:279
+msgid "Run system command..."
+msgstr ""
+
+#: mp_func_i.h:283
+msgid "Execute editor function..."
+msgstr ""
+
+#: mp_func_i.h:287
+msgid "Document list"
+msgstr ""
+
+#: mp_func_i.h:291
+msgid "Edit configuration file"
+msgstr ""
+
+#: mp_func_i.h:295
+msgid "Edit templates file"
+msgstr ""
+
+#: mp_func_i.h:299
+msgid "Exit"
+msgstr ""
+
+#: mp_func_i.h:303
+msgid "Delete whole word"
+msgstr ""
+
+#: mp_func_i.h:307
+msgid "Delete to the beginning of word"
+msgstr ""
+
+#: mp_func_i.h:311
+msgid "Delete char to the left of cursor"
+msgstr ""
+
+#: mp_func_i.h:315
+msgid "Delete line"
+msgstr ""
+
+#: mp_func_i.h:319
+msgid "Delete all whitespace after cursor"
+msgstr ""
+
+#: mp_func_i.h:323
+msgid "Copy block"
+msgstr ""
+
+#: mp_func_i.h:327
+msgid "Cut block"
+msgstr ""
+
+#: mp_func_i.h:331
+msgid "About..."
+msgstr ""
+
+#: mp_func_i.h:335
+msgid "Close"
+msgstr ""
+
+#: mp_func_i.h:339
+msgid "Complete tag..."
+msgstr ""
+
+#: mp_func_i.h:343
+msgid "Delete char over cursor"
+msgstr ""
+
+#: mp_func_i.h:347
+msgid "Delete to the end of word"
+msgstr ""
+
+#: mp_func_i.h:351
+msgid "Grep (find inside) files..."
+msgstr ""

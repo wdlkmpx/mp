@@ -1,0 +1,603 @@
+# -*- Mode: .mprc
+#
+# Minimum Profit config file Sample
+#
+# mp reads first /etc/mprc and then $HOME/.mprc on Unix, and
+# "HKEY_CURRENT_USER\Software\Minimum Profit\Home"/.mprc on MS Windows
+#
+
+###################################################
+#
+# basic configuration variables
+#
+###################################################
+
+# tab size (default 8)
+tab_size: 8
+
+# column where word wrap occurs (default 0, no word wrapping)
+word_wrap: 0
+
+# number of rows to scroll with the wheel (default 4, 0 = full page)
+wheel_scroll_rows: 4
+
+# case sensitive comparisons (default 1)
+case_sensitive_search: 1
+
+# use automatic indentation (default 0)
+auto_indent: 0
+
+# save spaces to tab boundaries as tabs (default 1)
+# (This directive is disabled and does nothing)
+save_tabs: 1
+
+# mark column # 80 (default 0)
+col_80: 0
+
+# save LF as CR/LF, for MSDOS / Windows style texts (default 0)
+cr_lf: 0
+
+# preread lines
+# this is the number of lines that are read below the first
+# visible line, to take into account line-running comments
+# for correct syntax coloring. If your system is fast and
+# the comments in your source are very lines long, increase
+# this value. If your system is slow or you don't use languages
+# which comments spread several lines (as Perl or Shell),
+# you can set it to 0
+preread_lines: 60
+
+# path to mp_templates file
+template_file: ~/.mp_templates
+
+# language
+# The two letter standard or the english name of the language can
+# be used. Supported by now: english, spanish, german, italian and dutch.
+# If you don't set it here, the LANG and LC_ALL environment
+# variables (and the internal language info on win32) will
+# be consulted. Defaults to english.
+lang: en
+
+# regular expression usage flag
+# If use_regex is set to 1, search and replace operations
+# use regular expressions instead of plain text searching.
+# The default is 1.
+use_regex: 1
+
+# use monochrome color set (default 0)
+monochrome: 0
+
+# automatic highlighting of spellchecking errors
+# you must have the 'ispell' package installed and accesible in your path
+# Default is 0 (disabled)
+spellcheck: 0
+
+# successful seeks on the same line
+# if set to something different from -1, all successful text searches
+# are shown in the same line of the screen (starting from 0).
+# Default is -1 (don't scroll the text)
+move_seek_to_line: -1
+
+########################################################
+#
+# curses specific (unix / linux / beos) variables
+#
+########################################################
+
+# Use mouse positioning (default 0)
+mouse: 0
+
+# use hardware cursor (default 0)
+hardware_cursor: 0
+
+# use transparency in terminals that support it (default 1)
+transparent: 1
+
+# use poor man boxes (+, - and | for frames, default 0)
+poor_man_boxes: 0
+
+
+########################################################
+#
+# win32 specific variables
+#
+########################################################
+
+# font face
+win32_font_face: Lucida Console
+
+# font size
+win32_font_size: 12
+
+# Context sensitive help: this variable can hold the complete path
+# to an MS Windows help file (.hlp), or any other thing that can be
+# passed to ShellExecute(), as a program or URL. If the %s substring
+# is present, it will be substituted with the keyword in search.
+
+# By default, it points to Microsoft's own search system for APIs.
+win32_help_file: http://search.microsoft.com/search/results.aspx?qu=%s
+
+# Other possible values: if you own a copy of the Win32 API help
+# file, just set it (when a help file is set, WINHELP.EXE will be
+# called with the keyword as a parameter).
+#win32_help_file: c:\path\to\win32.hlp
+
+########################################################
+#
+# gtk specific variables
+#
+########################################################
+
+# Pango usage flag
+# Since version 3.3.11, Minimum Profit's GTK 2.x driver can use Pango
+# for font rendering, and does it by default. Fonts drawn with the Pango
+# library look smoother because they are antialiased; but on old
+# systems it becomes almost unbearable slow. Set it to 0 if your
+# system is slow or you don't like antialiased fonts (on GTK 1.x
+# this directive is ignored).
+gtk_use_pango: 1
+
+# font face
+# good ones are lucidatypewriter, courier or any
+# monospaced truetype font as Courier New or Lucida Console.
+# If use_pango is set, the default font face is Mono; otherwise,
+# it's lucidatypewriter. Take note that you can also use
+# non-monospaced fonts (like verdana or georgia) if you use Pango.
+gtk_font_face: lucidatypewriter
+
+# font size
+gtk_font_size: 12
+
+# font weight (medium or bold). Ignored if using Pango.
+gtk_font_weight: medium
+
+# Set this to 1 if you want to use also italic fonts
+# in source code comments and such
+# (take into account that not all X11 fonts can be set to italic)
+# Ignored if using Pango.
+gtk_use_italics: 0
+
+# window size and position
+# these values can be overriden by using -geometry
+# these are the default values; set any to -1
+# to let the window manager guess (usually wrong)
+# the window geometry
+# See also notes on gtk_maximize
+gtk_width: 640
+gtk_height: 400
+gtk_xpos: 1
+gtk_ypos: 1
+
+# font encoding
+# you can set the registry and encoding used in GTK fonts.
+# If you don't include an encoding (the -1 part in iso8859-1),
+# a -* will be used. This is ignored if using Pango.
+# This is the default:
+gtk_font_encoding: iso8859
+
+# maximize on startup flag
+# if you want to open MP always maximized (as I do),
+# set this flag to nonzero
+gtk_maximize: 0
+
+########################################################
+#
+# key bindings
+#
+########################################################
+
+# format is:
+# bind <key name> <function name>
+# for a complete list of key and function names, see the
+# 'help on keys' option from the Options menu
+
+# some examples
+bind cursor-up move-up
+bind cursor-down move-down
+bind f3 open
+bind ctrl-x exit
+
+# default keys can be overwritten
+#bind ctrl-x cut
+
+# or even completely disabled, using <none>
+#bind ctrl-x <none>
+
+# if you want to start your very own keymap
+# from scratch, you can insert the following
+# command BEFORE your key definitions:
+#bind <all> <none>
+
+########################################################
+#
+# GUI colors (gtk and win32)
+#
+########################################################
+
+# format is:
+#
+# gui_color <syntax name> <ink rgb> <paper rgb> [<options>]
+#
+# where options can be: italic, underline, reverse
+#
+# <syntax name> is a syntax highlight group, and can be
+# any of:
+#
+# normal - normal (non-highlighted) text
+# selected - selected block
+# comment - source code comments
+# string - strings and number literals
+# token - programming language token
+# var - programming language variable, or second set of tokens
+# cursor - cursor color
+# caps - any text in all caps
+# local - any word contained in the current tag file
+# bracket - the bracket that matches the caracter over the cursor, if any
+# misspelled - misspelled words
+#
+# <ink rgb> and <paper rgb> are a 6 digit hex number, where
+# ff0000 is pure red, 00ff00 is pure green and 0000ff pure blue.
+# They can also be 'default' (without quotes), to use the
+# same color as the 'normal' color definition,
+# or any of the following color aliases:
+# black red green yellow blue magenta cyan white
+
+# these are the defaults
+
+gui_color normal black white
+gui_color selected ff0000 white reverse
+gui_color comment 00aaaa default italic
+gui_color string blue default
+gui_color token 00aa00 default
+gui_color var ff6666 default
+gui_color cursor default default reverse
+gui_color caps dddd00 default
+gui_color local 8888ff default underline
+gui_color bracket black yellow
+gui_color misspelled ff8888 default underline
+
+# white over black theme
+
+#gui_color normal cccccc black
+#gui_color selected ff0000 white reverse
+#gui_color comment 00eeaa default italic
+#gui_color string 5555ff default
+#gui_color token 00aa00 default
+#gui_color var ff6666 default
+#gui_color cursor default default reverse
+#gui_color caps ffff00 default
+#gui_color local 8888ff default underline
+
+# theme taken from 'Zenburn' theme from Cream for Vim
+# (nice low-contrast ground colors)
+
+#gui_color normal dbdbcc 3e3e3e
+#gui_color selected ffff66 8c9b70
+#gui_color comment 71d3b4 default italic
+#gui_color string cc9393 default
+#gui_color token efef8f default
+#gui_color var e3ceab default
+#gui_color cursor default default reverse
+#gui_color caps ffcfaf default
+#gui_color local 7f9f7f default underline
+
+########################################################
+#
+# text colors (curses)
+#
+########################################################
+
+# format is:
+#
+# text_color <syntax name> <ink color> <paper color> [<options>]
+#
+# where options can be: underline, reverse, bright
+#
+# <syntax name> is a syntax highlight group, and can be
+# any of the following content colors (the same
+# as in the 'gui_color' directive):
+#
+# normal - normal (non-highlighted) text
+# selected - selected block
+# comment - source code comments
+# string - strings and number literals
+# token - programming language token
+# var - programming language variable, or second set of tokens
+# cursor - cursor color
+# caps - any text in all caps
+# local - any word contained in the current tag file
+# bracket - the bracket that matches the caracter over the cursor, if any
+# misspelled - misspelled words
+#
+# plus the following interface colors:
+#
+# title - the title and status bars
+# menu_element - any element of the menu, except the separators
+# menu_selection - the currently selected item in the menu
+# frame1 - the top and left sides of the frames, plus the separators
+# frame2 - the bottom and right sides of the frames
+# scrollbar - color of the scrollbar
+# scrollbar_thumb - color of the scrollbar thumb
+#
+# <ink color> and <paper color> can be any of the following
+# color names:
+# black red green yellow blue magenta cyan white
+# They can also be 'default' (without quotes), to use the
+# same color definition as the 'normal' color definition.
+# If the 'normal' ink or paper is set to 'default',
+# the default terminal color (can be transparent for X terminals)
+# is used.
+
+# these are the defaults
+text_color normal default default
+text_color selected red white reverse
+text_color comment green default
+text_color string blue default bright
+text_color token green default bright
+text_color var red default
+text_color cursor default default reverse
+text_color caps yellow default bright
+text_color local cyan default underline
+text_color bracket black cyan
+text_color misspelled red default bright reverse
+
+text_color title blue white reverse bright
+text_color menu_element blue white reverse bright
+text_color menu_selection white black
+text_color frame1 blue blue reverse bright
+text_color frame2 blue black reverse bright
+text_color scrollbar default default
+text_color scrollbar_thumb blue white reverse bright
+
+########################################################
+#
+# menu options
+#
+########################################################
+
+# syntax:
+# menu <menu_bar_name> or
+# menu_item <function>
+# <menu_bar_name> is simple text, and <function> is
+# a Minimum Profit function (see above and the
+# Options/Help on Keys menu), or - for a separator
+
+menu &File
+menu_item new
+menu_item open
+menu_item reopen
+menu_item save
+menu_item save-as
+menu_item close
+menu_item -
+menu_item set-password
+menu_item -
+menu_item sync
+menu_item -
+menu_item exit
+
+menu &Edit
+menu_item cut
+menu_item copy
+menu_item paste
+menu_item delete-line
+menu_item -
+menu_item mark
+menu_item unmark
+menu_item -
+menu_item edit-templates-file
+menu_item edit-config-file
+menu_item -
+menu_item exec-command
+menu_item exec-function
+
+menu &Search
+menu_item seek
+menu_item seek-next
+menu_item replace
+menu_item replace-all
+menu_item toggle-case
+menu_item toggle-regex
+menu_item -
+menu_item find-tag
+menu_item completion
+menu_item -
+menu_item grep
+
+menu "&Go to"
+menu_item next
+menu_item move-bof
+menu_item move-eof
+menu_item move-bol
+menu_item move-eol
+menu_item goto
+menu_item move-word-right
+menu_item move-word-left
+menu_item -
+menu_item document-list
+
+menu &Options
+menu_item toggle-save-tabs
+menu_item toggle-cr-lf
+menu_item toggle-auto-indent
+menu_item toggle-column-80
+menu_item toggle-break-hardlinks
+menu_item toggle-spellcheck
+menu_item -
+menu_item record-macro
+menu_item play-macro
+menu_item -
+menu_item set-tab-size
+menu_item set-word-wrap
+menu_item -
+menu_item key-help
+menu_item -
+menu_item about
+
+# if you want to start your own menu from scratch,
+# you can use menu_reset to clean up and start again
+# menu_reset
+
+# you can shorten your config file by condensing
+# key bindings and menu definitions by using menu_bind;
+# syntax is
+#
+# menu_bind <function> <key> [<key>...]
+#
+# for example:
+# menu_bind open ctrl-o f3
+
+#######################################
+#
+# Including other configuration files
+#
+#######################################
+
+source /etc/mprc.colors
+
+#######################################
+#
+# other directives
+#
+#######################################
+
+# ctags command line
+# this is the command that will be executed if a tag is requested
+# an a ./tags file is not found.
+ctags_cmd: ctags *
+
+# ispell command line
+# by default is 'ispell', but can be any ispell clone
+# that accepts the -a operation mode (an alternative is 'aspell').
+ispell_cmd: ispell
+
+# another useful value
+#ctags_cmd: ctags -R
+
+# status line format string
+# The information in the status line can be formatted using
+# a printf()-like string. Any text will be shown verbatim
+# except the following directives:
+#
+#	%m	Writes '*' if current text is modified, nothing otherwise
+#	%x	Writes current X (column) position
+#	%y	Writes current Y (line) position
+#	%l	Writes total number of lines in current text
+#	%R	Writes 'R' if in 'recording macro' mode, nothing otherwise
+#	%O	Write 'O' if in 'overwrite' mode, nothing otherwise
+#	%s	Writes current syntax highlight mode
+#	%t	If the cursor is over a tag, its target (i.e., the
+#		function prototype or variable definition) is written
+#
+# default setting is below
+
+status_format: %m %x,%y [%l] %R%O %s %t
+
+# break hardlinks flag
+# When set, already existing files about to be overwritten are unlinked
+# first, and after being written, their original permissions and
+# owners are restored, if possible. This is a standard behaviour on
+# Unix text editors as vi and emacs. Not only hardlinks are broken;
+# also symbolic ones will be. When disabled (the default), files are
+# simply overwritten.
+# 
+# If you don't understand this, leave it with it's default value.
+# This flag has no effect on win32.
+break_hardlinks: 0
+
+# conditional directives
+# if/else/endif constructs can be used to conditionally execute
+# configuration directives based on the driver. Examples:
+#
+# activate cr_lf usage under MS Windows:
+# if win32 cr_lf: 1
+#
+# use alternate keymappings under curses:
+# if curses
+#	bind ctrl-x exit
+#	bind ctrl-z suspend
+# else
+#	bind ctrl-x cut
+#	bind ctrl-z <none>
+# endif
+
+
+#
+# User defined functions
+#
+# Two new commands have been added to "mprc" to support user defined
+# functions.
+#
+# User defined functions are a fixed sequence of MP functions that 
+# can be called in any order.  Function calls may contain additional
+# arguments.
+#
+# After a function has been defined, it can be used like a regular
+# function in bind, menu_item or menu_bind commands.
+#
+# To define a user defined function you must use a construct like:
+#
+# user-fn <new-function-name> "Function description" <one or more functions>
+#
+# Examples:
+#
+# This user defined function compiles a program and shows the output
+# in a read-only buffer.  (This is a very simple implementation, a more
+# user friendly one should probably use tee and open a new window...)
+#
+user-fn build "Compile project" \
+	sync \
+	"exec-command \"<<make output> make -k 2>&1 ; echo STATUS: $?\""
+
+#
+# This user defined function implements the F5 binding described in
+# mprc-win32.sample
+#
+user-fn insert-timestamp "Insert time stamp" \
+	"exec-command \"date '+%H:%M %d/%m/%Y'\"" \
+	delete-left
+
+#
+# Simple functions to create printing support.  They depend on the
+# included mp_print script functionality for actual functionality
+#
+user-fn print "Print" "exec-command \"|mp_print print\""
+user-fn print-preview "Print preview" "exec-command \"|mp_print preview\""
+user-fn page-setup "Page setup..." "exec-command \"@mp_print setup\""
+
+#
+# Simple function that inserts some text
+#
+user-fn signature "Insert my Signature" ">Alejandro Liu Ly"
+
+#
+# Localisation of user defined functions
+#
+# To support localisation of user defined functions a MPRC command to
+# simply change the description of existing user defined functions.
+# The syntax is:
+#
+# desc-user-fn <function-name> "Replacement description"
+#
+# Examples:
+#
+if lang(es)
+  desc-user-fn print "Imprimir"
+  desc-user-fn page-setup "Configurar página..."
+endif
+#
+# It is probably easier to group all translations into a language file and
+# simply do:
+#
+if lang(es) source /etc/mprc.d/fndesc.es
+if lang(nl) source /etc/mprc.d/fndesc.nl
+
+#
+# A few test bindings
+#
+bind f5 insert-timestamp
+menu_bind print		ctrl-p
+menu_bind print-preview
+menu_bind page-setup
+menu_bind build		ctrl-k
+

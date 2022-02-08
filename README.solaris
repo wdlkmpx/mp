@@ -1,0 +1,12 @@
+Building Minimum Profit under Sun Solaris
+=========================================
+
+Standard build should work:
+
+    $ ./config.sh
+    $ make
+
+If GNU cc is found, it will be used instead of Sun's native compiler (no tests
+were done using Sun's compiler, anyway).
+
+Angel Ortega <angel@triptico.com>

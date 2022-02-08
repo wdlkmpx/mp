@@ -1,0 +1,14 @@
+Building Minimum Profit under SGI IRIX
+======================================
+
+Standard build should work:
+
+    $ ./config.sh
+    $ make
+
+If GNU cc is found, it will be used instead of SGI's native compiler. Indeed,
+I haven't tested it with SGI's cc, as I don't own a CC license on my O2.
+
+You can obtain many GNU software from http://freeware.sgi.com.
+
+Angel Ortega <angel@triptico.com>

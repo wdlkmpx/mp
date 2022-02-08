@@ -1,0 +1,114 @@
+Minimum Profit Release Notes
+============================
+
+3.3.18b
+-------
+
+ * New russian translation.
+ * The replacement pattern in 'replace' now expands slashed characters
+   as \t and \n (bug #1095).
+
+3.3.18a
+-------
+
+ * Updated german translation.
+ * New swedish translation.
+
+3.3.18
+------
+
+ * Avoid hangs when using 'aspell' instead of 'ispell' (bug #1090).
+ * GTK default font size set to 12 (bug #1093, Debian 352284).
+ * GTK font size isn't forced to integer values (bug #1091, suggested
+   by Khiraly).
+ * Mention that sample configuration files are in /usr/share/doc/mped
+   (bug #1094, Debian 352282).
+ * A new configuration directive, move_seek_to_line , to set a line
+   on screen where all successful text searches are shown (bug #1092,
+   suggested by hfrye).
+
+3.3.17
+------
+
+ * Fixed a bug in the GTK version introduced by newer versions of
+   pango; with some fonts, the average char width was not correctly
+   returned and the cursor moved further the right margin without the
+   text scrolling to the left.
+ * Minor bug fixes: added handling of the keypad Enter key under GTK
+   and fixed a crash on GTK 1.x on SunOS when closing the application
+   with multiple documents open.
+ * mp_doccer is no longer included in Minimum Profit.
+
+3.3.16
+------
+
+ * The special file name - (hyphen) can be used to read from stdin
+   and write to stdout, making mp useful as a pager or filter (but only
+   usable with the GTK interface).
+ * A new configuration file directive has been added, wheel_scroll_rows,
+   to set the number of lines to move per hit to the mouse wheel.
+
+3.3.15
+------
+
+ * Spellchecking support has been added. You need the ispell package
+   and the corresponding dictionaries to use it.
+
+3.3.14
+------
+
+ * New syntax highlight for LaTeX documents.
+ * New syntax highlight for diff files.
+ * A new configuration file directive for the GTK interface, gtk_maximize,
+   to maximize the main window on startup, has been added.
+
+3.3.13
+------
+
+ * Menu definition behaviour have changed. Due to a (probably very old)
+   bug, whenever a menu entry was defined in the configuration file, the
+   menu was reset to empty; so, to add your own menu bar to the existing
+   menu, you had to duplicate all default menu entries (probably copying
+   them from mprc.sample). This is, obviously, not what I intended; in
+   fact, the 'menu_reset' configuration directive was created precisely
+   to do that if you wanted to rewrite your menu from scratch. As I don't
+   use customized menus myself, I didn't realize this was happening. I've
+   fixed it, so all menu definitions in mprc are appended to the default
+   menu, but if you have redefined it, remember to add the 'menu_reset'
+   directive just before the 'menu' and 'menu_item' directives or you'll
+   get duplicated entries.
+ * The german translation has been updated (patch by Ronny Steiner).
+
+3.3.12
+------
+
+ * A command line argument in the form +NNN forces the first open
+   file's cursor to move to the NNN line. Added for compatibility
+   with other text editors.
+ * Cancelling the 'exec-command' no longer give spurious errors.
+ * Fixed non-printable character detection in some architectures.
+ * Small build / install improvements; permissions in .mo files
+   have been fixed (patch by David Jensen), the mkinstalldirs script
+   is used (also suggested by David Jensen), the CFLAGS environment
+   variable is back (the config.sh script was ignoring it).
+ * The italian translation has been updated (patch by Andrea).
+
+3.3.11
+------
+
+ * The GTK 2.x version now has support for the Pango library, active by
+   default. Pango adds support for antialiased fonts. Though they look
+   arguably better, they also penalize the overall performance on slow
+   machines, so they can be disabled by adding "use_pango: 0" to the
+   configuration file.
+ * Screen management under GTK has been optimized somehow, so it should
+   feel faster overall.
+ * A new editor function has added, 'prev', to move backwards in the list
+   of open documents. It is not bound to any key by default, so if you
+   want to use it, bind it.
+ * The editor function 'document-list' (bound by default to Ctrl-O) shows
+   a list with the currently open documents and allows one to be selected
+   as the active one. This list marks now (with an asterisk) the modified
+   documents, and the active one is selected (instead of the first in the
+   list as in previous versions).
+ * The icon for the GTK version was lost.

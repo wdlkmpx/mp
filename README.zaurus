@@ -1,0 +1,9 @@
+Building Minimum Profit under the Sharp Zaurus
+==============================================
+
+    $ CC=/opt/Embedix/tools/bin/arm-linux-gcc ./config.sh
+    $ make
+
+This information was contributed by John Dunay.
+
+Angel Ortega <angel@triptico.com>
