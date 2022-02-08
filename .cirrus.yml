@@ -1,0 +1,13 @@
+env:
+  CIRRUS_CLONE_DEPTH: 1
+
+#freebsd-13-0
+
+freebsd_instance:
+  image_family: freebsd-11-4
+  cpu: 1
+  memory: 1GB
+
+task:
+  install_script: pkg install -y ncurses
+  script: ./configure && make && make install
