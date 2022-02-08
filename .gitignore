@@ -3,3 +3,4 @@ makefile.dep
 *.o
 config.h
 mp
+*.mo

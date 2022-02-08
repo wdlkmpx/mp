@@ -92,7 +92,7 @@ void mpl_set_language(char * langname)
 	}
 
 	textdomain ("minimum-profit");
-	bindtextdomain ("minimum-profit", CONFOPT_PREFIX "/share/locale");
+	bindtextdomain ("minimum-profit", LOCALEDIR);
 	bind_textdomain_codeset ("minimum-profit", "UTF-8");
 
 #else

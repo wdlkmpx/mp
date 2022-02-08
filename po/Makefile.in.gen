@@ -15,7 +15,7 @@ MSGFMT=msgfmt
 XGETTEXT=xgettext
 MSGMERGE=msgmerge
 
-pot()
+update_pot()
 {
 	# might want to export GETTEXT_PACKAGE
 	if [ -z "$GETTEXT_PACKAGE" ] ; then
@@ -33,16 +33,13 @@ pot()
 		mv ${GETTEXT_PACKAGE}.pot2 ${GETTEXT_PACKAGE}.pot
 	else
 		rm -f ${GETTEXT_PACKAGE}.pot2
+		exit 1
 	fi
 }
 
-if [ "$1" = "pot" ] ; then
-	pot
-	exit $?
-fi
 
-if [ "$1" = "po" ] ; then
-	pot
+update_po()
+{
 	catalogs="${LINGUAS}";
 	for lang in ${catalogs}
 	do
@@ -55,7 +52,21 @@ if [ "$1" = "po" ] ; then
 		fi;
 	done
 	exit
-fi
+}
+
+
+build_mo()
+{
+	for i in ${LINGUAS} ; do
+		${MSGFMT} -o ${i}.mo ${i}.po
+	done
+}
+
+case "$1" in
+	pot) update_pot ; exit ;;
+	po)  update_pot ; update_po ; exit ;;
+	mo)  build_mo ; exit ;;
+esac
 
 #==========================================================================
 

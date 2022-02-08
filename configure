@@ -14,7 +14,9 @@ APP_CPPFLAGS=''
 APP_LDFLAGS=''
 APP_LIBS=''
 EXTRA_GCC_WARNINGS=no # yes/no
+
 GETTEXT_PACKAGE='minimum-profit'
+PO2C_FILE='src/mp_lang_m.c'
 
 cd $(dirname "$0") || exit 1
 
@@ -52,9 +54,16 @@ if [ "$1" =  "po" ] ; then
 fi
 
 # ./configure linguas
-if [ "$1" =  "linguas" ] ; then
-	./po/Makefile.in.gen
+case "$1" in linguas|pot|mo)
+	./po/Makefile.in.gen $1
 	exit $?
+	;;
+esac
+
+# ./configure po2c
+if [ "$1" =  "po2c" ] ; then
+	./po/po2c po/*.po > ${PO2C_FILE}
+	exit 0
 fi
 
 #==========================================================
