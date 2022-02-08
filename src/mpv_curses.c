@@ -43,7 +43,7 @@
 #include <unistd.h>
 #include <termios.h>
 #include <fcntl.h>
-#include <curses.h>
+#include <ncurses.h>
 #include <signal.h>
 #include <ctype.h>
 #include <sys/stat.h>
@@ -925,7 +925,7 @@ static void _alert(char * msg, char * msg2)
 	char tmp[4096];
 
 	if(msg2==NULL)
-		strncpy(tmp,msg,sizeof(tmp));
+		snprintf (tmp, sizeof(tmp), "%s", msg);
 	else
 		sprintf(tmp,msg,msg2);
 
@@ -1097,14 +1097,13 @@ static int _mpv_open_file_list(char * rcpt)
       p = strchr(p,'/');
       if (!p) {
       	/* No /'s found, translate to realpath... */
-      	char line[PATH_MAX];
-      	char cwd[1024];
-
+      	char line[1000];
+      	char cwd[256];
 
       	getcwd(cwd,sizeof(cwd));
       	snprintf(tmp,sizeof(tmp),"%s/%s",cwd,rcpt);
       	if (realpath(tmp,line))
-      	  strncpy(rcpt,line,1024);
+      	  snprintf (rcpt, 1024, "%s", line);
       	else
       	  strcpy(rcpt,"/");
       }
@@ -1114,7 +1113,7 @@ static int _mpv_open_file_list(char * rcpt)
       else
         strcpy(rcpt,"/");
     } else
-      strncpy(rcpt,tmp,1024);
+      snprintf (rcpt, 1024, "%s", tmp);
   } while (_mpv_isdir(rcpt));
   return '\r';
 }
@@ -1137,7 +1136,7 @@ static char * _readline(int type, char * prompt, char * def)
 	if(def==NULL)
 		tmp[0]='\0';
 	else
-		strncpy(tmp,def,sizeof(tmp));
+		snprintf (tmp, sizeof(tmp), "%s", def);
 
 	cursor=strlen(tmp);
 
@@ -1230,12 +1229,12 @@ static char * _readline(int type, char * prompt, char * def)
 	{
 		if(tmp[0]=='~') {
 		  char line[1024];
-		  strncpy(line,tmp+1,sizeof(line));
+		  snprintf (line, sizeof(line), "%s", tmp+1);
 		  snprintf(tmp,sizeof(tmp),"%s%s",_mpc_home,line);
 		}
 
 		if(tmp[0]=='\0')
-			strncpy(tmp,"*",sizeof(tmp));
+			snprintf (tmp, sizeof(tmp), "%s", "*");
 
 		if(strchr(tmp,'*')!=NULL || strchr(tmp,'?')!=NULL ||
 			 _mpv_isdir(tmp))

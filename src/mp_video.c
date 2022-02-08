@@ -490,9 +490,7 @@ int mpv_startup_1(void)
 
 				/* store information */
 				_mpv_text=drv->is_text;
-				strncpy(_mpv_interface, drv->name,
-					sizeof(_mpv_interface));
-
+				snprintf (_mpv_interface, sizeof(_mpv_interface), "%s", drv->name);
 				break;
 			}
 		}

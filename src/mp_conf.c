@@ -194,24 +194,24 @@ static void _mpc_set_variable(char * var, char * value)
 		_mp_regex=atoi(value);
 	else
 	if(strcmp(var,"template_file")==0)
-		strncpy(_mpi_template_file,value,sizeof(_mpi_template_file));
+		snprintf (_mpi_template_file, sizeof(_mpi_template_file), value);
 	else
 	if(strcmp(var,"lang")==0)
 	{
 		/* store only if user has not set
 		   another one via command line arguments */
 		if(_mpi_lang[0] != '\0')
-			strncpy(_mpi_lang, value, sizeof(_mpi_lang));
+			snprintf (_mpi_lang, sizeof(_mpi_lang), "%s", value);
 	}
 	else
 	if(strcmp(var, "ctags_cmd")==0)
-		strncpy(_mpt_ctags_cmd,value,sizeof(_mpt_ctags_cmd));
+		snprintf (_mpt_ctags_cmd, sizeof(_mpt_ctags_cmd), value);
 	else
 	if(strcmp(var, "status_format")==0)
-		strncpy(_mpi_status_line_f,value,sizeof(_mpi_status_line_f));
+		snprintf (_mpi_status_line_f, sizeof(_mpi_status_line_f), value);
 	else
 	if(strcmp(var, "strftime_format")==0)
-		strncpy(_mpi_strftime_f,value,sizeof(_mpi_strftime_f));
+		snprintf (_mpi_strftime_f, sizeof(_mpi_strftime_f), value);
 	else
 	if(strcmp(var, "break_hardlinks") == 0)
 		_mpi_break_hardlinks=atoi(value);
@@ -220,7 +220,7 @@ static void _mpc_set_variable(char * var, char * value)
 		mpw_spellcheck=atoi(value);
 	else
 	if(strcmp(var, "ispell_cmd") == 0)
-		strncpy(mpw_ispell_command, value, sizeof(mpw_ispell_command));
+		snprintf (mpw_ispell_command, sizeof(mpw_ispell_command), value);
 	else
 	if(strcmp(var, "move_seek_to_line") == 0)
 		_mpi_seek_to_line = atoi(value);
@@ -536,7 +536,7 @@ void mpc_startup(void)
 	/* take home from the environment variable,
 	   unless externally defined */
 	if(_mpc_home[0]=='\0' && (home=getenv("HOME"))!=NULL)
-		strncpy(_mpc_home,home,sizeof(_mpc_home));
+		snprintf (_mpc_home, sizeof(_mpc_home), home);
 
 	n=strlen(_mpc_home)-1;
 	if(_mpc_home[n]=='/' || _mpc_home[n]=='\\')
@@ -552,7 +552,7 @@ void mpc_startup(void)
 	{
 		char line[1024];
 
-		strncpy(line,&_mpi_template_file[1],sizeof(line));
+		snprintf (line, sizeof(line), &_mpi_template_file[1]);
 		snprintf(_mpi_template_file,sizeof(_mpi_template_file),
 			"%s%s",_mpc_home,line);
 	}

@@ -87,8 +87,8 @@ void _mpv_strip_cwd(char * buf, int size)
 		ptr=&buf[l];
 		if(*ptr=='/') ptr++;
 
-		strncpy(tmp,ptr,sizeof(tmp));
-		strncpy(buf,tmp,size);
+		snprintf (tmp, sizeof(tmp), "%s", ptr);
+		snprintf (buf, size, "%s", tmp);
 	}
 }
 

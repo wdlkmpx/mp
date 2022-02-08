@@ -219,7 +219,7 @@ static char * _mpi_format_status_line(mp_txt * txt)
 		case 's':
 			/* %s: Synhi description */
 			if(txt->synhi)
-				strncpy(tmp, _mps_synhi[txt->synhi - 1].type, sizeof(tmp));
+				snprintf (tmp, sizeof(tmp), "%s", _mps_synhi[txt->synhi - 1].type);
 			else
 				tmp[0]='\0';
 
@@ -241,7 +241,7 @@ static char * _mpi_format_status_line(mp_txt * txt)
 		case 't':
 			/* %t: tag */
 			if(_mpi_tag_target != NULL)
-				strncpy(tmp, _mpi_tag_target, sizeof(tmp));
+				snprintf (tmp, sizeof(tmp), "%s", _mpi_tag_target);
 			else
 				tmp[0]='\0';
 			break;
@@ -1103,7 +1103,7 @@ int mpi_seek(mp_txt * txt)
 
 	if((ptr=mpv_readline(MPR_SEEK,_("Text to seek: "),NULL))!=NULL)
 	{
-		strncpy(_mpi_search_text,ptr,sizeof(_mpi_search_text));
+		snprintf (_mpi_search_text, sizeof(_mpi_search_text), "%s", ptr);
 
 		if(!mp_seek(txt,_mpi_search_text))
 			mpv_alert(_("Text not found."),_mpi_search_text);
@@ -1154,7 +1154,7 @@ int mpi_replace(mp_txt * txt)
 	if((ptr=mpv_readline(MPR_REPLACETHIS,
 		_("Replace text: "),NULL))!=NULL)
 	{
-		strncpy(_mpi_search_text,ptr,sizeof(_mpi_search_text));
+		snprintf (_mpi_search_text, sizeof(_mpi_search_text), "%s", ptr);
 
 		if((ptr=mpv_readline(MPR_REPLACEWITH,
 			_("Replace with: "),NULL))!=NULL)
@@ -1198,7 +1198,7 @@ int mpi_replace_all(void)
 	if((ptr=mpv_readline(MPR_REPLACETHIS,
 		_("Replace text: "),NULL))!=NULL)
 	{
-		strncpy(_mpi_search_text,ptr,sizeof(_mpi_search_text));
+		snprintf (_mpi_search_text, sizeof(_mpi_search_text), "%s", ptr);
 
 		if((ptr=mpv_readline(MPR_REPLACEWITH,
 			_("Replace with: "),NULL))!=NULL)
@@ -1249,7 +1249,7 @@ int mpi_grep(void)
 		_mpi_search_text))==NULL || *ptr=='\0')
 		return(0);
 
-	strncpy(_mpi_search_text,ptr,sizeof(_mpi_search_text));
+	snprintf (_mpi_search_text, sizeof(_mpi_search_text), "%s", ptr);
 
 	/* ask for the file spec */
 	if((ptr=mpv_readline(MPR_GREPFILES,_("Files to grep (empty, all): "),NULL))==NULL)
@@ -1680,7 +1680,7 @@ int mpi_args_1(int argc, char * argv[])
 			if(n < argc - 1)
 			{
 				argv[n++]=NULL;
-				strncpy(_mpi_lang, argv[n], sizeof(_mpi_lang));
+				snprintf (_mpi_lang, sizeof(_mpi_lang), "%s", argv[n]);
 			}
 		}
 		else
@@ -1699,8 +1699,7 @@ int mpi_args_1(int argc, char * argv[])
 			if(n < argc - 1)
 			{
 				argv[n++]=NULL;
-				strncpy(_mpv_interface, argv[n],
-					sizeof(_mpv_interface));
+				snprintf (_mpv_interface, sizeof(_mpv_interface), "%s", argv[n]);
 			}
 		}
 		else
