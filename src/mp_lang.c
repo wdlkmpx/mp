@@ -35,10 +35,10 @@
 #include "mp_core.h"
 #include "mp_lang.h"
 
-#ifdef HAVE_GETTEXT
+#if defined(HAVE_GETTEXT)
 #include <locale.h>
 #include <libintl.h>
-#else
+#elif defined(BUILTIN_NLS)
 extern void po2c_setlang(char * lang);
 extern char * po2c_gettext(char * msgid);
 #endif
@@ -60,10 +60,12 @@ extern char * po2c_gettext(char * msgid);
  */
 char * _(char * msgid)
 {
-#ifdef HAVE_GETTEXT
+#if defined(HAVE_GETTEXT)
 	return(gettext(msgid));
-#else
+#elif defined(BUILTIN_NLS)
 	return(po2c_gettext(msgid));
+#else
+	return msgid;
 #endif
 }
 
@@ -79,7 +81,7 @@ char * _(char * msgid)
  */
 void mpl_set_language(char * langname)
 {
-#ifdef HAVE_GETTEXT
+#if defined(HAVE_GETTEXT)
 
 	if (setlocale(LC_ALL, langname) == NULL)
 	{
@@ -91,7 +93,7 @@ void mpl_set_language(char * langname)
 	bindtextdomain ("minimum-profit", LOCALEDIR);
 	bind_textdomain_codeset ("minimum-profit", "UTF-8");
 
-#else
+#elif defined(BUILTIN_NLS)
 
 	if (*langname == '\0')
 	{
@@ -101,7 +103,6 @@ void mpl_set_language(char * langname)
 		if ((langname=getenv("LC_MESSAGES")) == NULL)
 			langname="";
 	}
-
 	po2c_setlang (langname);
 #endif
 }

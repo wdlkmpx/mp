@@ -83,7 +83,7 @@ int main(void) {
 		if [ "$PO2C_IS_AVAILABLE" = "yes" ] ; then
 			echo "Language support will be built into the binary itself (po2c)"
 			config_h_extra="$config_h_extra
-#define ENABLE_NLS 1"
+#define BUILTIN_NLS 1"
 			return
 		fi
 	fi
