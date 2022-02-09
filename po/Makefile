@@ -1,48 +1,35 @@
 
 include ../config.mk
 
-MSGFMT = msgfmt
-XGETTEXT = xgettext
-MSGMERGE = msgmerge
-
-LINGUAS = $(LINGUASX)
+USE_NLS ?= no
+LINGUAS ?= 
+GETTEXT_PACKAGE ?= 
 
 all: all-$(USE_NLS)
 all-no:
 
 all-yes:
-	@sh zzpo.sh $(MSGFMT) $(XGETTEXT) $(MSGMERGE) mo $(LINGUAS)
-
-$(GETTEXT_PACKAGE).pot:
-	@sh zzpo.sh $(MSGFMT) $(XGETTEXT) $(MSGMERGE) pot $(GETTEXT_PACKAGE)
+	@sh zzpo.sh mo "$(LINGUAS)"
 
 install: install-data-$(USE_NLS)
 install-data-no: all
-install-data-yes: all
-	@catalogs="$(LINGUAS)"; \
-	for cat in $$catalogs; do \
-	  dir=$(DESTDIR)$(localedir)/$$cat/LC_MESSAGES; \
-	  mkdir -p $$dir; \
-	  $(INSTALL_DATA) $$cat.mo $$dir/$(GETTEXT_PACKAGE).mo; \
-	  echo "installing $$cat.mo as $$dir/$(GETTEXT_PACKAGE).mo"; \
-	done
+install-data-yes:
+	@sh zzpo.sh install "$(DESTDIR)$(localedir)" "$(GETTEXT_PACKAGE)" "$(LINGUAS)"
 
 strip:
-
 install-strip: install
 
 uninstall:
-	@catalogs="$(LINGUAS)"; \
-	for cat in $$catalogs; do \
-	  echo "rm -f $(DESTDIR)$(localedir)/$$cat/LC_MESSAGES/$(GETTEXT_PACKAGE).mo"; \
-	  rm -f $(DESTDIR)$(localedir)/$$cat/LC_MESSAGES/$(GETTEXT_PACKAGE).mo; \
-	done
+	@sh zzpo.sh uninstall "$(DESTDIR)$(localedir)" "$(GETTEXT_PACKAGE)" "$(LINGUAS)"
 
 mostlyclean:
 	rm -f *.new.po *.mo *.gmo
 clean: mostlyclean
 distclean: mostlyclean
 
+update-pot:
+	@sh zzpo.sh pot "$(GETTEXT_PACKAGE)"
+
 update-po:
-	@sh zzpo.sh $(MSGFMT) $(XGETTEXT) $(MSGMERGE) po $(GETTEXT_PACKAGE) $(LINGUAS)
+	@sh zzpo.sh po "$(GETTEXT_PACKAGE)" "$(LINGUAS)"
 

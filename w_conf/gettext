@@ -21,12 +21,12 @@ opt_print_gettext()
 
 opt_configure_gettext()
 {
-	USE_NLS='check'
+	enable_gettext='check'
 	for i in $@
 	do
 		case $i in
-		--enable-nls)  USE_NLS='yes' ;;
-		--disable-nls) USE_NLS='no'  ; PO2C_IS_AVAILABLE='no' ;;
+		--enable-nls)  enable_gettext='yes' ;;
+		--disable-nls) enable_gettext='no'  ; PO2C_IS_AVAILABLE='no' ;;
 		po|pot)  # ./configure po|pot
 			export GETTEXT_PACKAGE
 			./po/zzpo.sh $1
@@ -44,13 +44,6 @@ opt_configure_gettext()
 
 opt_check_gettext()
 {
-	if [ "$USE_NLS" = "no" ] ; then
-		make_extra_flags="$make_extra_flags
-USE_NLS = no
-GETTEXT_PACKAGE = $GETTEXT_PACKAGE"
-		return
-	fi
-
 	echo -n "Checking for gettext... "
 	ccode='#include <libintl.h>
 #include <locale.h>
@@ -63,7 +56,6 @@ int main(void) {
 	w_compile_c_code "$ccode" "" ""
 	if [ $? = 0 ] ; then
 		echo "yes"
-		USE_NLS='yes'
 	else
 		w_compile_c_code "$ccode" "" "-lintl"
 		if [ $? = 0 ] ; then
@@ -71,40 +63,44 @@ int main(void) {
 			LDFLAGS="$LDFLAGS -lintl"
 		else
 			echo "no"
-			if [ "$USE_NLS" = "yes" ] ; then
+			if [ "$enable_gettext" = "yes" ] ; then
 				exit_error "Use --disable-nls"
 			fi
-			USE_NLS='no'
+			enable_gettext='no'
 		fi
 	fi
 
-	if [ "$USE_NLS" = "no" ] ; then
+	if [ "$enable_gettext" = "yes" ] ; then
+		w_check_commands_required msgfmt
+	elif [ "$enable_gettext" = "check" ] ; then
+		w_check_command msgfmt
+		if [ $? -ne 0 ] ; then
+			enable_gettext='no'
+		fi
+	fi
+
+	if [ "$enable_gettext" = "no" ] ; then
 		if [ "$PO2C_IS_AVAILABLE" = "yes" ] ; then
 			echo "Language support will be built into the binary itself (po2c)"
+			config_h_extra="$config_h_extra
+#define ENABLE_NLS 1"
+			return
 		fi
-		make_extra_flags="$make_extra_flags
-USE_NLS = no
-GETTEXT_PACKAGE = $GETTEXT_PACKAGE"
-		return
 	fi
 
-	w_check_commands_required msgfmt
-
-	LINGUASX="$(ls po/*.po | sed -e 's%\.po$%%' -e 's%po/%%')"
+	LINGUAS="$(ls po/*.po | sed -e 's%\.po$%%' -e 's%po/%%')"
 
 	# config.h
 	localedir_x="$(eval echo "${localedir}")"
 	localedir_x="$(eval echo "${localedir_x}")"
 	config_h_extra="$config_h_extra
-#define ENABLE_NLS 1
 #define HAVE_GETTEXT 1
 #define GETTEXT_PACKAGE \"$GETTEXT_PACKAGE\"
 #define LOCALEDIR \"${localedir_x}\""
 
 	# config.mk
 	make_extra_flags="$make_extra_flags
-USE_NLS = ${USE_NLS}
-LINGUASX = $(echo $LINGUASX)
+USE_NLS = yes
+LINGUAS = $(echo $LINGUAS)
 GETTEXT_PACKAGE = $GETTEXT_PACKAGE"
-
 }

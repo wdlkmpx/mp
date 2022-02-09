@@ -316,37 +316,48 @@ w_check_headers_required()
 	done
 }
 
+w_check_command() # sets $wtmp_cmd
+{
+	printf "Checking for $1... "
+	wtmp_cmd="$(check_command "$1")"
+	if [ -n "$wtmp_cmd" ] ; then
+		echo "$wtmp_cmd"
+		return 0
+	else
+		echo "no"
+		return 1
+	fi
+}
+
+w_check_commands()
+{
+	for wcmdw in $@ ; do
+		w_check_command ${wcmdw}
+	done
+}
 
 w_check_commands_required()
 {
-	zzcmdzz=
-	for wcmdw in $@
-	do
-		printf "Checking for ${wcmdw}... "
-		zzcmdzz=$(check_command ${wcmdw})
-		if [ -n "$zzcmdzz" ] ; then
-			echo "$zzcmdzz"
-		else
-			echo "no"
+	for wcmdw in $@ ; do
+		w_check_command ${wcmdw}
+		if [ $? -ne 0 ] ; then
 			exit_error "ERROR: $wcmdw is required"
 		fi
 	done
 }
 
 
-w_check_command_find_first() # sets $tmp_cmd_check
+w_check_command_find_first() # sets $wtmp_cmd
 {
-	tmp_cmd_check=''
+	wtmp_cmd=''
 	for wcmdw in $@
 	do
-		printf "Checking for ${wcmdw}... "
-		tmp_cmd_check=$(check_command ${wcmdw})
-		if [ -n "$tmp_cmd_check" ] ; then
-			echo "$tmp_cmd_check"
-			return 0
+		w_check_command ${wcmdw}
+		if [ $? -eq 0 ] ; then
+			return
 		fi
-		echo "no"
 	done
+	wtmp_cmd=''
 	return 1
 }
 
