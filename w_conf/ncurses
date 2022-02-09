@@ -50,7 +50,7 @@ opt_check_ncurses()
 	fi
 
 	if [ -n "$NCURSES_CFLAGS" ] || [ -n "$NCURSES_LIBS" ] ; then
-		echo "Checking for NCURSES... $NCURSES_CFLAGS/$NCURSES_LIBS"
+		echo "Checking for NCURSES... \$NCURSES_CFLAGS/\$NCURSES_LIBS"
 	else
 		pcpkg=
 		for onepkg in ${ncurses_pc_pkg}

@@ -35,17 +35,13 @@
 #include "mp_core.h"
 #include "mp_lang.h"
 
-#ifdef CONFOPT_GETTEXT
-
+#ifdef HAVE_GETTEXT
 #include <locale.h>
 #include <libintl.h>
-
-#else /* CONFOPT_GETTEXT */
-
+#else
 extern void po2c_setlang(char * lang);
 extern char * po2c_gettext(char * msgid);
-
-#endif /* CONFOPT_GETTEXT */
+#endif
 
 /*******************
 	Data
@@ -64,7 +60,7 @@ extern char * po2c_gettext(char * msgid);
  */
 char * _(char * msgid)
 {
-#ifdef CONFOPT_GETTEXT
+#ifdef HAVE_GETTEXT
 	return(gettext(msgid));
 #else
 	return(po2c_gettext(msgid));
@@ -83,7 +79,7 @@ char * _(char * msgid)
  */
 void mpl_set_language(char * langname)
 {
-#ifdef CONFOPT_GETTEXT
+#ifdef HAVE_GETTEXT
 
 	if (setlocale(LC_ALL, langname) == NULL)
 	{

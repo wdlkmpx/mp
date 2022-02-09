@@ -4,6 +4,18 @@ PACKAGE="mp"
 VERSION="3.3.20w"
 PACKAGE_URL=''
 
+
+#  files.in, to replace @VERSION@ and a few other variables
+#  not recommended ...
+#w_infiles='app.spec'
+
+# config.h: custom extra lines
+w_config_h_extra_lines=""
+
+# config.mk: custom extra lines
+w_config_mk_extra_lines=""
+
+
 # configure the project using the commands provided
 # by `configure` and other scripts and commands/tools
 w_main_func()

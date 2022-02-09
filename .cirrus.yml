@@ -10,4 +10,4 @@ freebsd_instance:
 
 task:
   install_script: pkg install -y ncurses
-  script: ./configure && make && make install
+  script: ./configure && make && make install ; cat config.log

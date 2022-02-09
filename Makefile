@@ -1,6 +1,6 @@
 # http://unlicense.org/
 
-SUBDIRS = src data
+SUBDIRS = po src data
 
 DISTCLEAN_FILES = 
 

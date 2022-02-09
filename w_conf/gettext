@@ -6,6 +6,12 @@ apps_to_check="$apps_to_check gettext"
 extra_configure_opts="$extra_configure_opts gettext"
 #=======================================
 
+if [ -n "$PO2C_FILE" ] && [ -f "$PO2C_FILE" ] && [ -f po/po2c ] ; then
+	PO2C_IS_AVAILABLE=yes
+else
+	PO2C_IS_AVAILABLE=no
+fi
+
 
 opt_print_gettext()
 {
@@ -20,7 +26,7 @@ opt_configure_gettext()
 	do
 		case $i in
 		--enable-nls)  USE_NLS='yes' ;;
-		--disable-nls) USE_NLS='no'  ;;
+		--disable-nls) USE_NLS='no'  ; PO2C_IS_AVAILABLE='no' ;;
 		po|pot)  # ./configure po|pot
 			export GETTEXT_PACKAGE
 			./po/zzpo.sh $1
@@ -46,29 +52,24 @@ GETTEXT_PACKAGE = $GETTEXT_PACKAGE"
 	fi
 
 	echo -n "Checking for gettext... "
-	cat > .tmp.c <<EOF
-#include <libintl.h>
+	ccode='#include <libintl.h>
 #include <locale.h>
 int main(void) {
 	setlocale(LC_ALL, "");
 	gettext("hi");
 	return 0;
 }
-EOF
-	echo "$CC ${CFLAGS} .tmp.c ${LDFLAGS} -o .tmp.o" >>config.log
-	$CC ${CFLAGS} .tmp.c ${LDFLAGS} -o .tmp.o 2>> config.log
+'
+	w_compile_c_code "$ccode" "" ""
 	if [ $? = 0 ] ; then
 		echo "yes"
 		USE_NLS='yes'
 	else
-		TMP_LIBS="-lintl"
-		echo "$CC ${CFLAGS} .tmp.c ${LDFLAGS} ${TMP_LIBS} -o .tmp.o" >>config.log
-		$CC ${CFLAGS} .tmp.c ${LDFLAGS} ${TMP_LIBS} -o .tmp.o 2>> config.log
+		w_compile_c_code "$ccode" "" "-lintl"
 		if [ $? = 0 ] ; then
 			echo "yes (libintl)"
-			LDFLAGS="$LDFLAGS $TMP_LIBS"
+			LDFLAGS="$LDFLAGS -lintl"
 		else
-			rm -f .tmp.*
 			echo "no"
 			if [ "$USE_NLS" = "yes" ] ; then
 				exit_error "Use --disable-nls"
@@ -76,9 +77,11 @@ EOF
 			USE_NLS='no'
 		fi
 	fi
-	rm -f .tmp.*
 
 	if [ "$USE_NLS" = "no" ] ; then
+		if [ "$PO2C_IS_AVAILABLE" = "yes" ] ; then
+			echo "Language support will be built into the binary itself (po2c)"
+		fi
 		make_extra_flags="$make_extra_flags
 USE_NLS = no
 GETTEXT_PACKAGE = $GETTEXT_PACKAGE"

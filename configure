@@ -9,7 +9,8 @@ APP_CXXFLAGS="${APP_CFLAGS}"
 APP_LDFLAGS=''
 APP_LXXFLAGS=''
 APP_LIBS=''
-#sysroot_plus_includes_libs=1
+#W_SYSROOT_PLUS_INCLUDES_AND_LIBS=1
+#W_USE_MKTEMP=1
 
 if ! cd $(dirname "$0") ; then
 	exit 1
@@ -229,16 +230,45 @@ w_pkgconfig_check() # $1=<pkg> $2=[min-version]
 }
 
 
+w_compile_c_code() # $1:code  $2:extra-CFLAGS  $3:extra-LDFLAGS
+{
+	if [ -z "$1" ] ; then
+		exit_error 'w_compile: code to compile is an empty string'
+	fi
+	if [ -n "$W_USE_MKTEMP" ] ; then
+		conftest=$(mktemp -u .wxconftestXXXXXXXXX)
+		if [ -z "$conftest" ] ; then
+			conftest=.wxconftest$$
+		fi
+	else
+		conftest=.wxconftest$$
+	fi
+	printf "$1" > ${conftest}.c
+	printf "\n$1" >> config.log
+	echo "$CC $CFLAGS $2 ${conftest}.c -o ${conftest}.o $LDFLAGS $3" >>config.log
+	$CC $CFLAGS $2 ${conftest}.c -o ${conftest}.o $LDFLAGS $3 2>>config.log
+	zzzzretxx=$?
+	rm -f ${conftest}.c ${conftest}.o
+	return ${zzzzretxx}
+}
+
+
 w_check_header_and_libs() # 1:<header> 2-:[libs] is optional
 {
 	xheaderx=$1
 	shift
 	xlibsx=$@
 	xretval=1
-	printf "Checking for ${xheaderx} + ${xlibsx}... "
-	printf "#include <${xheaderx}>\nint main (int argc, char **argv) { return 0; }\n" > xwheaderwx.c
-	echo "$CC $CFLAGS xwheaderwx.c $LDFLAGS -o xwheaderwx.o $xlibsx" >>config.log
-	$CC $CFLAGS xwheaderwx.c $LDFLAGS -o xwheaderwx.o $xlibsx 2>>config.log
+	if [ -n "$xlibsx" ] ; then
+		printf "Checking for ${xheaderx} + ${xlibsx}... "
+	else
+		printf "Checking for ${xheaderx}... "
+	fi
+	conftest=.wxconftest$$
+	ccode="#include <${xheaderx}>
+int main (int argc, char **argv) { return 0; }
+"
+	w_compile_c_code "$ccode" "" "${xlibsx}"
 	if [ $? -eq 0 ] ; then
 		w_headers="$w_headers ${xheaderx}"
 		echo "yes"
@@ -247,7 +277,6 @@ w_check_header_and_libs() # 1:<header> 2-:[libs] is optional
 		echo "no"
 		xretval=1
 	fi
-	rm -f xwheaderwx.c xwheaderwx.o
 	return ${xretval}
 }
 
@@ -581,7 +610,7 @@ if [ -n "${sysroot}" ] ; then
 	CC="$CC --sysroot=${sysroot}"
 	CXX="$CXX --sysroot=${sysroot}"
 	#--
-	if [ -n "$sysroot_plus_includes_libs" ] ; then
+	if [ -n "$W_SYSROOT_PLUS_INCLUDES_AND_LIBS" ] ; then
 		if [ -d ${sysroot}/include ] ; then
 			CFLAGS="-I${sysroot}/include $CFLAGS"
 			CXXFLAGS="-I${sysroot}/include $CXXFLAGS"
