@@ -2,7 +2,8 @@
 
 if [ "$1" = "freebsd" ] ; then
 	#export REPO_AUTOUPDATE=NO
-	pkg install -y ncurses
+	#pkg install -y ncurses
+	printf ""
 	exit $?
 fi
 
