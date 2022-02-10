@@ -44,7 +44,7 @@ opt_configure_gettext()
 
 opt_check_gettext()
 {
-	echo -n "Checking for gettext... "
+	printf "Checking for gettext... "
 	ccode='#include <libintl.h>
 #include <locale.h>
 int main(void) {

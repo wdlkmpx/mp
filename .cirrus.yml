@@ -21,6 +21,8 @@ freebsd_task:
 macos_task:
   macos_instance:
     image: catalina-base
+    cpu: 1
+    memory: 1GB
   install_script:
     - .github/cirrus-ci.sh macos
   build_script:

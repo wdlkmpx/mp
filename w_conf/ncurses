@@ -73,6 +73,15 @@ opt_check_ncurses()
 			fi
 		fi
 		#--
+		if [ -z "$pcpkg" ] ; then
+			w_check_header_and_libs ncurses.h -lncurses
+			if [ $? -eq 0 ] ; then
+				#NCURSES_CFLAGS=...
+				NCURSES_LIBS="-lncurses"
+				pcpkg=configure
+			fi
+		fi
+		#--
 		if [ -z "$pcpkg" ] && [ "$enable_ncurses" = "yes" ] ; then
 			exit_error "pkg-config: ncurses was not found"
 		fi

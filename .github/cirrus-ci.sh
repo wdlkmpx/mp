@@ -8,7 +8,8 @@ fi
 
 if [ "$1" = "macos" ] ; then
 	export HOMEBREW_NO_AUTO_UPDATE=1
-	brew install ncurses
+	## macOS already provides ncurses by default
+	#brew install ncurses
 	exit $?
 fi
 
