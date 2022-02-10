@@ -6,8 +6,6 @@ Minimum Profit README
  Minimum Profit - Programmer Text Editor
  Copyright (C) 1991-2005 Angel Ortega <angel@triptico.com>
  
-This software is GPL. NO WARRANTY. See file 'COPYING' for details.
-
 Quick feature list
 ------------------
 
@@ -35,17 +33,9 @@ Quick feature list
  - Multilingual.
  - Password-protected, encrypted text files (using the ARCFOUR algorithm).
  - It helps you abandon vi, emacs and other six-legged freaks definitely.
- - Awesome easter egg.
 
 Intro
 -----
-
-If you are reading this (you are), you probably know what a text editor
-is and thus I won't explain what 'open file', 'search and replace',
-'tab size' and things like those, means. Only the special or not-so-
-intuitive features will be explained. In any other aspect, mp is just like
-the text editor you were using until today, before you've found this unknown
-jewel that will change your life.
 
 Much of Minimum Profit's behaviour is changeable from a configuration file,
 as key bindings, colors, the menu and other variables. Take a look at
@@ -157,11 +147,7 @@ distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.
 
 CAVEAT: There is a possible pitfall when using encrypted files; if you open
 a file with the incorrect password, useless garbage will be open, as there
-is no way of detecting incorrect passwords. But, if you later save the
-garbage (probably accidentally), it will be re-encrypted with the (still
-remembered) incorrect password, effectively destroying the original
-information. Think of it as the same problem as opening a file, destroying
-its content and then saving it.
+is no way of detecting incorrect passwords.
 
 Using mp with mutt
 ------------------
@@ -220,21 +206,3 @@ not satisfactory resolved by any known tool; one time more, Minimum Profit
 comes to the rescue. Two specially crafted editor functions, called
 replace-all (Replace in all) and sync (Save all modified texts), both accesible
 from the menu, make this tedious operation as easy as a buch of keystrokes.
-
-Mp_doccer does not live here anymore
-------------------------------------
-
-The mp_doccer C Source Documentation Generator tool is no longer distributed
-with Minimum Profit. You can download it from its own page:
-
-	http://www.triptico.com/software/mp_doccer.html
-
-The easter egg
---------------
-
-Finally, great programmer / puzzle solver extraordinaire Justin Bradford
-found the easter egg that have been approx. 12 years uncovered inside
-Minimum Profit's source code. All praise to him!
-
----
-Angel Ortega http://www.triptico.com
