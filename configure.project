@@ -5,7 +5,15 @@ VERSION="3.3.20w"
 PACKAGE_URL=''
 
 
-#  files.in, to replace @VERSION@ and a few other variables
+# Use mktemp to produce temp files
+#W_USE_MKTEMP=1
+
+# By default the configure script only creates a single config.mk file
+# With this option enabled, configure will also create Makefiles
+#  appending the contents of Makefile.in (Makefile = config.mk + Makefile.in)
+#W_MAKEFILES_IN=1
+
+# Files.in, to replace @VERSION@ and a few other variables
 #  not recommended ...
 #w_infiles='app.spec'
 
