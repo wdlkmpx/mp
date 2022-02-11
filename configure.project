@@ -5,6 +5,11 @@ VERSION="3.3.20w"
 PACKAGE_URL=''
 
 
+# Project type, use C to avoid checking for C++ compiler and stuff
+# it's possible to specify other values, but the behavior will be "undefined"
+# supported values: C, C++ ("" = C++)
+PROJECT_TYPE=C
+
 # Use mktemp to produce temp files
 #W_USE_MKTEMP=1
 
@@ -28,7 +33,10 @@ w_config_mk_extra_lines=""
 # by `configure` and other scripts and commands/tools
 w_main_func()
 {
-	printf ""
+	# GCC=yes if gcc has been detected
+
+	# check required headers and exit on error
+	w_check_headers_required stdio.h
 }
 
 #=====================================================================

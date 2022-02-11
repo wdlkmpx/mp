@@ -27,6 +27,10 @@ if [ -f configure.project ] ; then
 	. ./configure.project
 fi
 
+if [ -z "$PROJECT_TYPE" ] ; then
+	PROJECT_TYPE="C++"
+fi
+
 #==========================================================
 
 PACKAGE_NAME="${PACKAGE}"
@@ -80,6 +84,9 @@ fi
 
 exit_error() {
 	test "$1" && echo "$@"
+	if [ -f config.log ] ; then
+		echo "See config.log, there might be some clues there"
+	fi
 	rm -f config.h config.mk
 	exit 1
 }
@@ -114,47 +121,64 @@ check_command() # 1:<cmd> finds $1 in $PATH
 }
 
 
-check_compiler() #1:default 2:LIST
-{
-	zexec="$1"
-	zlist="$2"
-	if [ -n "$zexec" ] ; then
-		zz_list="$zexec"
-	else
-		zz_list="$zlist"
-	fi
-	for compx in ${zz_list}
-	do
-		if check_command $compx >/dev/null; then
-			echo "$compx"
-			return 0
-		fi
-	done
-	return 1
-}
-
-
 set_cc()
 {
-	printf "Checking for C compiler..."
-	ZCC=$(check_compiler "$CC" "cc gcc clang")
+	CC_IS_FULL_PATH=''
+	case $PROJECT_TYPE in
+		C|C++) okw=1;;
+		*) return ;;
+	esac
+	case $CC in /*)
+		CC_IS_FULL_PATH=1 ;;
+	esac
+	GCC="no"
+	if [ -n "$CC" ] ; then
+		zz_list="$CC"
+	else
+		zz_list="cc gcc clang"
+	fi
+	printf "Checking for C compiler... "
+	ZCC="$(check_command ${zz_list})"
 	if test -z "$ZCC" ; then
 		exit_error "$CC not found"
 	fi
 	CC="$ZCC"
-	echo " $CC"
+	echo "$CC"
+	if [ -z "$CC_IS_FULL_PATH" ] ; then
+		CC="$(basename $CC)" # not a full path, keep binary name
+	fi
 }
 
 
 set_cxx()
 {
-	printf "Checking for C++ compiler..."
-	ZXX=$(check_compiler "$CXX" "c++ g++ clang++")
+	CXX_IS_FULL_PATH=''
+	if [ "$PROJECT_TYPE" != "C++" ] ; then
+		return
+	fi
+	case $CXX in /*)
+		CXX_IS_FULL_PATH=1 ;;
+	esac
+	#--
+	printf "Checking for C++ compiler... "
+	if [ -n "$CXX" ] ; then
+		zz_list="$CXX"
+	else
+		zz_list="c++ g++ clang++"
+	fi
+	ZXX="$(check_command ${zz_list})"
 	if test -z "$ZXX" ; then
-		exit_error "$CXX not found"
+		if [ -z "$CXX" ] ; then
+			echo "not found" # not a fatal error
+		else
+			exit_error "$CXX not found"
+		fi
 	fi
 	CXX="$ZXX"
-	echo " $CXX"
+	echo "$CXX"
+	if [ -z "$CXX_IS_FULL_PATH" ] ; then
+		CXX="$(basename $CXX)" # not a full path, keep binary name
+	fi
 }
 
 
@@ -171,7 +195,7 @@ set_w_pkg_config()
 	fi
 	W_PKG_CONFIG="$(check_command pkg-config pkgconf)"
 	if [ -n "$W_PKG_CONFIG" ] ; then
-		echo "$W_PKG_CONFIG"
+		echo "$W_PKG_CONFIG [$($W_PKG_CONFIG --version 2>/dev/null)]"
 	else
 		echo "no"
 		echo "WARNING: missing pkg-config: this a potentially fatal error"
@@ -584,20 +608,47 @@ set_w_pkg_config
 
 if test -n "$host" ; then
 	printf "Checking cross-compiler... "
-	if check_command ${host}-${CC} >/dev/null; then
-		CC=${host}-${CC}
-		CXX=${host}-${CXX}
-		LD=${host}-${LD}
-		STRIP=${host}-${STRIP}
-		AR=${host}-${AR}
-		AS=${host}-${AS}
-		NM=${host}-${NM}
-		RANLIB=${host}-${RANLIB}
-		OBJCOPY=${host}-${OBJCOPY}
-		OBJDUMP=${host}-${OBJDUMP}
+	CROSS_IS_FULL_PATH=''
+	CROSS_BASE_DIR=''
+	case $host in /*)
+		CROSS_IS_FULL_PATH=1
+		CROSS_BASE_DIR="$(dirname $host)/"
+		;;
+	esac
+	cross_base_dir=''
+	w_c_cross_ok=$(check_command ${host}-cc ${host}-gcc ${host}-clang)
+	w_cpp_cross_ok=
+	if [ -n "$w_c_cross_ok" ] ; then
+		CC="$w_c_cross_ok";
+	fi
+	#--
+	if [ "$PROJECT_TYPE" = "C++" ] ; then
+		w_cpp_cross_ok=$(check_command ${host}-c++ ${host}-g++ ${host}-clang++)
+		if [ "$w_cpp_cross_ok" ] ; then
+			CXX="$w_cpp_cross_ok";
+		fi
+	else
+		w_cpp_cross_ok=1
+		CXX=${CROSS_BASE_DIR}${host}-c++
+	fi
+	#--
+	if [ -n "$w_c_cross_ok" ] && [ -n "$w_cpp_cross_ok" ]; then
+		LD=${CROSS_BASE_DIR}${host}-${LD}
+		STRIP=${CROSS_BASE_DIR}${host}-${STRIP}
+		AR=${CROSS_BASE_DIR}${host}-${AR}
+		AS=${CROSS_BASE_DIR}${host}-${AS}
+		NM=${CROSS_BASE_DIR}${host}-${NM}
+		RANLIB=${CROSS_BASE_DIR}${host}-${RANLIB}
+		OBJCOPY=${CROSS_BASE_DIR}${host}-${OBJCOPY}
+		OBJDUMP=${CROSS_BASE_DIR}${host}-${OBJDUMP}
 		echo "$host"
 	else
 		exit_error "not found"
+	fi
+	if [ -z "$CROSS_IS_FULL_PATH" ] ; then
+		# cross compiler is not a full path
+		CC="$(basename $CC)"
+		CXX="$(basename $CXX)"
 	fi
 fi
 
@@ -608,7 +659,7 @@ fi
 
 if [ -n "${sysroot}" ] ; then
 	if [ "${sysroot}" = "-print-sysroot" ] ; then
-		sysroot=$($CC -print-sysroot)
+		sysroot="$($CC -print-sysroot)"
 		if [ -z "$sysroot" ] ; then
 			exit_error "--with-sysroot ERROR: compiler doesn't support -print-sysroot"
 		fi
@@ -643,6 +694,16 @@ LIBS="$LIBS $APP_LIBS"
 #==========================================================
 
 echo > config.log
+case $PROJECT_TYPE in
+	C)   WCVERW=$($CC --version 2>>config.log) ;;
+	C++) WCVERW=$($CXX --version 2>>config.log) ;;
+esac
+echo "$WCVERW" >> config.log
+if [ -n "$(echo "$WCVERW" | grep "Free Software Foundation")" ] ; then
+	printf "\n- GCC has been detected\n" >>config.log
+	GCC='yes'
+fi
+
 w_headers=''
 #----------
 w_main_func # main function where the user performs all sorts of tasks

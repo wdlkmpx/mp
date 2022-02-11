@@ -74,6 +74,15 @@ opt_check_ncurses()
 		fi
 		#--
 		if [ -z "$pcpkg" ] ; then
+			w_check_header_and_libs ncurses.h -lncursesw
+			if [ $? -eq 0 ] ; then
+				#NCURSES_CFLAGS=...
+				NCURSES_LIBS="-lncursesw"
+				pcpkg=configure
+			fi
+		fi
+		#--
+		if [ -z "$pcpkg" ] ; then
 			w_check_header_and_libs ncurses.h -lncurses
 			if [ $? -eq 0 ] ; then
 				#NCURSES_CFLAGS=...
