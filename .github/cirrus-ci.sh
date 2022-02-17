@@ -23,7 +23,7 @@ uname -a
 	&& make install
 exit_code=$?
 
-for i in config.h config.log #config.mk
+for i in config.h config.log config.mk
 do
 	echo "
 ===============================

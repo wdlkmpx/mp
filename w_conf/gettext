@@ -44,7 +44,11 @@ opt_configure_gettext()
 
 opt_check_gettext()
 {
-	echo -n "Checking for gettext... "
+	if [ "$enable_gettext" = "no" ] ; then
+		return
+	fi
+
+	printf "Checking for gettext... "
 	ccode='#include <libintl.h>
 #include <locale.h>
 int main(void) {
@@ -90,17 +94,14 @@ int main(void) {
 
 	LINGUAS="$(ls po/*.po | sed -e 's%\.po$%%' -e 's%po/%%')"
 
-	# config.h
-	localedir_x="$(eval echo "${localedir}")"
-	localedir_x="$(eval echo "${localedir_x}")"
 	config_h_extra="$config_h_extra
 #define HAVE_GETTEXT 1
-#define GETTEXT_PACKAGE \"$GETTEXT_PACKAGE\"
-#define LOCALEDIR \"${localedir_x}\""
+#define GETTEXT_PACKAGE \"$GETTEXT_PACKAGE\""
 
 	# config.mk
 	make_extra_flags="$make_extra_flags
 USE_NLS = yes
 LINGUAS = $(echo $LINGUAS)
-GETTEXT_PACKAGE = $GETTEXT_PACKAGE"
+GETTEXT_PACKAGE = $GETTEXT_PACKAGE
+"
 }
