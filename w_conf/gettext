@@ -6,11 +6,7 @@ apps_to_check="$apps_to_check gettext"
 extra_configure_opts="$extra_configure_opts gettext"
 #=======================================
 
-if [ -n "$PO2C_FILE" ] && [ -f "$PO2C_FILE" ] && [ -f po/po2c ] ; then
-	PO2C_IS_AVAILABLE=yes
-else
-	PO2C_IS_AVAILABLE=no
-fi
+export GETTEXT_PACKAGE
 
 
 opt_print_gettext()
@@ -26,17 +22,14 @@ opt_configure_gettext()
 	do
 		case $i in
 		--enable-nls)  enable_gettext='yes' ;;
-		--disable-nls) enable_gettext='no'  ; PO2C_IS_AVAILABLE='no' ;;
-		po|pot)  # ./configure po|pot
-			export GETTEXT_PACKAGE
-			./po/zzpo.sh $1
+		--disable-nls) enable_gettext='no'  ;;
+		# ./configure po|pot
+		pot) ./po/zzpo.sh pot ${GETTEXT_PACKAGE} ;;
+		po)
+			./po/zzpo.sh po  ${GETTEXT_PACKAGE}
 			#sed -i '/#~ /d' po/*.po
 			exit 0
 			;;
-		po2c)  # ./configure po2c
-			[ -z "$PO2C_FILE" ] && PO2C_FILE="/dev/null"
-			./po/po2c po/*.po > ${PO2C_FILE}
-			exit $?
 		esac
 	done
 }
@@ -84,19 +77,21 @@ int main(void) {
 	fi
 
 	if [ "$enable_gettext" = "no" ] ; then
-		if [ "$PO2C_IS_AVAILABLE" = "yes" ] ; then
-			echo "Language support will be built into the binary itself (po2c)"
-			config_h_extra="$config_h_extra
-#define BUILTIN_NLS 1"
-			return
-		fi
+		return
 	fi
 
 	LINGUAS="$(ls po/*.po | sed -e 's%\.po$%%' -e 's%po/%%')"
 
 	config_h_extra="$config_h_extra
+#define ENABLE_NLS 1
 #define HAVE_GETTEXT 1
 #define GETTEXT_PACKAGE \"$GETTEXT_PACKAGE\""
+
+	config_sh_extra="$config_sh_extra
+ENABLE_NLS=1
+USE_NLS=yes
+LINGUAS=\"$(echo $LINGUAS)\"
+GETTEXT_PACKAGE=\"$GETTEXT_PACKAGE\""
 
 	# config.mk
 	make_extra_flags="$make_extra_flags
