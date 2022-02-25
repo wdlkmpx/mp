@@ -91,8 +91,11 @@ opt_check_ncurses()
 			fi
 		fi
 		#--
-		if [ -z "$pcpkg" ] && [ "$enable_ncurses" = "yes" ] ; then
-			exit_error "pkg-config: ncurses was not found"
+		if [ -z "$pcpkg" ] ; then
+			if [ "$enable_ncurses" = "yes" ] ; then
+				exit_error "pkg-config: ncurses was not found"
+			fi
+			return
 		fi
 		if [ ! -f "$pcpkg" ] ; then
 			# $pcpkg must not be a file, otherwise it is a custom xxx-config file

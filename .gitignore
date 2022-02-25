@@ -5,3 +5,4 @@ mp
 config.h
 config.log
 config.mk
+config.sh
