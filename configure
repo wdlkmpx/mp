@@ -537,7 +537,6 @@ Optional Packages:
   (Use --without-PACKAGE or --with-PACKAGE[=ARG] )
   --with-sysroot[=DIR]    Set DIR as the compiler's sysroot directory
                           for headers and libraries
-
 $(print_optional_packages)
 Some influential environment variables:
   CC          C compiler command
@@ -731,7 +730,7 @@ if [ -n "${sysroot}" ] ; then
 	fi
 	CC="$CC --sysroot=${sysroot}"
 	CXX="$CXX --sysroot=${sysroot}"
-	if [ "$W_SYSROOT_EXTRA" ] ; then
+	if [ -n "$W_SYSROOT_EXTRA" ] ; then
 		if [ -d ${sysroot}/include ] ; then
 			CFLAGS="-I${sysroot}/include $CFLAGS"
 			CXXFLAGS="-I${sysroot}/include $CXXFLAGS"
