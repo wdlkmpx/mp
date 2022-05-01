@@ -9,18 +9,18 @@ all: all-$(USE_NLS)
 all-no:
 
 all-yes:
-	@sh zzpo.sh mo "$(LINGUAS)"
+	@sh zzpo.sh mo
 
 install: install-data-$(USE_NLS)
 install-data-no: all
 install-data-yes:
-	@sh zzpo.sh install "$(DESTDIR)$(localedir)" "$(GETTEXT_PACKAGE)" "$(LINGUAS)"
+	@sh zzpo.sh install "$(DESTDIR)$(localedir)"
 
 strip:
 install-strip: install
 
 uninstall:
-	@sh zzpo.sh uninstall "$(DESTDIR)$(localedir)" "$(GETTEXT_PACKAGE)" "$(LINGUAS)"
+	@sh zzpo.sh uninstall "$(DESTDIR)$(localedir)"
 
 mostlyclean:
 	rm -f *.new.po *.mo *.gmo
@@ -28,8 +28,8 @@ clean: mostlyclean
 distclean: mostlyclean
 
 update-pot:
-	@sh zzpo.sh pot "$(GETTEXT_PACKAGE)"
+	@sh zzpo.sh pot
 
 update-po:
-	@sh zzpo.sh po "$(GETTEXT_PACKAGE)" "$(LINGUAS)"
+	@sh zzpo.sh po
 

@@ -24,7 +24,9 @@ opt_configure_gettext()
 		--enable-nls)  enable_gettext='yes' ;;
 		--disable-nls) enable_gettext='no'  ;;
 		# ./configure po|pot
-		pot) ./po/zzpo.sh pot ${GETTEXT_PACKAGE} ;;
+		pot)
+			./po/zzpo.sh pot ${GETTEXT_PACKAGE}
+			exit $? ;;
 		po)
 			./po/zzpo.sh po  ${GETTEXT_PACKAGE}
 			#sed -i '/#~ /d' po/*.po
