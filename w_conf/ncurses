@@ -4,13 +4,11 @@
 # optional variables to set before sourcing this script
 #
 # - W_NCURSES_IS_OPTIONAL=yes [show --disable-ncurses in --help msg]
-# - W_NCURSES_MIN_VERSION=xxx [minimun supported version]
+# - W_NCURSES_MIN_VERSION=xxx [minimun supported version, .pc file is required]
 #
 
 #=======================================
-apps_to_check="$apps_to_check ncurses"
-extra_env_vars="$extra_env_vars NCURSES"
-extra_configure_opts="$extra_configure_opts ncurses"
+w_new_option ncurses NCURSES
 #=======================================
 
 ncurses_pc_pkg="ncursesw ncurses"
@@ -61,7 +59,7 @@ opt_check_ncurses()
 			fi
 		done
 
-		if [ -z "$pcpkg" ] ; then
+		if [ -z "$pcpkg" ]  && [ -z "${W_NCURSES_MIN_VERSION}" ] ; then
 			printf "Checking for ncurses... "
 			pcpkg="$(check_command ncursesw6-config ncursesw5-config ncurses6-config ncurses6-config)"
 			if [ -n "$pcpkg" ] ; then
@@ -73,7 +71,7 @@ opt_check_ncurses()
 			fi
 		fi
 		#--
-		if [ -z "$pcpkg" ] ; then
+		if [ -z "$pcpkg" ]  && [ -z "${W_NCURSES_MIN_VERSION}" ] ; then
 			w_check_header_and_libs ncurses.h -lncursesw
 			if [ $? -eq 0 ] ; then
 				#NCURSES_CFLAGS=...
@@ -82,7 +80,7 @@ opt_check_ncurses()
 			fi
 		fi
 		#--
-		if [ -z "$pcpkg" ] ; then
+		if [ -z "$pcpkg" ]  && [ -z "${W_NCURSES_MIN_VERSION}" ] ; then
 			w_check_header_and_libs ncurses.h -lncurses
 			if [ $? -eq 0 ] ; then
 				#NCURSES_CFLAGS=...
