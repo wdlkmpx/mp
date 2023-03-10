@@ -1,14 +1,20 @@
 #!/bin/sh
-# This is free and unencumbered software released into the public domain.
-# For more information, please refer to <http://unlicense.org/>
+# Public Domain
 #
+
+WCURDIR=$(pwd)
+WCONF_SCRIPTDIR=$(cd "$(dirname "$0")" ; pwd -P)
+WCONF_CONFIGURE=${WCONF_SCRIPTDIR}/$(basename "$0")
+
+if [ "$WCURDIR" != "$WCONF_SCRIPTDIR" ] ; then
+    echo "Current dir: $WCURDIR"
+    echo "Wconf dir  : $WCONF_SCRIPTDIR"
+    echo "Out-of-tree builds are not supported..."
+    exit 1
+fi
 
 if ! [ -f Makefile ] ; then
 	echo 'Main Makefile is missing, cannot continue'
-	exit 1
-fi
-
-if ! cd $(dirname "$0") ; then
 	exit 1
 fi
 
@@ -23,6 +29,7 @@ config_mk_flags=
 w_files_in=
 sysroot=
 
+#==========================================================
 
 w_new_option() # $1=opt [$2=env_variable]
 {
@@ -39,9 +46,35 @@ w_new_option_with()
 	w_opts_check="$w_opts_check $1"
 }
 
+exit_error() {
+	test "$1" && echo "$@"
+	if [ -f config.log ] ; then
+		echo "See config.log, there might be some clues there"
+	fi
+	rm -f config.h config.mk
+	exit 1
+}
 
-if [ -f configure.project ] ; then
-	. ./configure.project
+cmdecho()
+{
+    echo "# $@"
+    "$@"
+}
+
+getvalue()
+{
+	echo $1 | cut -f 2 -d '='
+}
+
+include()
+{
+    . ${WCONF_SCRIPTDIR}/w_conf/${1} || exit 1
+}
+
+#==========================================================
+
+if [ -f ${WCONF_SCRIPTDIR}/configure.project ] ; then
+	. ${WCONF_SCRIPTDIR}/configure.project
 fi
 
 if [ -z "$PROJECT_TYPE" ] ; then
@@ -59,35 +92,29 @@ PACKAGE_VERSION="${VERSION}"
 #==========================================================
 # ./configure release [xz|gz|lz|bz2|zst]
 
-if [ "$1" = "release" ] ; then
-	srcdir=$(pwd)
+if [ "$1" = "release" ] || [ "$1" = "dist" ] ; then
+	srcdir=${WCONF_SCRIPTDIR}
 	outdir=${PACKAGE}-${VERSION}
-	cd ..
-	rm -rf ${outdir}
-	if [ "$2" = "dist" ] ; then
-		# force creation of tarfile, copy the whole dir
-		shift
-		shift
-		cp -rf ${srcdir} ${outdir}
-		cd ${outdir}
-		git clean -dfx
-		rm -rf .*
-		cd ..
-	else
-		if command -v git >/dev/null; then
-			printf "Run 'git clean -dfx'? [y/N]: "
-			read anzwer
-			case $anzwer in y|Y)
-				cd ${srcdir}
-				echo '# git clean -dfx'
-				git clean -dfx
-				cd ..
-				;;
-			esac
-		fi
-		mkdir -p ${outdir}
-		cp -rf ${srcdir}/* ${outdir}/
+	if [ ! -d .git ] ; then
+		echo "Warning: no .git directory, will not be able to perform 'git clean'"
 	fi
+	if [ ! -d .git ] ; then
+		echo "Warning: no .gitignore file, it contains rules to delete unwanted files, the release tarball may not be suitable for release"
+	fi
+	if [ "$outdir" = "$(basename $srcdir)" ] ; then
+		echo "ERROR: output dir ($outdir) is the also input directory"
+		exit 1
+	fi
+	cmdecho cd ..
+	cmdecho rm -rf ${outdir}
+	cmdecho cp -rf ${srcdir} ${outdir}
+	cmdecho mkdir -p ${outdir}
+	cmdecho cd ${outdir}
+	if command -v git >/dev/null; then
+		cmdecho git clean -dfx
+	fi
+	rm -rf .[a-z]* .[A-Z]* .[0-9]*
+	cmdecho cd ..
 	#--
 	echo "# tar -vcf ${outdir}.tar ${outdir}"
 	tar -vcf ${outdir}.tar ${outdir}
@@ -103,27 +130,17 @@ if [ "$1" = "release" ] ; then
 		*)   cmd=${comp} ;;
 	esac
 	rm -f ${outdir}.tar.${comp}
-	echo "# ${cmd} ${outdir}.tar"
-	if ${cmd} ${outdir}.tar ; then
+	if cmdecho ${cmd} ${outdir}.tar ; then
 		echo "*** ${outdir}.tar.${comp} has been created..."
+		exit 0
 	fi
 	rm -f ${outdir}.tar
-	exit
+	exit 1
 fi
 
 # w_conf/gettext: ./configure po|pot
 
 #==========================================================
-
-exit_error() {
-	test "$1" && echo "$@"
-	if [ -f config.log ] ; then
-		echo "See config.log, there might be some clues there"
-	fi
-	rm -f config.h config.mk
-	exit 1
-}
-
 
 check_command() # 1:<cmd> finds $1 in $PATH
 {
@@ -222,18 +239,14 @@ set_w_pkg_config()
 	printf "Checking for pkg-config... "
 	W_PKG_CONFIG=''
 	if [ -n "${PKG_CONFIG}" ] ; then
-		W_PKG_CONFIG="$(check_command ${PKG_CONFIG})"
-		if [ -n "$W_PKG_CONFIG" ] ; then
-			echo "$W_PKG_CONFIG (environment)"
-			return 0
-		fi
+		W_PKG_CONFIG="$PKG_CONFIG"
+	else
+		W_PKG_CONFIG="$(check_command pkg-config pkgconf)"
 	fi
-	W_PKG_CONFIG="$(check_command pkg-config pkgconf)"
 	if [ -n "$W_PKG_CONFIG" ] ; then
 		echo "$W_PKG_CONFIG [$($W_PKG_CONFIG --version 2>/dev/null)]"
 	else
 		echo "no"
-		echo "WARNING: missing pkg-config: this a potentially fatal error"
 	fi
 }
 
@@ -270,30 +283,33 @@ w_pkgconfig_check() # $1=<pkg> $2=[min-version]
 	fi
 	if [ -z "$W_PKG_CONFIG" ] ; then
 		echo "no (!!pkg-config is missing!!)"
-		return 1
+		return 1  #error
 	fi
 	#--
-	if [ -n "$pc_pkg_min_ver" ] ; then
-		run_pkg_config ${pc_pkg} --exists --atleast-version=${pc_pkg_min_ver}
-	else
-		run_pkg_config ${pc_pkg} --exists
+	run_pkg_config ${pc_pkg} --exists
+	if [ $? -ne 0 ] ; then
+		echo "no"
+		return 1  #error
 	fi
-	xret=$?
-	if [ $xret -eq 0 ] ; then
-		echo "yes [$(run_pkg_config ${pc_pkg} --modversion)]"
-	else
-		if [ -n "$pc_pkg_min_ver" ] ; then
-			xxzzfound=$(run_pkg_config ${pc_pkg} --modversion 2>/dev/null)
-			if [ -n "$xxzzfound" ] ; then
-				echo "no [found $xxzzfound]"
+	xpkgverx="$(run_pkg_config ${pc_pkg} --modversion 2>/dev/null)"
+	if [ -n "$pc_pkg_min_ver" ] ; then
+		run_pkg_config ${pc_pkg} --atleast-version=${pc_pkg_min_ver}
+		if [ $? -ne 0 ] ; then
+			if [ -n "$xpkgverx" ] ; then
+				echo "no [found $xpkgverx]"
+				return 1  #error
 			else
 				echo "no"
+				return 1  #error
 			fi
-		else
-			echo "no"
 		fi
 	fi
-	return $xret
+	if [ -n "$xpkgverx" ] ; then
+		echo "yes [${xpkgverx}]"
+	else
+		echo "yes"
+	fi
+	return 0  #ok
 }
 
 
@@ -467,8 +483,8 @@ w_require_gnu_make()
 
 #==========================================================
 
-#test "$CC"    || CC='gcc'
-#test "$CXX"   || CXX='g++'
+#test "$CC"    || CC='cc'
+#test "$CXX"   || CXX='c++'
 test "$STRIP"  || STRIP='strip'
 test "$AR"     || AR='ar'
 test "$AS"     || AS='as'
@@ -498,8 +514,8 @@ infodir='${datarootdir}/info'
 mandir='${datarootdir}/man'
 localedir='${datarootdir}/locale'
 runstatedir='${localstatedir}/run'
-top_builddir="$(pwd)"
-top_srcdir="$(pwd)"
+top_builddir="${WCONF_SCRIPTDIR}"
+top_srcdir="${WCONF_SCRIPTDIR}"
 builddir=.
 srcdir=.
 
@@ -616,10 +632,6 @@ print_extra_env_variables()
 }
 
 #==========================================================
-
-getvalue() {
-	echo $1 | cut -f 2 -d '='
-}
 
 for i in $@
 do
@@ -798,19 +810,20 @@ case $OS_TARGET in
 	Linux)   SYSDEFINE='__linux__=1' ;;
 	MinGW)   SYSDEFINE='__MINGW32__=1' ;;
 	FreeBSD) SYSDEFINE='__FreeBSD__=1' ;;
-	Darwub)  SYSDEFINE='__APPLE__=1' ;;
+	Darwin)  SYSDEFINE='__APPLE__=1' ;;
 esac
 
 TARGET_OS="$OS_TARGET"
 
 #==========================================================
+# PROJECT_FLAGS go first (can be overridden)
 
-CFLAGS="$CFLAGS $PROJECT_CFLAGS"
-CPPFLAGS="$CPPFLAGS $PROJECT_CPPFLAGS"
-CXXFLAGS="$CXXFLAGS $PROJECT_CXXFLAGS"
-LDFLAGS="$LDFLAGS $PROJECT_LDFLAGS"
-LXXFLAGS="$LXXFLAGS $PROJECT_LXXFLAGS"
-LIBS="$LIBS $PROJECT_LIBS"
+CFLAGS="$PROJECT_CFLAGS $CFLAGS"
+CPPFLAGS="$PROJECT_CPPFLAGS $CPPFLAGS"
+CXXFLAGS="$PROJECT_CXXFLAGS $CXXFLAGS"
+LDFLAGS="$PROJECT_LDFLAGS $LDFLAGS"
+LXXFLAGS="$PROJECT_LXXFLAGS $LXXFLAGS"
+LIBS="$PROJECT_LIBS $LIBS"
 
 #==========================================================
 
@@ -1024,7 +1037,7 @@ fi
 
 #==========================================================
 
-. ./config.sh
+. ${WCONF_SCRIPTDIR}/config.sh
 
 #==========================================================
 #                       config.h
@@ -1079,7 +1092,7 @@ fi
 
 for infile in ${w_infiles}
 do
-	./w_conf/00_standard_infile.sh ${infile}
+	${WCONF_SCRIPTDIR}/w_conf/00_standard_infile.sh ${infile}
 done
 
 #==========================================================

@@ -27,6 +27,11 @@ w_main_func()
 	w_check_headers_required stdio.h
 }
 
+w_finish_func()
+{
+    printf ""
+}
+
 #=====================================================================
 # special scripts for optional features and various tasks
 # checks are run after w_main_func
@@ -42,12 +47,8 @@ w_main_func()
 #   ZLIB_CFLAGS =
 #   ZLIB_LIBS   =
 
-PO2C_FILE='src/mp_lang_m.c'
-GETTEXT_PACKAGE='minimum-profit'
-. w_conf/gettext
-
 #W_NCURSES_IS_OPTIONAL=yes
-. w_conf/ncurses
+include ncurses
 
 #==========================================
 
