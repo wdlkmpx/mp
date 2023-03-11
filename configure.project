@@ -10,12 +10,12 @@ PACKAGE_URL=''
 # supported values: C, C++ ("" = C++)
 PROJECT_TYPE=C
 
-# config.h: custom extra lines
-w_config_h_extra_lines=""
+# Makefile
+MK_SUBDIRS='data src'
+MK_DISTCLEAN_FILES=''
+MK_CHECK=''
 
-# config.mk: custom extra lines
-w_config_mk_extra_lines=""
-
+add_env_help NCURSES
 
 # configure the project using the commands provided
 # by `configure` and other scripts and commands/tools
@@ -25,30 +25,37 @@ w_main_func()
 
 	# check required headers and exit on error
 	w_check_headers_required stdio.h
+
+	NCURSES_FOUND=
+	if [ -n "$NCURSES_CFLAGS" ] || [ -n "$NCURSES_LIBS" ] ; then
+		NCURSES_FOUND=1
+	fi
+	if [ ! "$NCURSES_FOUND" ] ; then
+		find_pkgconfig  env='NCURSES' pc='ncursesw ncurses' required='false' #minver=
+	fi
+	if [ ! "$NCURSES_FOUND" ] ; then
+		find_lib  env='NCURSES' headers='ncurses.h' libs='-lncursesw' required='false'
+	fi
+	if [ ! "$NCURSES_FOUND" ] ; then
+		find_lib  env='NCURSES' headers='ncurses.h' libs='-lncurses' required='false'
+	fi
+	#if [ ! "$NCURSES_FOUND" ] ; then
+	#	find_customconfig NCURSES ncursesw6-config ncursesw5-config ncurses6-config ncurses6-config
+	#fi
+	if [ ! "$NCURSES_FOUND" ] ; then
+		echo "NCURSES is required"
+		exit 1
+	fi
 }
 
+# function to run after performing all checks
+w_aftercheck_func()
+{
+	printf ""
+}
+
+# function to run once everything is done, probably add stuff to config.h and config.mk
 w_finish_func()
 {
-    printf ""
+	printf ""
 }
-
-#=====================================================================
-# special scripts for optional features and various tasks
-# checks are run after w_main_func
-#
-# - source w_conf/xxx script to support a specific feature
-# - these scripts are meant to be generic, so any project can add them
-# - most of these scripts can handle --enable/--disable cmd options
-#   to make it easier to replace autoconf
-#
-# In most cases, if a feature is enabled, it will be defined in config.h
-#   #define HAVE_ZLIB 1
-# And config.mk
-#   ZLIB_CFLAGS =
-#   ZLIB_LIBS   =
-
-#W_NCURSES_IS_OPTIONAL=yes
-include ncurses
-
-#==========================================
-
