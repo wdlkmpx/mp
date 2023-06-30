@@ -39,6 +39,9 @@ w_main_func()
 	if [ ! "$NCURSES_FOUND" ] ; then
 		find_lib  env='NCURSES' headers='ncurses.h' libs='-lncurses' required='false'
 	fi
+	if [ ! "$NCURSES_FOUND" ] ; then
+		find_lib  env='NCURSES' headers='curses.h' libs='-lcurses' required='false'
+	fi
 	#if [ ! "$NCURSES_FOUND" ] ; then
 	#	find_customconfig NCURSES ncursesw6-config ncursesw5-config ncurses6-config ncurses6-config
 	#fi

@@ -43,7 +43,11 @@
 #include <unistd.h>
 #include <termios.h>
 #include <fcntl.h>
+#ifdef HAVE_NCURSES_H
 #include <ncurses.h>
+#else
+#include <curses.h>
+#endif
 #include <signal.h>
 #include <ctype.h>
 #include <sys/stat.h>
