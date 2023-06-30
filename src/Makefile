@@ -1,7 +1,7 @@
 
 include ../config.mk
 
-APP  = mp
+APP  = mp$(EXE)
 
 # ls *.c | sed 's%\.c%.o%g' | tr '\n' ' ' >> Makefile
 OBJS = mp_conf.o mp_core.o mp_func.o mp_iface.o mp_lang.o mp_synhi.o mp_tags.o mpv_curses.o mp_video.o mpv_unix_common.o mp_wordp.o
