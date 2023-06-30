@@ -38,14 +38,14 @@
 
 #include "mp_core.h"
 
-#define CONFOPT_SYSTEM_REGEX 1
-
-#ifdef CONFOPT_PCRE
-#include <pcreposix.h>
-#endif
-
-#ifdef CONFOPT_SYSTEM_REGEX
-#include <regex.h>
+#ifdef HAVE_LIBPCRE
+#  include <pcreposix.h>
+#else
+#  ifdef HAVE_REGEX_H
+#     include <regex.h>
+#  else
+#     define NO_REGEX 1
+#  endif
 #endif
 
 /*********************
@@ -2199,7 +2199,7 @@ int mp_seek_regex(mp_txt * txt, char * str)
 {
 	int ret=0;
 
-#ifndef CONFOPT_NO_REGEX
+#ifndef NO_REGEX
 
 	int err;
 	regex_t r;
@@ -2248,7 +2248,7 @@ int mp_seek_regex(mp_txt * txt, char * str)
 	/* final (or initial if not found) position */
 	mp_move_xy(txt, x, y);
 
-#endif /* CONFOPT_NO_REGEX */
+#endif /* NO_REGEX */
 
 	return(ret);
 }
@@ -2264,7 +2264,7 @@ int mp_seek_regex(mp_txt * txt, char * str)
  */
 int mp_seek(mp_txt * txt, char * str)
 {
-#ifndef CONFOPT_NO_REGEX
+#ifndef NO_REGEX
 	if(_mp_regex)
 		return(mp_seek_regex(txt, str));
 #endif

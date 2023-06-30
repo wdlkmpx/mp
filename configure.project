@@ -26,6 +26,16 @@ w_main_func()
 	# check required headers and exit on error
 	w_check_headers_required stdio.h
 
+	w_check_headers regex.h
+
+	LIBPCRE_FOUND=
+	if [ -n "$LIBPCRE_CFLAGS" ] || [ -n "$LIBPCRE_LIBS" ] ; then
+		LIBPCRE_FOUND=1
+	fi
+	if [ ! "$LIBPCRE_FOUND" ] ; then
+		find_pkgconfig  env='LIBPCRE' pc='libpcreposix' required='false'
+	fi
+
 	NCURSES_FOUND=
 	if [ -n "$NCURSES_CFLAGS" ] || [ -n "$NCURSES_LIBS" ] ; then
 		NCURSES_FOUND=1

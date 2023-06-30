@@ -9,8 +9,8 @@ OBJS = mp_conf.o mp_core.o mp_func.o mp_iface.o mp_lang.o mp_synhi.o mp_tags.o m
 #CPPFLAGS += -I..
 CFLAGS += -I..
 
-LIBS     += $(NCURSES_LIBS)
-CFLAGS   += $(NCURSES_CFLAGS)
+LIBS     += $(NCURSES_LIBS) $(LIBPCRE_LIBS)
+CFLAGS   += $(NCURSES_CFLAGS) $(LIBPCRE_FLAGS)
 
 all: $(APP)
 
