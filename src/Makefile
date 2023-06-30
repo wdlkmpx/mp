@@ -4,7 +4,7 @@ include ../config.mk
 APP  = mp
 
 # ls *.c | sed 's%\.c%.o%g' | tr '\n' ' ' >> Makefile
-OBJS = gnu_regex.o mp_conf.o mp_core.o mp_func.o mp_iface.o mp_lang.o mp_synhi.o mp_tags.o mpv_curses.o mp_video.o mpv_unix_common.o mp_wordp.o
+OBJS = mp_conf.o mp_core.o mp_func.o mp_iface.o mp_lang.o mp_synhi.o mp_tags.o mpv_curses.o mp_video.o mpv_unix_common.o mp_wordp.o
 
 #CPPFLAGS += -I..
 CFLAGS += -I..

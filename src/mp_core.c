@@ -48,10 +48,6 @@
 #include <regex.h>
 #endif
 
-#ifdef CONFOPT_INCLUDED_REGEX
-#include "gnu_regex.h"
-#endif
-
 /*********************
 	  Data
 **********************/
